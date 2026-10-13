@@ -67,15 +67,77 @@ async function resolveChannelId(feed) {
   return m[1];
 }
 
-async function loadFeedXml(feed) {
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+
+/** RSS của YouTube thỉnh thoảng trả 404 giả cho máy chủ GitHub → thử lại vài lần */
+async function rss(url, tries = 3) {
+  let status = 0;
+  for (let i = 0; i < tries; i++) {
+    try {
+      const res = await fetch(url, { headers: { "user-agent": UA, "accept-language": "en" } });
+      status = res.status;
+      if (res.status === 200) {
+        const xml = await res.text();
+        if (xml.includes("<feed")) return xml;
+      }
+    } catch (e) { status = e.message; }
+    await sleep(3000 * (i + 1));
+  }
+  throw new Error(`HTTP ${status}`);
+}
+
+/** Dự phòng: YouTube Data API v3 (cần secret YOUTUBE_API_KEY, miễn phí) — lấy 15 video mới của danh sách upload */
+async function viaDataApi(channelId) {
+  const key = process.env.YOUTUBE_API_KEY;
+  const uploads = "UU" + channelId.slice(2);
+  const api = (p) => fetch(`https://www.googleapis.com/youtube/v3/${p}&key=${key}`).then(async (r) => {
+    const j = await r.json();
+    if (!r.ok) throw new Error(`Data API ${r.status}: ${j.error?.message || ""}`);
+    return j;
+  });
+  const list = await api(`playlistItems?part=snippet,contentDetails&maxResults=15&playlistId=${uploads}`);
+  const items = (list.items || []).filter((it) => it.contentDetails?.videoId);
+  // loại Shorts / video quá ngắn (< 75 giây)
+  const ids = items.map((it) => it.contentDetails.videoId).join(",");
+  const dur = {};
+  if (ids) {
+    const v = await api(`videos?part=contentDetails&id=${ids}`);
+    for (const x of v.items || []) {
+      const m = x.contentDetails.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/) || [];
+      dur[x.id] = (+m[1] || 0) * 3600 + (+m[2] || 0) * 60 + (+m[3] || 0);
+    }
+  }
+  return items.filter((it) => (dur[it.contentDetails.videoId] ?? 999) >= 75).map((it) => ({
+    videoId: it.contentDetails.videoId,
+    title: it.snippet.title,
+    link: `https://www.youtube.com/watch?v=${it.contentDetails.videoId}`,
+    published: it.contentDetails.videoPublishedAt || it.snippet.publishedAt,
+    description: it.snippet.description || "",
+    channel: it.snippet.channelTitle
+  }));
+}
+
+/** Trả về danh sách video của một kênh, thử lần lượt: RSS kênh → RSS playlist upload → Data API */
+async function loadEntries(feed) {
   if (FIXTURES) {
     const f = path.join(FIXTURES, `${feed.handle.replace(/^@/, "")}.xml`);
-    return existsSync(f) ? readFile(f, "utf8") : "";
+    return existsSync(f) ? parseFeed(await readFile(f, "utf8")) : [];
   }
   const id = await resolveChannelId(feed);
-  const res = await get(`https://www.youtube.com/feeds/videos.xml?channel_id=${id}`);
-  if (res.status !== 200) throw new Error(`RSS ${feed.handle}: HTTP ${res.status}`);
-  return res.text();
+  log(feed.handle, "channelId", id);
+  const errs = [];
+  for (const [name, url] of [
+    ["RSS kênh", `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`],
+    ["RSS playlist", `https://www.youtube.com/feeds/videos.xml?playlist_id=UU${id.slice(2)}`]
+  ]) {
+    try { const e = parseFeed(await rss(url)); log(feed.handle, `nguồn: ${name}`); return e; }
+    catch (e) { errs.push(`${name} ${e.message}`); }
+  }
+  if (process.env.YOUTUBE_API_KEY) {
+    try { const e = await viaDataApi(id); log(feed.handle, "nguồn: YouTube Data API"); return e; }
+    catch (e) { errs.push(e.message); }
+  }
+  throw new Error(errs.join(" · ") + (process.env.YOUTUBE_API_KEY ? "" : " (gợi ý: thêm secret YOUTUBE_API_KEY để có nguồn dự phòng)"));
 }
 
 /** YouTube oEmbed trả 401/403 nếu chủ video tắt nhúng, 404 nếu video riêng tư/bị xoá */
@@ -121,7 +183,7 @@ async function main() {
 
   for (const feed of cfg.feeds) {
     let entries = [];
-    try { entries = parseFeed(await loadFeedXml(feed)); }
+    try { entries = await loadEntries(feed); }
     catch (e) { errors.push(`${feed.handle}: ${e.message}`); log("LỖI", feed.handle, e.message); continue; }
     log(feed.handle, `${entries.length} video trong RSS`);
 
@@ -185,7 +247,8 @@ async function main() {
     await appendFile(process.env.PR_BODY_FILE, lines.join("\n") + "\n");
   }
   if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `added=${added.length}\n`);
-  if (errors.length === cfg.feeds.length) process.exitCode = 1;   // mọi feed đều lỗi → báo đỏ
+  // Lỗi phía YouTube không làm workflow đỏ — chỉ hiện cảnh báo vàng trong tab Actions
+  for (const e of errors) console.log(`::warning title=Không đọc được feed::${e}`);
 }
 
 if (import.meta.url === `file://${process.argv[1]}`) main().catch((e) => { console.error(e); process.exit(1); });
