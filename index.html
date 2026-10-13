@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>English Path · Tự học tiếng Anh theo trình độ</title>
+  <meta name="description" content="Tự học tiếng Anh theo chuẩn CEFR A1–C1: bài test xếp lớp, bài nghe British Council, BBC, YouTube và dashboard theo dõi tiến độ.">
+  <meta name="theme-color" content="#1f3a5f">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='14' fill='%231f3a5f'/><text x='32' y='44' font-size='34' font-family='Georgia,serif' font-weight='700' text-anchor='middle' fill='%23f6c453'>E</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,600;9..144,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#/"><span class="logo">E</span><span>English <b>Path</b></span></a>
+    <nav class="nav" aria-label="Điều hướng chính">
+      <a href="#/" data-nav=""><span>🏠</span>Trang chủ</a>
+      <a href="#/roadmap" data-nav="roadmap"><span>🗺️</span>Lộ trình</a>
+      <a href="#/review" data-nav="review"><span class="nav-ic">🃏<i id="reviewDot" class="dot" hidden></i></span>Ôn tập</a>
+      <a href="#/dashboard" data-nav="dashboard"><span>📈</span>Tiến độ</a>
+      <a href="#/settings" data-nav="settings"><span>⚙️</span>Cài đặt</a>
+    </nav>
+    <a id="xpChip" class="xp-chip" href="#/dashboard" aria-label="Cấp độ và XP"></a>
+    <button id="themeBtn" class="icon-btn" aria-label="Đổi giao diện sáng/tối">🌙</button>
+  </header>
+
+  <main id="app" tabindex="-1"></main>
+
+  <footer class="foot">
+    <p>English Path · dữ liệu học lưu trên trình duyệt của bạn · nội dung bài nghe thuộc về
+      <a href="https://learnenglish.britishcouncil.org" target="_blank" rel="noopener">British Council</a>,
+      <a href="https://www.bbc.co.uk/learningenglish" target="_blank" rel="noopener">BBC Learning English</a> và các kênh YouTube tương ứng.</p>
+  </footer>
+
+  <div id="toasts" aria-live="polite"></div>
+
+  <script src="js/data.js"></script>
+  <script src="js/daily.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/game.js"></script>
+  <script src="js/app.js"></script>
+  <script src="js/review.js"></script>
+</body>
+</html>
