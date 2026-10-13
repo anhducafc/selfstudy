@@ -1,5 +1,5 @@
 {
-  "_comment": "Danh sách kênh YouTube lấy bài tự động. 'rules' xét theo thứ tự, khớp regex với tiêu đề (không phân biệt hoa thường). Không khớp rule nào → dùng 'default'; default = null → bỏ qua video.",
+  "_comment": "Danh sách kênh YouTube lấy bài tự động. 'rules' xét theo thứ tự, khớp regex với tiêu đề (không phân biệt hoa thường). Không khớp rule nào → dùng 'default'; default = null → bỏ qua video. Có 'channelId' thì không cần dò từ handle.",
   "maxNewPerRun": 6,
   "maxKeepPerFeed": 40,
   "excludeTitle": "#shorts|\\bshorts?\\b|live english class|box set|livestream|trailer",
@@ -8,30 +8,92 @@
       "handle": "@bbclearningenglish",
       "provider": "BBC Learning English",
       "rules": [
-        { "match": "6 minute english", "level": "B1", "skill": "listening", "minutes": 7, "series": "6 Minute English" },
-        { "match": "real easy english", "level": "A2", "skill": "listening", "minutes": 7, "series": "Real Easy English" },
-        { "match": "english at work", "level": "B1", "skill": "listening", "minutes": 5, "series": "English at Work" },
-        { "match": "learning english from the news|news review", "level": "B2", "skill": "vocab", "minutes": 10, "series": "English from the News" },
-        { "match": "english in a minute", "level": "A2", "skill": "vocab", "minutes": 2, "series": "English in a Minute" },
-        { "match": "grammar", "level": "B1", "skill": "grammar", "minutes": 6, "series": "Grammar" },
-        { "match": "pronunciation|pronounce", "level": "A2", "skill": "listening", "minutes": 5, "series": "Pronunciation" }
+        {
+          "match": "6 minute english",
+          "level": "B1",
+          "skill": "listening",
+          "minutes": 7,
+          "series": "6 Minute English"
+        },
+        {
+          "match": "real easy english",
+          "level": "A2",
+          "skill": "listening",
+          "minutes": 7,
+          "series": "Real Easy English"
+        },
+        {
+          "match": "english at work",
+          "level": "B1",
+          "skill": "listening",
+          "minutes": 5,
+          "series": "English at Work"
+        },
+        {
+          "match": "learning english from the news|news review",
+          "level": "B2",
+          "skill": "vocab",
+          "minutes": 10,
+          "series": "English from the News"
+        },
+        {
+          "match": "english in a minute",
+          "level": "A2",
+          "skill": "vocab",
+          "minutes": 2,
+          "series": "English in a Minute"
+        },
+        {
+          "match": "grammar",
+          "level": "B1",
+          "skill": "grammar",
+          "minutes": 6,
+          "series": "Grammar"
+        },
+        {
+          "match": "pronunciation|pronounce",
+          "level": "A2",
+          "skill": "listening",
+          "minutes": 5,
+          "series": "Pronunciation"
+        }
       ],
-      "default": null
+      "default": null,
+      "channelId": "UCHaHD477h-FeBbVh9Sh7syA"
     },
     {
       "handle": "@BritishCouncilEnglish",
       "provider": "British Council",
       "rules": [
-        { "match": "grammar|tense|verb", "level": "B1", "skill": "grammar", "minutes": 5 },
-        { "match": "beginner|basic|a1|a2", "level": "A2", "skill": "vocab", "minutes": 5 }
+        {
+          "match": "grammar|tense|verb",
+          "level": "B1",
+          "skill": "grammar",
+          "minutes": 5
+        },
+        {
+          "match": "beginner|basic|a1|a2",
+          "level": "A2",
+          "skill": "vocab",
+          "minutes": 5
+        }
       ],
-      "default": { "level": "B1", "skill": "vocab", "minutes": 5 }
+      "default": {
+        "level": "B1",
+        "skill": "vocab",
+        "minutes": 5
+      }
     },
     {
       "handle": "@TEDEd",
       "provider": "TED-Ed",
       "rules": [],
-      "default": { "level": "B2", "skill": "listening", "minutes": 6 }
+      "default": {
+        "level": "B2",
+        "skill": "listening",
+        "minutes": 6
+      },
+      "channelId": "UCsooa4yRKGN_zEE8iknghZA"
     }
   ]
 }
