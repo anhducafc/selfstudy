@@ -1,0 +1,107 @@
+# Mỗi sáng: lấy video mới qua RSS (Phần 2) → nhờ Claude soạn từ vựng + quiz (Phần 3).
+#
+# Chế độ (biến repo LESSON_MODE, Settings → Secrets and variables → Actions → Variables):
+#   pr      → mở / cập nhật Pull Request "auto/daily-lessons" để bạn duyệt rồi Merge (mặc định khi có ANTHROPIC_API_KEY)
+#   direct  → commit thẳng vào main và deploy luôn (mặc định khi KHÔNG có API key — chỉ là dữ liệu RSS)
+#
+# Secrets (tuỳ chọn): ANTHROPIC_API_KEY — có thì bật Phần 3.
+# Variables (tuỳ chọn): CLAUDE_MODEL (mặc định claude-sonnet-5-5), MAX_ENRICH (mặc định 6), LESSON_MODE.
+name: Daily lessons
+
+on:
+  schedule:
+    - cron: "17 22 * * *"      # 22:17 UTC = 05:17 sáng giờ Việt Nam
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "pr hoặc direct (để trống = tự chọn)"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+  pull-requests: write
+
+concurrency:
+  group: daily-lessons
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    env:
+      HAS_KEY: ${{ secrets.ANTHROPIC_API_KEY != '' }}
+      PR_BODY_FILE: ${{ github.workspace }}/../pr-body.md
+    outputs:
+      pushed: ${{ steps.direct.outputs.pushed }}
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+
+      - name: Chọn chế độ
+        id: mode
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          [ -z "$MODE" ] && MODE="${{ vars.LESSON_MODE }}"
+          if [ -z "$MODE" ]; then
+            if [ "$HAS_KEY" = "true" ]; then MODE=pr; else MODE=direct; fi
+          fi
+          echo "mode=$MODE" >> "$GITHUB_OUTPUT"
+          echo "Chế độ: $MODE (có API key: $HAS_KEY)"
+          printf '# 🤖 Bài học tự động — %s\n\n' "$(TZ=Asia/Ho_Chi_Minh date +'%d/%m/%Y')" > "$PR_BODY_FILE"
+
+      - name: Phần 2 · Lấy video mới qua RSS
+        run: node scripts/fetch-feeds.mjs
+
+      - name: Phần 3 · Claude soạn từ vựng + quiz
+        if: env.HAS_KEY == 'true'
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          CLAUDE_MODEL: ${{ vars.CLAUDE_MODEL }}
+          MAX_ENRICH: ${{ vars.MAX_ENRICH }}
+        run: node scripts/enrich-lessons.mjs
+
+      - name: Tóm tắt
+        run: cat "$PR_BODY_FILE" >> "$GITHUB_STEP_SUMMARY"
+
+      # ---- chế độ direct: commit thẳng vào main ----
+      - name: Commit vào main
+        id: direct
+        if: steps.mode.outputs.mode == 'direct'
+        run: |
+          git config user.name  "english-path-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/auto-lessons.json
+          if git diff --cached --quiet; then
+            echo "Không có thay đổi."; echo "pushed=false" >> "$GITHUB_OUTPUT"
+          else
+            git commit -m "chore: bài học tự động $(TZ=Asia/Ho_Chi_Minh date +%F)"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # ---- chế độ pr: mở / cập nhật Pull Request để duyệt ----
+      - name: Mở Pull Request
+        if: steps.mode.outputs.mode == 'pr'
+        uses: peter-evans/create-pull-request@v7
+        with:
+          branch: auto/daily-lessons
+          delete-branch: true
+          add-paths: data/auto-lessons.json
+          commit-message: "chore: bài học tự động (RSS + Claude)"
+          title: "🤖 Bài học mới hôm nay — duyệt & Merge"
+          body-path: ${{ env.PR_BODY_FILE }}
+          labels: auto-lessons
+
+  # Commit bằng GITHUB_TOKEN không tự kích hoạt workflow khác → gọi deploy trực tiếp
+  deploy:
+    needs: update
+    if: needs.update.outputs.pushed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/pages.yml

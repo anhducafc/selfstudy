@@ -1,0 +1,42 @@
+# Phần 4 — Bot Telegram nhắc học: sáng gửi Bài của ngày, tối nhắc giữ chuỗi.
+#
+# Secrets:   TELEGRAM_BOT_TOKEN, TELEGRAM_CHAT_ID (nhiều id cách nhau bằng dấu phẩy)
+# Variables: SITE_URL (mặc định https://<owner>.github.io/<repo>/), TELEGRAM_LEVELS (mặc định A2,B1,B2)
+name: Telegram reminder
+
+on:
+  schedule:
+    - cron: "47 23 * * *"      # 23:47 UTC = 06:47 sáng giờ Việt Nam
+    - cron: "52 13 * * *"      # 13:52 UTC = 20:52 tối giờ Việt Nam
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: "morning hoặc evening"
+        required: true
+        default: morning
+        type: choice
+        options: [morning, evening]
+
+permissions:
+  contents: read
+
+jobs:
+  send:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+      - name: Gửi tin nhắn
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          TELEGRAM_LEVELS: ${{ vars.TELEGRAM_LEVELS }}
+          SITE_URL: ${{ vars.SITE_URL || format('https://{0}.github.io/{1}/', github.repository_owner, github.event.repository.name) }}
+        run: |
+          MODE="${{ github.event.inputs.mode }}"
+          if [ -z "$MODE" ]; then
+            if [ "${{ github.event.schedule }}" = "52 13 * * *" ]; then MODE=evening; else MODE=morning; fi
+          fi
+          node scripts/telegram-daily.mjs "$MODE"
