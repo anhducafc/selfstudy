@@ -5,6 +5,7 @@
 #   direct  → commit thẳng vào main và deploy luôn (mặc định khi KHÔNG có API key — chỉ là dữ liệu RSS)
 #
 # Secrets (tuỳ chọn): ANTHROPIC_API_KEY — có thì bật Phần 3.
+#                    YOUTUBE_API_KEY  — nguồn dự phòng khi RSS YouTube trả 404.
 # Variables (tuỳ chọn): CLAUDE_MODEL (mặc định claude-sonnet-5-5), MAX_ENRICH (mặc định 6), LESSON_MODE.
 name: Daily lessons
 
@@ -54,6 +55,8 @@ jobs:
           printf '# 🤖 Bài học tự động — %s\n\n' "$(TZ=Asia/Ho_Chi_Minh date +'%d/%m/%Y')" > "$PR_BODY_FILE"
 
       - name: Phần 2 · Lấy video mới qua RSS
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}   # tuỳ chọn: nguồn dự phòng khi RSS lỗi
         run: node scripts/fetch-feeds.mjs
 
       - name: Phần 3 · Claude soạn từ vựng + quiz
