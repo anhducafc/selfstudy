@@ -585,3 +585,54 @@ a.quick:hover { border-color: var(--accent); }
   .badges li .small { font-size: .66rem; line-height: 1.25; }
   .b-icon { font-size: 1.4rem; }
 }
+
+/* ==========================================================================
+   Tài khoản & đăng nhập
+   ========================================================================== */
+.account-btn {
+  display: grid; place-items: center; position: relative; flex: none; height: 38px; min-width: 38px; border-radius: 99px;
+  border: 1px solid var(--line); background: var(--surface); color: var(--ink); text-decoration: none; font-weight: 700; overflow: visible;
+}
+.account-btn[hidden] { display: none; }
+.account-btn img { width: 34px; height: 34px; border-radius: 50%; object-fit: cover; }
+.account-btn > span { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; background: var(--accent); color: var(--accent-ink); }
+.account-btn .login-txt { width: auto; padding: 0 .8rem; background: var(--accent); border-radius: 99px; font-size: .85rem; }
+.sync-dot { position: absolute; right: -1px; bottom: -1px; width: 11px; height: 11px; border-radius: 50%; border: 2px solid var(--bg); background: var(--muted); }
+.st-synced .sync-dot { background: var(--ok); }
+.st-saving .sync-dot, .st-pending .sync-dot { background: var(--xp); }
+.st-offline .sync-dot, .st-error .sync-dot { background: var(--bad); }
+.sync-pill { display: inline-block; padding: .15rem .6rem; border-radius: 99px; font-size: .85rem; font-weight: 600; background: var(--surface-2); margin-right: .4rem; }
+.sync-pill.st-synced { background: var(--ok-soft); color: var(--ok); }
+.sync-pill.st-error, .sync-pill.st-offline { background: var(--bad-soft); color: var(--bad); }
+
+.auth-wrap { display: grid; place-items: center; padding: 1rem 0 2rem; }
+.auth-card { width: min(100%, 420px); padding: 1.6rem; display: grid; gap: .9rem; }
+.auth-head { text-align: center; }
+.auth-head .logo { margin: 0 auto .6rem; width: 44px; height: 44px; font-size: 1.5rem; border-radius: 12px; }
+.auth-head h1 { font-size: 1.6rem; margin-bottom: .2rem; }
+.auth-msg { padding: .7rem .9rem; border-radius: 10px; font-size: .92rem; }
+.auth-msg.err { background: var(--bad-soft); color: var(--bad); }
+.auth-msg.ok { background: var(--ok-soft); color: var(--ok); }
+.google-btn { width: 100%; background: #fff; color: #1f1f1f; border: 1px solid #dadce0; gap: .7rem; padding: .75rem; }
+.google-btn:hover { background: #f8f9fa; }
+.or { display: flex; align-items: center; gap: .6rem; color: var(--muted); font-size: .8rem; }
+.or::before, .or::after { content: ""; flex: 1; border-top: 1px solid var(--line); }
+.pw-wrap { position: relative; display: block; }
+.pw-eye { position: absolute; right: .4rem; top: 50%; transform: translateY(-35%); border: 0; background: none; cursor: pointer; font-size: 1rem; opacity: .6; }
+.auth-card .btn.primary { width: 100%; padding: .75rem; }
+.auth-switch a { font-weight: 600; }
+.account-card { display: flex; gap: 1rem; align-items: center; }
+.acc-avatar { width: 64px; height: 64px; border-radius: 50%; display: grid; place-items: center; flex: none; background: var(--accent); color: var(--accent-ink); font: 700 1.6rem var(--display); overflow: hidden; }
+.acc-avatar img { width: 100%; height: 100%; object-fit: cover; }
+.acc-info h1 { font-size: 1.5rem; margin: 0; }
+.acc-info p { margin: .2rem 0; display: flex; gap: .4rem; align-items: center; flex-wrap: wrap; }
+.danger-zone { border-color: color-mix(in srgb, var(--bad) 35%, var(--line)); }
+.ok-text { color: var(--ok); } .err-text { color: var(--bad); }
+.account-link { display: flex; gap: .9rem; align-items: center; text-decoration: none; color: var(--ink); }
+.account-link > span:nth-child(2) { display: flex; flex-direction: column; flex: 1; }
+.account-link:hover { border-color: var(--accent); }
+@media (max-width: 720px) {
+  .account-btn { margin-left: .4rem; }
+  .account-btn .login-txt { padding: 0 .6rem; font-size: .78rem; }
+  .brand > span:last-child { display: none; }
+}
