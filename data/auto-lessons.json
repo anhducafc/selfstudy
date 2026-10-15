@@ -1,6 +1,30 @@
 {
-  "updated": "2026-10-14T01:15:35.734Z",
+  "updated": "2026-10-15T00:32:35.715Z",
   "lessons": [
+    {
+      "id": "yt-_2QcoQfXsr8",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "The Houthis say they are behind the attacks | BBC Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "_2QcoQfXsr8"
+      },
+      "minutes": 10,
+      "published": "2026-10-14T11:39:07+00:00",
+      "series": "English from the News",
+      "desc": "14 people have been killed and over 300 injured in two attacks on Riyadh international airport in Saudi Arabia over the weekend. There were also a series of other attacks earlier in the week. The Houthis, a militant group in Yemen, said they were behind the attacks, and that they are targeting Saudi Arabia over its support for government forces in Yemen's civil war.\n🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/4hZKLUS and for more episodes of Learning English from the News: https://bit.ly/4hUwfPh\n(Photo by Turgut Alp Boyraz/Anadolu via Getty Images)",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-sAumTZ1lkZE",
       "level": "A2",
@@ -212,6 +236,126 @@
         "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
         "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
         "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-h7TOlwyXPII",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Language Clinic - LIVE answers to all your questions!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "h7TOlwyXPII"
+      },
+      "minutes": 5,
+      "published": "2026-06-11T02:47:18+00:00",
+      "series": "British Council",
+      "desc": "Join me LIVE to get instant answers to all your questions about grammar, vocabulary, pronunciation, skills, exam preparation, cats, guitars, the World Cup, Wimbledon - anything you like! 😜\nGet your questions ready, then come along and join me!\nNeil 🙂",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-a_zzF4IoH5w",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Language Clinic - LIVE answers to all your questions!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "a_zzF4IoH5w"
+      },
+      "minutes": 5,
+      "published": "2026-05-22T00:53:24+00:00",
+      "series": "British Council",
+      "desc": "Join me LIVE to get instant answers to all your questions about grammar, vocabulary, pronunciation, skills, exam preparation, cats, guitars, ballroom dancing, crochet, films, fashion advice - anything you like! 😜\nGet your questions ready, then come along and join me!\nNeil 🙂",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-THwGa87hGRo",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Language Clinic - LIVE answers to all your questions!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "THwGa87hGRo"
+      },
+      "minutes": 5,
+      "published": "2026-05-14T01:53:46+00:00",
+      "series": "British Council",
+      "desc": "Join me LIVE to get instant answers to all your questions about grammar, vocabulary, pronunciation, skills, exam preparation, cats, guitars, recipes, literature, films, fashion advice 😜 ... anything you like really!\nGet your questions ready, then come along and join me!\nNeil 🙂",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-rT01xBA_XhI",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "How to turn one English word into five – a Mini English Lesson",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "rT01xBA_XhI"
+      },
+      "minutes": 5,
+      "published": "2026-05-08T15:40:06+00:00",
+      "series": "British Council",
+      "desc": "Learning a new English word is always a good thing. Learning four or five related words with almost no extra effort? Even better!\nWhen you learn a new noun, don’t stop there. Check the verb, the adjective and the adverb too. Suddenly, your vocabulary isn’t growing one word at a time. It’s growing in leaps and bounds.\nIn this Mini English Lesson, Kate shows you how word families work, how to choose the right form for the sentence you want to say, and some mistakes to avoid.\nCan you think of a noun, verb, adjective and adverb from the same word family? Try one in the comments.\nLearn English onli",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-Q-SQePXWfAU",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "How to talk about mental health in English – a Mini English Lesson",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "Q-SQePXWfAU"
+      },
+      "minutes": 5,
+      "published": "2026-05-08T10:00:52+00:00",
+      "series": "British Council",
+      "desc": "Talking about mental health in English can feel difficult, especially when you know the feeling but don’t know the right word for it.\nMaybe you feel stressed, worried or under pressure. Maybe something from the past still affects how you feel now. Or maybe you’re trying to talk about getting through a difficult moment and feeling better again.\nIn this Mini English Lesson, Shereen introduces useful words and phrases to help you understand conversations about mental health in English, from everyday stress to more difficult emotional experiences.\nWatch the video, then tell us which word or phrase",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
       ],
       "vocab": [],
       "questions": [],
