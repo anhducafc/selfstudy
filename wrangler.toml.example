@@ -1,0 +1,10 @@
+# Chỉ dùng khi chạy thử trên máy (npx wrangler pages dev). Trên Cloudflare, cấu hình qua Dashboard.
+# Muốn dùng: copy thành wrangler.toml và điền database_id (xem bằng: npx wrangler d1 list)
+name = "english-path"
+pages_build_output_dir = "dist"
+compatibility_date = "2025-09-01"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "english-path"
+database_id = "00000000-0000-0000-0000-000000000000"

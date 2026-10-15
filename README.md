@@ -28,6 +28,9 @@ Trang là web tĩnh (HTML/CSS/JS thuần, không cần build). Phần tự độ
 - 🃏 **Flashcard ôn ngắt quãng (Leitner 5 hộp)**: từ vựng tự vào thẻ khi bạn hoàn thành bài. Có chiều Anh→Việt và Việt→Anh, phím tắt `Space` / `1` `2` `3`.
 - 🎮 **3 mini game**: Ghép từ (tính giờ), Đoán nhanh 60s, Chép chính tả (giọng đọc của trình duyệt). XP từ game có trần 60 XP/ngày.
 
+**Tài khoản (Cloudflare)**
+- 🔐 Đăng nhập Google / email, tự đồng bộ tiến trình giữa các thiết bị — xem mục *Tài khoản & đồng bộ* bên dưới.
+
 **Tự động (Phần 2–4)**
 - 📺 **RSS → bài mới**: mỗi sáng lấy video mới của BBC Learning English, British Council, TED-Ed rồi gắn trình độ theo luật trong `scripts/feeds.json`.
 - ✨ **Claude soạn bài**: từ vựng có nghĩa tiếng Việt, câu ví dụ, quiz. Kết quả được kiểm tra tự động rồi mở **Pull Request** để bạn duyệt trên điện thoại.
@@ -64,6 +67,13 @@ Workflow `Deploy Pages` sẽ chạy mỗi lần có commit vào `main`. Trang ch
 
 Khi chưa có API key, workflow **commit thẳng** bài mới vào `main` và deploy luôn. Sau đó workflow tự chạy lúc 05:17 sáng mỗi ngày.
 
+> **Nếu tab Actions có cảnh báo vàng "Không đọc được feed" (RSS YouTube trả 404):** RSS của YouTube đôi khi chặn máy chủ GitHub. Script đã tự thử lại và thử thêm feed playlist. Để có nguồn dự phòng ổn định, tạo **YouTube Data API key** miễn phí rồi lưu thành secret `YOUTUBE_API_KEY`:
+> 1. Vào [Google Cloud Console](https://console.cloud.google.com), tạo một project.
+> 2. Vào *APIs & Services → Library*, bật **YouTube Data API v3**.
+> 3. Vào *Credentials → Create credentials → API key*.
+>
+> Mỗi lần chạy chỉ tốn khoảng 6 đơn vị quota, trong khi hạn mức miễn phí là 10.000 đơn vị/ngày.
+
 Muốn thêm kênh hoặc đổi trình độ: sửa `scripts/feeds.json`.
 - Mỗi kênh có `rules` gồm regex khớp tiêu đề, kèm `level` / `skill` / `minutes`.
 - Video không khớp rule nào sẽ dùng `default`. Nếu `default: null` thì video bị bỏ qua.
@@ -96,6 +106,96 @@ Mỗi sáng bạn sẽ nhận một PR **"🤖 Bài học mới hôm nay"**. N�
 5. Gửi thử: **Actions → Telegram reminder → Run workflow**.
 
 Bot dùng **chung thuật toán Bài của ngày** với trang web (`js/daily.js`), nên link trong tin nhắn trùng đúng bài người học thấy trên trang chủ.
+
+---
+
+## 🔐 Tài khoản & đồng bộ tiến trình (Cloudflare Pages + D1)
+
+Phần này dành cho khi bạn chạy trang trên **Cloudflare Pages** với tên miền riêng. Trên GitHub Pages, nút Đăng nhập tự ẩn và trang vẫn lưu tiến trình trên trình duyệt như cũ.
+
+**Cách hoạt động**
+- **Đăng nhập** bằng **Google** hoặc **email + mật khẩu**:
+  - Mật khẩu được băm PBKDF2-SHA256 với 100.000 vòng.
+  - Phiên đăng nhập là cookie `__Host-` (HttpOnly, Secure, SameSite=Lax), tồn tại 30 ngày và tự gia hạn khi bạn dùng thường xuyên.
+- **Người chưa đăng nhập vẫn học được bình thường.** Khi đăng nhập, tiến trình trên máy được **gộp** vào tài khoản: bài đã học, XP, huy hiệu, flashcard, ghi chú, chuỗi ngày.
+- **Tự lưu sau 2–3 giây mỗi khi có thay đổi.**
+  - Học trên 2 thiết bị cùng lúc thì máy chủ phát hiện xung đột phiên bản, trình duyệt tự gộp rồi lưu lại, không mất dữ liệu bên nào.
+  - Đăng xuất sẽ xoá dữ liệu trên trình duyệt đó, nên an toàn với máy dùng chung.
+- **Bảo mật:**
+  - Chặn CSRF bằng kiểm tra Origin.
+  - Giới hạn số lần thử đăng nhập/đăng ký/quên mật khẩu.
+  - Không tiết lộ email có tồn tại hay không.
+  - Chống chiếm tài khoản khi liên kết Google với email chưa xác nhận.
+- **Người dùng tự quản lý:** đổi/đặt mật khẩu, đăng xuất mọi thiết bị, xoá tài khoản.
+
+**Các file liên quan:** `functions/api/**` (API), `server/lib.js` (thư viện chung), `migrations/0001_init.sql` (bảng dữ liệu), `js/sync.js` (giao diện + đồng bộ), `_headers` (header bảo mật), `scripts/build-site.sh` (build).
+
+### Bước C1 — Tạo database D1
+1. Vào [dash.cloudflare.com](https://dash.cloudflare.com) → **Storage & Databases → D1 SQL Database → Create**.
+2. Đặt tên `english-path` → **Create**.
+3. Mở database vừa tạo → tab **Console**. Dán toàn bộ nội dung file `migrations/0001_init.sql` → **Execute**.
+
+### Bước C2 — Tạo Pages project nối với GitHub
+1. Vào **Workers & Pages → Create**, chọn tab **Pages** → **Connect to Git**, rồi chọn repo của bạn (vd `selfstudy`).
+2. Mục **Build settings**:
+   - Framework preset: **None**
+   - Build command: `sh scripts/build-site.sh`
+   - Build output directory: `dist`
+3. Bấm **Save and Deploy**. Từ giờ mỗi commit vào `main` sẽ tự deploy, kể cả commit do workflow Daily lessons tạo.
+
+### Bước C3 — Gắn database vào trang
+Vào Pages project → **Settings → Bindings → Add → D1 database**:
+- Variable name: **`DB`** (viết hoa đúng như vậy)
+- Database: `english-path`
+
+Lưu lại, rồi vào tab **Deployments** → bấm **⋯** ở bản mới nhất → **Retry deployment**. Mỗi lần đổi binding hoặc biến môi trường đều cần deploy lại.
+
+### Bước C4 — Tên miền riêng
+Vào Pages project → **Custom domains → Set up a custom domain**, nhập ví dụ `hoc.tenmien.com`. Vì tên miền đã ở Cloudflare nên DNS được tạo tự động. Chứng chỉ HTTPS mất vài phút.
+
+> Lúc này **đăng nhập bằng email** đã chạy được. Mở trang → **Đăng nhập → Tạo tài khoản** để thử.
+
+### Bước C5 — Đăng nhập bằng Google
+1. Vào [console.cloud.google.com](https://console.cloud.google.com), chọn project đã tạo cho YouTube API → **APIs & Services → OAuth consent screen** (giao diện mới tên là *Google Auth Platform*):
+   - Bấm **Get started**, đặt tên ứng dụng `English Path`, chọn email hỗ trợ, Audience chọn **External**, rồi **Create**.
+   - Ở mục **Branding → Authorized domains**, thêm tên miền gốc, ví dụ `tenmien.com`.
+   - Ở mục **Audience**, bấm **Publish app** để ai cũng đăng nhập được. Ứng dụng chỉ xin quyền email, tên và ảnh đại diện nên không cần Google duyệt.
+2. Vào **Clients** (hoặc **Credentials**) → **Create client** → **Web application**:
+   - **Authorized redirect URIs** thêm cả hai địa chỉ:
+     - `https://hoc.tenmien.com/api/auth/google/callback`
+     - `https://<tên-project>.pages.dev/api/auth/google/callback`
+   - Bấm **Create**, rồi copy **Client ID** và **Client secret**.
+3. Vào Pages project → **Settings → Variables and Secrets → Add**:
+   - `GOOGLE_CLIENT_ID`, kiểu Text
+   - `GOOGLE_CLIENT_SECRET`, kiểu **Secret**
+
+   Lưu rồi **Retry deployment**.
+
+### Bước C6 (tuỳ chọn) — Email xác nhận & Quên mật khẩu
+Phần này cần dịch vụ gửi email. Hướng dẫn dưới dùng [Resend](https://resend.com), gói miễn phí đủ dùng.
+1. Đăng ký Resend → **Domains → Add domain**, nhập `tenmien.com`. Thêm các bản ghi DNS mà Resend hiển thị vào Cloudflare DNS → bấm **Verify**.
+2. Vào **API Keys → Create API key**.
+3. Thêm vào Pages project (Settings → Variables and Secrets):
+   - `RESEND_API_KEY`, kiểu Secret
+   - `MAIL_FROM`, kiểu Text, ví dụ `English Path <no-reply@tenmien.com>`
+
+   Rồi **Retry deployment**.
+
+Khi chưa cấu hình phần này, link "Quên mật khẩu?" tự ẩn. Người dùng đăng nhập bằng Google thì không cần mật khẩu.
+
+### Sau khi chuyển sang Cloudflare
+- Đổi variable `SITE_URL` trên GitHub (dùng cho bot Telegram) thành `https://hoc.tenmien.com/`.
+- Có thể giữ hoặc tắt GitHub Pages. Bản trên GitHub Pages vẫn chạy được, chỉ không có đăng nhập.
+- Xem số người dùng: vào D1 → Console, chạy `SELECT COUNT(*) FROM users;`.
+
+### Chạy thử trên máy
+```bash
+npm i -D wrangler
+cp wrangler.toml.example wrangler.toml          # điền database_id nếu muốn dùng D1 thật
+npx wrangler d1 execute english-path --local --file migrations/0001_init.sql
+sh scripts/build-site.sh && npx wrangler pages dev dist     # mở http://localhost:8788
+```
+Muốn thử đăng nhập Google trên máy thì tạo file `.dev.vars` chứa `GOOGLE_CLIENT_ID=...` và `GOOGLE_CLIENT_SECRET=...`, đồng thời thêm redirect URI `http://localhost:8788/api/auth/google/callback` trên Google.
 
 ---
 
