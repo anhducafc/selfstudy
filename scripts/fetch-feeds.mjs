@@ -87,20 +87,25 @@ async function rss(url, tries = 3) {
 }
 
 /** Dự phòng: YouTube Data API v3 (cần secret YOUTUBE_API_KEY, miễn phí) — lấy 15 video mới của danh sách upload */
-async function viaDataApi(channelId) {
+async function viaDataApi(playlistId, max = 15) {
   const key = process.env.YOUTUBE_API_KEY;
-  const uploads = "UU" + channelId.slice(2);
   const api = (p) => fetch(`https://www.googleapis.com/youtube/v3/${p}&key=${key}`).then(async (r) => {
     const j = await r.json();
     if (!r.ok) throw new Error(`Data API ${r.status}: ${j.error?.message || ""}`);
     return j;
   });
-  const list = await api(`playlistItems?part=snippet,contentDetails&maxResults=15&playlistId=${uploads}`);
-  const items = (list.items || []).filter((it) => it.contentDetails?.videoId);
+  let items = [], page = "";
+  while (items.length < max) {
+    const list = await api(`playlistItems?part=snippet,contentDetails&maxResults=50&playlistId=${playlistId}${page ? `&pageToken=${page}` : ""}`);
+    items.push(...(list.items || []).filter((it) => it.contentDetails?.videoId && !/^(private|deleted) video$/i.test(it.snippet.title)));
+    if (!list.nextPageToken) break;
+    page = list.nextPageToken;
+  }
+  items = items.slice(0, max);
   // loại Shorts / video quá ngắn (< 75 giây)
-  const ids = items.map((it) => it.contentDetails.videoId).join(",");
   const dur = {};
-  if (ids) {
+  for (let i = 0; i < items.length; i += 50) {
+    const ids = items.slice(i, i + 50).map((it) => it.contentDetails.videoId).join(",");
     const v = await api(`videos?part=contentDetails&id=${ids}`);
     for (const x of v.items || []) {
       const m = x.contentDetails.duration.match(/PT(?:(\d+)H)?(?:(\d+)M)?(?:(\d+)S)?/) || [];
@@ -118,23 +123,36 @@ async function viaDataApi(channelId) {
 }
 
 /** Trả về danh sách video của một kênh, thử lần lượt: RSS kênh → RSS playlist upload → Data API */
+export const feedName = (feed) => feed.name || feed.handle || feed.playlistId;
+
+/** Trả về danh sách video của một nguồn:
+ *  - kênh  ({handle|channelId}): RSS kênh → RSS playlist upload → Data API
+ *  - playlist ({playlistId}):     RSS playlist → Data API (lấy được cả playlist dài, tối đa feed.max bài) */
 async function loadEntries(feed) {
+  const name = feedName(feed);
   if (FIXTURES) {
-    const f = path.join(FIXTURES, `${feed.handle.replace(/^@/, "")}.xml`);
+    const f = path.join(FIXTURES, `${String(feed.handle || feed.playlistId).replace(/^@/, "")}.xml`);
     return existsSync(f) ? parseFeed(await readFile(f, "utf8")) : [];
   }
-  const id = await resolveChannelId(feed);
-  log(feed.handle, "channelId", id);
+  let playlistId = feed.playlistId, tries;
+  if (playlistId) {
+    tries = [["RSS playlist", `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`]];
+  } else {
+    const id = await resolveChannelId(feed);
+    log(name, "channelId", id);
+    playlistId = "UU" + id.slice(2);
+    tries = [["RSS kênh", `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`],
+             ["RSS playlist upload", `https://www.youtube.com/feeds/videos.xml?playlist_id=${playlistId}`]];
+  }
   const errs = [];
-  for (const [name, url] of [
-    ["RSS kênh", `https://www.youtube.com/feeds/videos.xml?channel_id=${id}`],
-    ["RSS playlist", `https://www.youtube.com/feeds/videos.xml?playlist_id=UU${id.slice(2)}`]
-  ]) {
-    try { const e = parseFeed(await rss(url)); log(feed.handle, `nguồn: ${name}`); return e; }
-    catch (e) { errs.push(`${name} ${e.message}`); }
+  // playlist dài: ưu tiên Data API (RSS chỉ trả 15 video đầu)
+  if (feed.playlistId && process.env.YOUTUBE_API_KEY) tries = [];
+  for (const [label, url] of tries) {
+    try { const e = parseFeed(await rss(url)); log(name, `nguồn: ${label}`); return e; }
+    catch (e) { errs.push(`${label} ${e.message}`); }
   }
   if (process.env.YOUTUBE_API_KEY) {
-    try { const e = await viaDataApi(id); log(feed.handle, "nguồn: YouTube Data API"); return e; }
+    try { const e = await viaDataApi(playlistId, feed.max || 15); log(name, "nguồn: YouTube Data API"); return e; }
     catch (e) { errs.push(e.message); }
   }
   throw new Error(errs.join(" · ") + (process.env.YOUTUBE_API_KEY ? "" : " (gợi ý: thêm secret YOUTUBE_API_KEY để có nguồn dự phòng)"));
@@ -184,12 +202,15 @@ async function main() {
   for (const feed of cfg.feeds) {
     let entries = [];
     try { entries = await loadEntries(feed); }
-    catch (e) { errors.push(`${feed.handle}: ${e.message}`); log("LỖI", feed.handle, e.message); continue; }
-    log(feed.handle, `${entries.length} video trong RSS`);
+    catch (e) { errors.push(`${feedName(feed)}: ${e.message}`); log("LỖI", feedName(feed), e.message); continue; }
+    log(feedName(feed), `${entries.length} video`);
 
     // cũ → mới để bài mới nhất được thêm cuối cùng (và không vượt quota)
-    for (const v of entries.sort((a, b) => a.published.localeCompare(b.published))) {
+    // playlist khoá học: giữ đúng thứ tự trong playlist; kênh: cũ → mới
+    const ordered = feed.order === "playlist" ? entries : entries.sort((a, b) => a.published.localeCompare(b.published));
+    for (const v of ordered) {
       if (added.length >= cfg.maxNewPerRun) break;
+      if (feed.perRun && added.filter((x) => x.feed === feedName(feed)).length >= feed.perRun) break;
       if (known.has(v.videoId)) continue;
       if (/\/shorts\//.test(v.link) || (exclude && exclude.test(v.title))) continue;
       const rule = classify(feed, v.title);
@@ -205,7 +226,8 @@ async function main() {
         source: { type: "youtube", provider: feed.provider, videoId: v.videoId },
         minutes: rule.minutes || 8,
         published: v.published,
-        series: rule.series || feed.provider,
+        series: rule.series || feed.series || feed.provider,
+        feed: feedName(feed),
         desc: shortDesc(v.description),
         tasks: defaultTasks(rule.skill),
         vocab: [],
@@ -223,9 +245,10 @@ async function main() {
   const byProvider = {};
   lessons.sort((a, b) => (b.published || "").localeCompare(a.published || ""));
   const kept = lessons.filter((l) => {
-    const k = l.source.provider;
+    const k = l.feed || l.source.provider;
     byProvider[k] = (byProvider[k] || 0) + 1;
-    return byProvider[k] <= cfg.maxKeepPerFeed;
+    const f = cfg.feeds.find((x) => feedName(x) === k);
+    return byProvider[k] <= ((f && f.keep) || cfg.maxKeepPerFeed);
   });
 
   const out = { updated: new Date().toISOString(), lessons: kept };

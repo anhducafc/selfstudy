@@ -1,6 +1,6 @@
 {
-  "_comment": "Danh sách kênh YouTube lấy bài tự động. 'rules' xét theo thứ tự, khớp regex với tiêu đề (không phân biệt hoa thường). Không khớp rule nào → dùng 'default'; default = null → bỏ qua video. Có 'channelId' thì không cần dò từ handle.",
-  "maxNewPerRun": 6,
+  "_comment": "Danh sách nguồn YouTube lấy bài tự động. Mỗi nguồn là KÊNH ('handle' hoặc 'channelId') hoặc PLAYLIST ('playlistId' = phần sau list= trong link). 'rules' xét theo thứ tự, regex khớp tiêu đề (không phân biệt hoa thường); không khớp → 'default'; default = null → bỏ qua. Tuỳ chọn cho từng nguồn: 'order':'playlist' (giữ thứ tự playlist), 'max' (số video đọc, cần YOUTUBE_API_KEY nếu > 15), 'perRun' (tối đa bài mới/ngày từ nguồn này), 'keep' (giữ tối đa bao nhiêu bài).",
+  "maxNewPerRun": 9,
   "maxKeepPerFeed": 40,
   "excludeTitle": "#shorts|\\bshorts?\\b|live english class|box set|livestream|trailer",
   "feeds": [
@@ -94,6 +94,22 @@
         "minutes": 6
       },
       "channelId": "UCsooa4yRKGN_zEE8iknghZA"
+    },
+    {
+      "name": "Playlist của Tommy",
+      "playlistId": "PLcetZ6gSk969oGvAI0e4_PgVnlGbm64bp",
+      "provider": "YouTube",
+      "series": "Playlist tự chọn",
+      "order": "playlist",
+      "max": 200,
+      "perRun": 3,
+      "keep": 200,
+      "rules": [],
+      "default": {
+        "level": "B1",
+        "skill": "listening",
+        "minutes": 10
+      }
     }
   ]
 }
