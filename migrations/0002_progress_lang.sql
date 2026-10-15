@@ -1,0 +1,1 @@
+CREATE TABLE IF NOT EXISTS progress_lang (user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, lang TEXT NOT NULL, data TEXT NOT NULL, version INTEGER NOT NULL, updated_at INTEGER NOT NULL, PRIMARY KEY (user_id, lang));

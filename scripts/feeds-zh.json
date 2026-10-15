@@ -1,0 +1,86 @@
+{
+  "_comment": "Nguồn YouTube tự thêm bài cho trang TIẾNG TRUNG (/zh/). Cách viết giống scripts/feeds.json: mỗi nguồn là KÊNH (channelId/handle) hoặc PLAYLIST (playlistId). 'rules' xét theo thứ tự, regex khớp tiêu đề; không khớp → 'default'. level dùng HSK1…HSK6. Đã xác minh kênh/playlist ngày 15/10/2026.",
+  "maxNewPerRun": 8,
+  "maxKeepPerFeed": 40,
+  "excludeTitle": "#shorts|\\bshorts?\\b|livestream|\\blive\\b|直播|trailer|giveaway|announcement",
+  "feeds": [
+    {
+      "name": "Everyday Chinese",
+      "channelId": "UCSXriUqkzZmAQklQ0N9XFVw",
+      "handle": "@EverydayChinese",
+      "provider": "Everyday Chinese",
+      "rules": [
+        { "match": "grammar|语法", "level": "HSK3", "skill": "grammar", "minutes": 12, "series": "Chinese Grammar" },
+        { "match": "HSK ?1\\b|beginner|basic|for kids", "level": "HSK1", "skill": "listening", "minutes": 12, "series": "Beginner Chinese" },
+        { "match": "HSK ?2\\b|elementary", "level": "HSK2", "skill": "listening", "minutes": 12, "series": "Elementary Chinese" },
+        { "match": "HSK ?3\\b", "level": "HSK3", "skill": "listening", "minutes": 12 },
+        { "match": "HSK ?4\\b|intermediate", "level": "HSK4", "skill": "listening", "minutes": 12 },
+        { "match": "HSK ?[56]\\b|advanced", "level": "HSK5", "skill": "listening", "minutes": 12 },
+        { "match": "vocabulary|words|phrases|sentences", "level": "HSK2", "skill": "vocab", "minutes": 12 }
+      ],
+      "default": { "level": "HSK2", "skill": "listening", "minutes": 12 }
+    },
+    {
+      "name": "Mandarin Corner",
+      "channelId": "UC2fAiRQHRQT9aj9P_ijYeow",
+      "handle": "@MandarinCorner2",
+      "provider": "Mandarin Corner",
+      "rules": [
+        { "match": "advanced", "level": "HSK6", "skill": "listening", "minutes": 20 },
+        { "match": "upper[ -]intermediate", "level": "HSK5", "skill": "listening", "minutes": 20 },
+        { "match": "beginner|HSK ?1\\b|HSK ?2\\b", "level": "HSK2", "skill": "listening", "minutes": 15 },
+        { "match": "HSK ?3\\b", "level": "HSK3", "skill": "listening", "minutes": 20 },
+        { "match": "HSK ?4\\b|intermediate", "level": "HSK4", "skill": "listening", "minutes": 20 },
+        { "match": "HSK ?[56]\\b", "level": "HSK5", "skill": "listening", "minutes": 20 }
+      ],
+      "default": { "level": "HSK4", "skill": "listening", "minutes": 20 }
+    },
+    {
+      "name": "ShuoshuoChinese",
+      "channelId": "UC_Aiv9xguPQxZ6msnNoz3HQ",
+      "handle": "@ShuoshuoChinese",
+      "provider": "ShuoshuoChinese 说说中文",
+      "rules": [
+        { "match": "amazing|advanced|native|test", "level": "HSK6", "skill": "listening", "minutes": 15 },
+        { "match": "grammar|how to use|语法", "level": "HSK3", "skill": "grammar", "minutes": 15, "series": "Basic Chinese Grammar" },
+        { "match": "elementary|beginner|basic", "level": "HSK3", "skill": "listening", "minutes": 12 }
+      ],
+      "default": { "level": "HSK5", "skill": "listening", "minutes": 15 }
+    },
+    {
+      "name": "Mandarin Corner · HSK 1 Course",
+      "playlistId": "PL7VdqFXO0Lzdu2U1q-_vZxcuWyqJEitZV",
+      "provider": "Mandarin Corner", "order": "playlist", "max": 50, "perRun": 1, "keep": 50,
+      "series": "HSK 1 Course",
+      "default": { "level": "HSK1", "skill": "vocab", "minutes": 20 }
+    },
+    {
+      "name": "Mandarin Corner · HSK 2 Course",
+      "playlistId": "PL7VdqFXO0Lzcng8-g5uATwXcO3EsZMm0k",
+      "provider": "Mandarin Corner", "order": "playlist", "max": 50, "perRun": 1, "keep": 50,
+      "series": "HSK 2 Course",
+      "default": { "level": "HSK2", "skill": "vocab", "minutes": 20 }
+    },
+    {
+      "name": "Mandarin Corner · HSK 3 Course",
+      "playlistId": "PL7VdqFXO0Lzd_7CbZmOegoEtFjEYuF3GS",
+      "provider": "Mandarin Corner", "order": "playlist", "max": 50, "perRun": 1, "keep": 50,
+      "series": "HSK 3 Course",
+      "default": { "level": "HSK3", "skill": "vocab", "minutes": 20 }
+    },
+    {
+      "name": "Mandarin Corner · HSK 5 Course",
+      "playlistId": "PL7VdqFXO0LzewWb3vwDY1PV58cg_ZjRab",
+      "provider": "Mandarin Corner", "order": "playlist", "max": 60, "perRun": 1, "keep": 60,
+      "series": "HSK 5 Course",
+      "default": { "level": "HSK5", "skill": "vocab", "minutes": 20 }
+    },
+    {
+      "name": "Mandarin Corner · HSK 6 Vocabulary",
+      "playlistId": "PL7VdqFXO0LzcO3VwfFCtZTFWC7kFUONcC",
+      "provider": "Mandarin Corner", "order": "playlist", "max": 30, "perRun": 1, "keep": 30,
+      "series": "HSK 6 Vocabulary",
+      "default": { "level": "HSK6", "skill": "vocab", "minutes": 20 }
+    }
+  ]
+}

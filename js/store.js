@@ -3,7 +3,7 @@
    Gồm: tiến độ bài, thời gian học, XP, huy hiệu, flashcard (Leitner), streak freeze.
    ========================================================================== */
 (function () {
-  const KEY = "englishPath.v1";
+  const KEY = (window.LANG && window.LANG.storeKey) || "englishPath.v1";
 
   /* Luật XP — sửa ở đây nếu muốn cân bằng lại */
   const XP = {
@@ -114,7 +114,7 @@
     setSetting(key, value) { state.settings[key] = value; save(); },
 
     /* ---------------- Bài của ngày ---------------- */
-    dailyLesson(level = state.profile.level || "A1", key = dayKey()) {
+    dailyLesson(level = state.profile.level || window.LEVELS[0].id, key = dayKey()) {
       return window.Daily.lesson(this.allLessons(), level, key);
     },
     isDaily(id) {
@@ -194,7 +194,7 @@
       l.vocab.forEach((v) => {
         const cid = `${id}::${v.w}`;
         if (state.cards[cid]) return;
-        state.cards[cid] = { w: v.w, vi: v.vi, ex: v.ex || "", lessonId: id, box: 1, due: dayKey(), reviews: 0, lapses: 0, added: dayKey() };
+        state.cards[cid] = { w: v.w, vi: v.vi, ex: v.ex || "", ...(v.py ? { py: v.py } : {}), ...(v.exVi ? { exVi: v.exVi } : {}), lessonId: id, box: 1, due: dayKey(), reviews: 0, lapses: 0, added: dayKey() };
         n++;
       });
       if (n && !quiet) save();
@@ -348,7 +348,7 @@
     /** Bài tiếp theo nên học: bài chưa xong đầu tiên từ trình độ hiện tại trở lên (ưu tiên bài soạn sẵn) */
     nextLesson() {
       const order = window.LEVELS.map((l) => l.id);
-      const start = Math.max(0, order.indexOf(state.profile.level || "A1"));
+      const start = Math.max(0, order.indexOf(state.profile.level || order[0]));
       const core = [...window.LESSONS, ...state.custom];
       for (const lv of order.slice(start)) {
         const l = core.find((x) => x.level === lv && !this.progress(x.id).done);
@@ -361,10 +361,10 @@
     batch(fn) { batching = true; try { fn(); } finally { batching = false; save(); } },
 
     /* ---------------- Sao lưu ---------------- */
-    exportJSON() { return JSON.stringify({ app: "english-path", exportedAt: new Date().toISOString(), ...state }, null, 2); },
+    exportJSON() { return JSON.stringify({ app: (window.LANG && window.LANG.exportName) || "english-path", exportedAt: new Date().toISOString(), ...state }, null, 2); },
     importJSON(text) {
       const data = JSON.parse(text);
-      if (!data || typeof data !== "object" || !("lessons" in data)) throw new Error("File không đúng định dạng English Path.");
+      if (!data || typeof data !== "object" || !("lessons" in data)) throw new Error(`File không đúng định dạng ${(window.LANG && window.LANG.brand) || "English Path"}.`);
       delete data.app; delete data.exportedAt;
       localStorage.setItem(KEY, JSON.stringify(data));
       state = load();

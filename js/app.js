@@ -17,7 +17,11 @@
   const fmtMin = (m) => (m >= 60 ? `${Math.floor(m / 60)}g ${m % 60}p` : `${m} phút`);
   const levelIdx = (id) => LEVELS.findIndex((l) => l.id === id);
   const S = window.Store;
+  const LANG = window.LANG;
   const app = $("#app");
+  /* pinyin không dấu, viết liền: "Nǐ hǎo!" → "nihao" (dùng để chấm khi gõ pinyin thay vì chữ Hán) */
+  const plain = (s) => String(s || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "").replace(/ü/g, "v").toLowerCase().replace(/[^a-z0-9]/g, "");
+  const hanOnly = (s) => String(s || "").replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}a-zA-Z0-9]/gu, "");
 
   let cleanups = [];
   const onLeave = (fn) => cleanups.push(fn);
@@ -35,10 +39,11 @@
     if (!("speechSynthesis" in window)) return toast("Trình duyệt không hỗ trợ đọc phát âm.");
     speechSynthesis.cancel();
     const u = new SpeechSynthesisUtterance(text);
-    u.lang = "en-GB";
+    u.lang = LANG.tts;
     u.rate = rate;
-    const v = speechSynthesis.getVoices().find((x) => /en-GB/i.test(x.lang)) ||
-              speechSynthesis.getVoices().find((x) => /^en/i.test(x.lang));
+    const voices = speechSynthesis.getVoices();
+    let v = null;
+    for (const re of LANG.ttsMatch) { v = voices.find((x) => re.test(x.lang)); if (v) break; }
     if (v) u.voice = v;
     speechSynthesis.speak(u);
   }
@@ -86,25 +91,31 @@
   }
   window.addEventListener("hashchange", router);
 
+  /* ---------- đổi ngôn ngữ học (hiện ở trang chủ & cài đặt) ---------- */
+  function langSwitch() {
+    return `<nav class="lang-switch" aria-label="Chọn ngôn ngữ học"><span class="small muted">Đang học:</span>
+      ${LANG.LANGS.map((x) => `<a class="lang-opt ${x.id === LANG.id ? "active" : ""}" href="${x.href}" ${x.id === LANG.id ? 'aria-current="page"' : ""} lang="${x.id}">
+        <span class="flag">${x.flag}</span><span><strong>${x.name}</strong><em>${x.native}</em></span></a>`).join("")}</nav>`;
+  }
+
   /* ============================== HOME ============================== */
   function viewHome() {
     const st = S.get();
     const lv = st.profile.level;
     if (!lv) {
       app.innerHTML = `
+        ${langSwitch()}
         <section class="hero">
-          <p class="eyebrow">Tự học tiếng Anh · CEFR A1 → C1</p>
-          <h1>Học đúng trình độ.<br>Thấy rõ mình tiến bộ.</h1>
-          <p class="lead">Làm bài test nhanh 20 câu để xếp lộ trình, rồi học với bài nghe từ British Council, BBC và video YouTube. Tiến độ, thời gian và chuỗi ngày học được lưu ngay trên trình duyệt của bạn.</p>
+          <p class="eyebrow">${LANG.hero.eyebrow}</p>
+          <h1>${LANG.hero.title}</h1>
+          <p class="lead">${LANG.hero.lead}</p>
           <div class="row">
             <a class="btn primary lg" href="#/test">Làm bài test xếp lớp (≈5 phút)</a>
             <a class="btn ghost lg" href="#/roadmap">Tự chọn trình độ</a>
           </div>
         </section>
         <section class="grid3">
-          ${feature("🎯", "Xếp trình độ", "20 câu ngữ pháp & từ vựng, xếp bạn vào A1–C1.")}
-          ${feature("🎧", "Bài học có nguồn thật", "Bài nghe British Council, BBC, TED/TED-Ed. Video YouTube tự đánh dấu hoàn thành khi xem hết.")}
-          ${feature("📈", "Theo dõi tiến độ", "Số bài đã xong, phút học mỗi ngày, chuỗi ngày liên tiếp, % theo kỹ năng.")}
+          ${LANG.hero.features.map((f) => feature(...f)).join("")}
         </section>`;
       return;
     }
@@ -126,6 +137,7 @@
     const hour = new Date().getHours();
 
     app.innerHTML = `
+      ${langSwitch()}
       <section class="home-head">
         <div>
           <p class="eyebrow">${hello}</p>
@@ -168,7 +180,7 @@
         </a>
         ${word ? `<div class="quick card wotd">
           <span class="q-icon">💡</span>
-          <span><span class="eyebrow">Từ của ngày</span><strong>${esc(word.w)}</strong> <span class="muted">— ${esc(word.vi)}</span>
+          <span><span class="eyebrow">Từ của ngày</span><strong class="w">${esc(word.w)}</strong>${word.py ? ` <span class="py">${esc(word.py)}</span>` : ""} <span class="muted">— ${esc(word.vi)}</span>
           ${word.ex ? `<em class="small muted">${esc(word.ex)}</em>` : ""}</span>
           <button class="say" data-say="${esc(word.w)}" title="Nghe phát âm">🔊</button>
         </div>` : ""}
@@ -214,7 +226,8 @@
   /* ============================== TEST ============================== */
   function viewTest() {
     const Q = PLACEMENT_TEST;
-    const answers = new Array(Q.length).fill(null);
+    const answers = new Array(Q.length).fill(null);       // lưu chỉ số đáp án GỐC trong q.options
+    const orders = Q.map((q) => shuffle(q.options.map((_, k) => k)));   // xáo thứ tự hiển thị đáp án
     let i = 0;
 
     function draw() {
@@ -226,8 +239,9 @@
           <p class="muted small">Câu ${i + 1} / ${Q.length} · Không biết thì chọn "Tôi không biết" — đừng đoán để kết quả chính xác hơn.</p>
           <div class="card q-card">
             <h2 class="q-text">${esc(q.q).replace("___", '<span class="blank">_____</span>')}</h2>
+            ${q.py ? `<p class="py q-py">${esc(q.py)}</p>` : ""}
             <div class="opts">
-              ${q.options.map((o, k) => `<button class="opt ${answers[i] === k ? "picked" : ""}" data-k="${k}">${esc(o)}</button>`).join("")}
+              ${orders[i].map((k) => `<button class="opt ${answers[i] === k ? "picked" : ""}" data-k="${k}">${esc(q.options[k])}</button>`).join("")}
               <button class="opt idk ${answers[i] === -1 ? "picked" : ""}" data-k="-1">Tôi không biết</button>
             </div>
           </div>
@@ -252,14 +266,14 @@
       });
       // Trình độ = cấp cao nhất đạt ≥ 60% (phải đạt liên tiếp từ A1).
       // Đạt cả B2 và tổng ≥ 18/20 → gợi ý lên C1.
-      const order = ["A1", "A2", "B1", "B2"];
-      let result = "A1";
+      const order = LANG.testOrder;
+      let result = order[0];
       for (let k = 0; k < order.length; k++) {
         const p = perLevel[order[k]];
         if (p && p.correct / p.total >= 0.6) result = order[k]; else break;
       }
       const score = Object.values(perLevel).reduce((a, p) => a + p.correct, 0);
-      if (result === "B2" && score >= 18) result = "C1";
+      if (result === order[order.length - 1] && score >= Math.round(Q.length * 0.9)) result = LANG.topLevel;
       S.setProfile({ level: result, test: { score, total: Q.length, perLevel, date: new Date().toISOString() } });
       const info = LEVELS.find((l) => l.id === result);
 
@@ -279,7 +293,7 @@
               }).join("")}</tbody>
             </table>
           </div>
-          <p class="muted small">Đây là bài test nhanh. Muốn kiểm tra kỹ hơn, thử <a href="https://learnenglish.britishcouncil.org/english-levels/online-english-level-test" target="_blank" rel="noopener">level test của British Council ↗</a>. Bạn có thể đổi trình độ bất cứ lúc nào trong Cài đặt.</p>
+          <p class="muted small">Đây là bài test nhanh. ${LANG.testMore} Bạn có thể đổi trình độ bất cứ lúc nào trong Cài đặt.</p>
           <div class="row center">
             <a class="btn primary lg" href="#/roadmap/${result}">Xem lộ trình ${result} →</a>
             <a class="btn ghost" href="#/test" id="retry">Làm lại</a>
@@ -294,7 +308,7 @@
   /* ============================== ROADMAP ============================== */
   function viewRoadmap(levelArg) {
     const st = S.get();
-    const lv = LEVELS.some((l) => l.id === levelArg) ? levelArg : (st.profile.level || "A1");
+    const lv = LEVELS.some((l) => l.id === levelArg) ? levelArg : (st.profile.level || LEVELS[0].id);
     const info = LEVELS.find((l) => l.id === lv);
     let filter = "all";
     let showAllAuto = false;
@@ -310,7 +324,7 @@
       app.innerHTML = `
         <section>
           <p class="eyebrow">Lộ trình</p>
-          <div class="lv-tabs" role="tablist">
+          <div class="lv-tabs" role="tablist" style="--nlv:${LEVELS.length}">
             ${LEVELS.map((l) => `<a role="tab" class="lv-tab lv-${l.id} ${l.id === lv ? "active" : ""}" href="#/roadmap/${l.id}">
               <strong>${l.id}</strong><span>${esc(l.vi)}</span>${l.id === st.profile.level ? '<em>bạn</em>' : ""}</a>`).join("")}
           </div>
@@ -421,12 +435,14 @@
       <section class="card">
         <div class="card-head"><h3>📚 Từ vựng (${l.vocab.length})</h3>
           <span class="row gap-s"><button class="btn ghost sm" id="addCards">${S.hasCardsFor(l.id) ? "✓ Đã có trong flashcard" : "🃏 Thêm vào flashcard"}</button>
+          ${LANG.pinyin ? `<button class="btn ghost sm" id="hidePy">Ẩn pinyin</button>` : ""}
           <button class="btn ghost sm" id="hideVi">Ẩn nghĩa để tự kiểm tra</button></span></div>
         <ul class="vocab">
           ${l.vocab.map((v) => `<li>
             <button class="say" data-say="${esc(v.w)}" title="Nghe phát âm">🔊</button>
-            <div><strong>${esc(v.w)}</strong> <span class="vi">— ${esc(v.vi)}</span>
-            ${v.ex ? `<div class="ex"><button class="say sm" data-say="${esc(v.ex)}" title="Nghe câu">▶</button> <em>${esc(v.ex)}</em></div>` : ""}</div>
+            <div><strong class="w">${esc(v.w)}</strong>${v.py ? ` <span class="py">${esc(v.py)}</span>` : ""} <span class="vi">— ${esc(v.vi)}</span>
+            ${v.ex ? `<div class="ex"><button class="say sm" data-say="${esc(v.ex)}" title="Nghe câu">▶</button> <em class="w">${esc(v.ex)}</em>
+              ${v.exPy ? `<span class="py block">${esc(v.exPy)}</span>` : ""}${v.exVi ? `<span class="vi block">${esc(v.exVi)}</span>` : ""}</div>` : ""}</div>
           </li>`).join("")}
         </ul>
       </section>` : ""}
@@ -469,6 +485,11 @@
       const n = S.addCardsFor(l.id);
       addCards.textContent = "✓ Đã có trong flashcard";
       toast(n ? `Đã thêm ${n} thẻ — ôn ở mục Ôn tập 🃏` : "Các từ này đã có trong flashcard");
+    });
+    const hidePy = $("#hidePy");
+    if (hidePy) hidePy.addEventListener("click", () => {
+      const on = app.classList.toggle("hide-py");
+      hidePy.textContent = on ? "Hiện pinyin" : "Ẩn pinyin";
     });
     const hideVi = $("#hideVi");
     if (hideVi) hideVi.addEventListener("click", () => {
@@ -522,11 +543,11 @@
     const host = (() => { try { return new URL(l.source.url).hostname.replace(/^www\./, ""); } catch { return ""; } })();
     box.innerHTML = `
       <div class="ext-card">
-        <div class="ext-logo">${l.source.provider === "British Council" ? "BC" : l.source.provider === "BBC Learning English" ? "BBC" : "↗"}</div>
+        <div class="ext-logo">${esc(LANG.providerLogo[l.source.provider] || "↗")}</div>
         <div>
           <p class="eyebrow">${esc(l.source.provider)}</p>
           <h2>${esc(l.title)}</h2>
-          <p class="muted small">Bài học mở ở tab mới trên ${esc(host)} (trang này không cho nhúng). Khi bạn quay lại, English Path sẽ hỏi để ghi lại thời gian đã học.</p>
+          <p class="muted small">Bài học mở ở tab mới trên ${esc(host)} (trang này không cho nhúng). Khi bạn quay lại, ${LANG.brand} sẽ hỏi để ghi lại thời gian đã học.</p>
           <a class="btn primary" id="openExt" href="${esc(l.source.url)}" target="_blank" rel="noopener">Mở bài học ↗</a>
         </div>
       </div>
@@ -620,7 +641,7 @@
         videoId: vid,
         playerVars: {
           rel: 0, modestbranding: 1, playsinline: 1, start: Math.floor(startAt),
-          cc_load_policy: cc ? 1 : 0, cc_lang_pref: "en", hl: "en",
+          cc_load_policy: cc ? 1 : 0, cc_lang_pref: LANG.cc, hl: LANG.cc,
           origin: location.origin
         },
         events: {
@@ -678,23 +699,34 @@
   /* ---------- Quiz: câu hỏi soạn sẵn + tự sinh từ vocab ---------- */
   function buildQuiz(l) {
     const qs = [];
-    (l.questions || []).forEach((q) => qs.push({ type: "mc", q: q.q, options: q.options, answer: q.answer, explain: q.explain }));
+    (l.questions || []).forEach((q) => {
+      const options = shuffle(q.options);                 // xáo đáp án để đáp án đúng không luôn ở cùng một vị trí
+      qs.push({ type: "mc", q: q.q, options, answer: options.indexOf(q.options[q.answer]), explain: q.explain });
+    });
 
     const vocab = l.vocab || [];
     if (vocab.length >= 3) {
       shuffle(vocab).slice(0, 4).forEach((v) => {
         const wrong = shuffle(vocab.filter((x) => x !== v)).slice(0, 3).map((x) => x.vi);
         const options = shuffle([v.vi, ...wrong]);
-        qs.push({ type: "mc", q: `"${v.w}" nghĩa là gì?`, options, answer: options.indexOf(v.vi), explain: `${v.w} = ${v.vi}` });
+        const label = v.py ? `${v.w} (${v.py})` : v.w;
+        qs.push({ type: "mc", q: `"${label}" nghĩa là gì?`, options, answer: options.indexOf(v.vi), explain: `${label} = ${v.vi}` });
       });
-      shuffle(vocab.filter((v) => v.ex && new RegExp(`\\b${escapeRe(v.w)}\\b`, "i").test(v.ex))).slice(0, 3).forEach((v) => {
-        const blanked = v.ex.replace(new RegExp(`\\b${escapeRe(v.w)}\\b`, "i"), "_____");
-        qs.push({ type: "fill", q: blanked, hint: v.vi, answer: v.w, explain: v.ex });
+      shuffle(vocab.filter((v) => v.ex && hasWord(v.ex, v.w))).slice(0, 3).forEach((v) => {
+        const blanked = LANG.cjk ? v.ex.replace(v.w, "_____") : v.ex.replace(new RegExp(`\\b${escapeRe(v.w)}\\b`, "i"), "_____");
+        qs.push({ type: "fill", q: blanked, hint: v.vi, answer: v.w, py: v.py, explain: v.ex + (v.exVi ? ` — ${v.exVi}` : "") });
       });
     }
     return qs;
   }
   const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const hasWord = (text, w) => LANG.cjk ? text.includes(w) : new RegExp(`\\b${escapeRe(w)}\\b`, "i").test(text);
+  /** Chấm câu điền từ: tiếng Trung chấp nhận chữ Hán hoặc pinyin (không cần dấu thanh) */
+  function fillOk(val, q) {
+    if (!LANG.cjk) return val.trim().toLowerCase().replace(/\s+/g, " ") === q.answer.toLowerCase();
+    if (hanOnly(val) && hanOnly(val) === hanOnly(q.answer)) return true;
+    return !!q.py && plain(val) !== "" && plain(val) === plain(q.py);
+  }
 
   function mountQuiz(l, markDone) {
     const box = $("#quizBox");
@@ -712,7 +744,7 @@
               <legend><span class="qn">${i + 1}</span> ${q.type === "fill" ? "Điền từ: " : ""}${esc(q.q).replace("_____", '<span class="blank">_____</span>')}</legend>
               ${q.type === "mc"
                 ? `<div class="qz-opts">${q.options.map((o, k) => `<label><input type="radio" name="q${i}" value="${k}"> <span>${esc(o)}</span></label>`).join("")}</div>`
-                : `<input class="fill" name="q${i}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="gợi ý: ${esc(q.hint)}">`}
+                : `<input class="fill" name="q${i}" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="gợi ý: ${esc(q.hint)}${LANG.cjk ? " — gõ chữ Hán hoặc pinyin" : ""}">`}
               <p class="fb"></p>
             </fieldset>`).join("")}
           <div class="row gap-s">
@@ -737,13 +769,12 @@
               lab.classList.toggle("wrong", picked && Number(picked.value) === k && k !== q.answer);
             });
           } else {
-            const val = $(".fill", fs).value.trim().toLowerCase().replace(/\s+/g, " ");
-            ok = val === q.answer.toLowerCase();
+            ok = fillOk($(".fill", fs).value, q);
           }
           if (ok) score++;
           fs.classList.toggle("is-right", !!ok);
           fs.classList.toggle("is-wrong", !ok);
-          $(".fb", fs).innerHTML = ok ? "✓ Chính xác" : `✗ Đáp án: <strong>${esc(q.type === "mc" ? q.options[q.answer] : q.answer)}</strong>${q.explain ? ` — ${esc(q.explain)}` : ""}`;
+          $(".fb", fs).innerHTML = ok ? "✓ Chính xác" : `✗ Đáp án: <strong>${esc(q.type === "mc" ? q.options[q.answer] : q.answer + (q.py ? ` (${q.py})` : ""))}</strong>${q.explain ? ` — ${esc(q.explain)}` : ""}`;
         });
         S.saveQuiz(l.id, score, qs.length);
         const pct = Math.round((score / qs.length) * 100);
@@ -898,16 +929,16 @@
         <p class="muted">Video YouTube sẽ được nhúng, tự đếm thời gian xem và tự hoàn thành khi xem hết. Link khác (British Council, podcast…) sẽ mở ở tab mới.</p>
         <form id="addForm" class="card form">
           <label>Link YouTube hoặc trang web *<input name="url" required placeholder="https://www.youtube.com/watch?v=..."></label>
-          <label>Tiêu đề *<input name="title" required placeholder="VD: English at Work – Episode 1"></label>
-          <label>Mô tả tiếng Việt<input name="titleVi" placeholder="VD: Tiếng Anh công sở – tập 1"></label>
+          <label>Tiêu đề *<input name="title" required placeholder="${esc(LANG.add.title)}"></label>
+          <label>Mô tả tiếng Việt<input name="titleVi" placeholder="${esc(LANG.add.titleVi)}"></label>
           <div class="grid3 tight">
-            <label>Trình độ<select name="level">${LEVELS.map((l) => `<option ${l.id === (S.get().profile.level || "A1") ? "selected" : ""}>${l.id}</option>`).join("")}</select></label>
+            <label>Trình độ<select name="level">${LEVELS.map((l) => `<option ${l.id === (S.get().profile.level || LEVELS[0].id) ? "selected" : ""}>${l.id}</option>`).join("")}</select></label>
             <label>Kỹ năng<select name="skill">${Object.entries(SKILLS).map(([k, v]) => `<option value="${k}">${v.vi}</option>`).join("")}</select></label>
             <label>Thời lượng (phút)<input name="minutes" type="number" min="1" max="180" value="10"></label>
           </div>
-          <label>Nguồn (tuỳ chọn)<input name="provider" placeholder="VD: BBC Learning English"></label>
-          <label>Từ vựng — mỗi dòng: <code>từ | nghĩa | câu ví dụ</code>
-            <textarea name="vocab" rows="5" placeholder="deadline | hạn chót | The deadline is on Friday.\nmeeting | cuộc họp | The meeting starts at 9."></textarea></label>
+          <label>Nguồn (tuỳ chọn)<input name="provider" placeholder="${esc(LANG.add.provider)}"></label>
+          <label>Từ vựng — mỗi dòng: <code>${LANG.pinyin ? "từ | pinyin | nghĩa | câu ví dụ" : "từ | nghĩa | câu ví dụ"}</code>
+            <textarea name="vocab" rows="5" placeholder="${esc(LANG.add.vocab)}"></textarea></label>
           <p class="small muted">Có từ 3 từ trở lên thì bài sẽ có quiz tự sinh.</p>
           <button class="btn primary" type="submit">Thêm vào lộ trình</button>
         </form>
@@ -934,7 +965,9 @@
         source = { type: "link", provider: f.provider || new URL(f.url).hostname.replace(/^www\./, ""), url: f.url };
       }
       const vocab = (f.vocab || "").split("\n").map((line) => line.split("|").map((s) => s.trim()))
-        .filter((a) => a[0] && a[1]).map(([w, vi, ex]) => ({ w, vi, ex: ex || "" }));
+        .filter((a) => a[0] && a[1])
+        .map((a) => LANG.pinyin ? { w: a[0], py: a[1] || "", vi: a[2] || "", ex: a[3] || "" } : { w: a[0], vi: a[1], ex: a[2] || "" })
+        .filter((v) => v.vi);
       const lesson = {
         id: `custom-${Date.now().toString(36)}`, custom: true,
         level: f.level, skill: f.skill, title: f.title.trim(), titleVi: (f.titleVi || "").trim(),
@@ -983,6 +1016,8 @@
           <div class="row gap-s"><button class="btn primary" type="submit">Lưu</button><a class="btn ghost" href="#/test">Làm lại bài test</a></div>
         </form>
 
+        <div class="card">${langSwitch()}<p class="small muted">Mỗi ngôn ngữ có lộ trình, XP, flashcard và chuỗi ngày riêng; cùng một tài khoản đăng nhập.</p></div>
+
         <div class="card">
           <h3>Sao lưu tiến độ</h3>
           <p class="muted small">Dữ liệu chỉ nằm trong trình duyệt này. Xuất file để chuyển sang máy khác hoặc đề phòng xoá lịch sử duyệt web.</p>
@@ -1007,7 +1042,7 @@
       const blob = new Blob([S.exportJSON()], { type: "application/json" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = `english-path-${S.dayKey()}.json`;
+      a.download = `${LANG.exportName}-${S.dayKey()}.json`;
       a.click();
       setTimeout(() => URL.revokeObjectURL(a.href), 1000);
     });

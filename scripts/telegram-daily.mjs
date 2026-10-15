@@ -11,7 +11,8 @@
      TELEGRAM_BOT_TOKEN   token từ @BotFather (bắt buộc, trừ khi DRY_RUN=1)
      TELEGRAM_CHAT_ID     id chat/nhóm/kênh; nhiều id cách nhau bằng dấu phẩy
      SITE_URL             vd https://<user>.github.io/english-path/
-     TELEGRAM_LEVELS      các trình độ gửi bài, mặc định "A2,B1,B2"
+     TELEGRAM_LEVELS      các trình độ tiếng Anh gửi bài, mặc định "A2,B1,B2" ("none" = không gửi)
+     TELEGRAM_ZH_LEVELS   các trình độ tiếng Trung, mặc định "HSK1,HSK2" ("none" = không gửi)
      DRY_RUN=1            chỉ in tin nhắn ra màn hình
    ========================================================================== */
 import { readFile } from "node:fs/promises";
@@ -24,18 +25,20 @@ const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const mode = process.argv[2] === "evening" ? "evening" : "morning";
 const TZ = "Asia/Ho_Chi_Minh";
 const SITE = (process.env.SITE_URL || "").replace(/\/?$/, "/");
-const LEVELS = (process.env.TELEGRAM_LEVELS || "A2,B1,B2").split(",").map((s) => s.trim().toUpperCase()).filter(Boolean);
+const levelsOf = (v, def) => ((v || def).trim().toLowerCase() === "none" ? [] : (v || def).split(",").map((s) => s.trim().toUpperCase()).filter(Boolean));
+const LEVELS = levelsOf(process.env.TELEGRAM_LEVELS, "A2,B1,B2");
+const ZH_LEVELS = levelsOf(process.env.TELEGRAM_ZH_LEVELS, "HSK1,HSK2");
 const DRY = !!process.env.DRY_RUN;
 
 /* ---------- nạp dữ liệu giống hệt trình duyệt ---------- */
-async function loadSite() {
+async function loadSite(dir = "") {
   const ctx = { window: {}, console };
   ctx.globalThis = ctx;
   vm.createContext(ctx);
-  for (const f of ["js/data.js", "js/daily.js"]) vm.runInContext(await readFile(path.join(ROOT, f), "utf8"), ctx, { filename: f });
+  for (const f of [`${dir}js/data.js`, "js/daily.js"]) vm.runInContext(await readFile(path.join(ROOT, f), "utf8"), ctx, { filename: f });
   const w = ctx.window;
   let auto = [];
-  const autoFile = path.join(ROOT, "data/auto-lessons.json");
+  const autoFile = path.join(ROOT, `${dir}data/auto-lessons.json`);
   if (existsSync(autoFile)) {
     const core = new Set(w.LESSONS.filter((l) => l.source.type === "youtube").map((l) => l.source.videoId));
     auto = (JSON.parse(await readFile(autoFile, "utf8")).lessons || []).filter((l) => l && l.id && l.level && !core.has(l.source?.videoId));
@@ -46,12 +49,13 @@ async function loadSite() {
 const todayKey = () => new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
 const prettyDate = () => new Intl.DateTimeFormat("vi-VN", { timeZone: TZ, weekday: "long", day: "2-digit", month: "2-digit" }).format(new Date());
 const esc = (s = "") => String(s).replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
-const link = (hash) => (SITE ? `${SITE}#/${hash}` : "");
+const link = (hash, dir = "") => (SITE ? `${SITE}${dir}#/${hash}` : "");
 
-function buildMorning(site) {
+function buildMorning(site, zh) {
   const key = todayKey();
-  const lines = [`☀️ <b>English Path · ${esc(prettyDate())}</b>`, "", "⭐ <b>Bài của ngày</b> (×2 XP):"];
+  const lines = [`☀️ <b>${LEVELS.length || !zh ? "English Path" : "Chinese Path"} · ${esc(prettyDate())}</b>`];
   const buttons = [];
+  if (LEVELS.length) lines.push("", "⭐ <b>Bài của ngày</b> (×2 XP):");
   for (const lv of LEVELS) {
     const l = site.Daily.lesson(site.LESSONS, lv, key);
     if (!l) continue;
@@ -60,9 +64,26 @@ function buildMorning(site) {
     lines.push(`• <b>${lv}</b> ${sk.icon} ${SITE ? `<a href="${link(`lesson/${encodeURIComponent(l.id)}`)}">${title}</a>` : title} · ~${l.minutes}′ · ${esc(l.source.provider)}`);
     if (SITE) buttons.push({ text: `${lv} ▶ Học ngay`, url: link(`lesson/${encodeURIComponent(l.id)}`) });
   }
-  const mid = LEVELS[Math.floor(LEVELS.length / 2)] || "B1";
-  const w = site.Daily.word(site.LESSONS, mid, key);
+  const mid = LEVELS[Math.floor(LEVELS.length / 2)];
+  const w = mid && site.Daily.word(site.LESSONS, mid, key);
   if (w) lines.push("", `💡 <b>Từ của ngày</b> (${mid}): <b>${esc(w.w)}</b> — ${esc(w.vi)}`, w.ex ? `<i>“${esc(w.ex)}”</i>` : "");
+
+  // 🇨🇳 tiếng Trung: cùng thuật toán với trang /zh/
+  if (zh && ZH_LEVELS.length) {
+    lines.push("", "🇨🇳 <b>Tiếng Trung — Bài của ngày</b>:");
+    for (const lv of ZH_LEVELS) {
+      const l = zh.Daily.lesson(zh.LESSONS, lv, key);
+      if (!l) continue;
+      const sk = zh.SKILLS[l.skill] || { icon: "🎧" };
+      const title = esc(l.title) + (l.titleVi ? ` — <i>${esc(l.titleVi)}</i>` : "");
+      const url = link(`lesson/${encodeURIComponent(l.id)}`, "zh/");
+      lines.push(`• <b>${lv}</b> ${sk.icon} ${SITE ? `<a href="${url}">${title}</a>` : title} · ~${l.minutes}′`);
+      if (SITE) buttons.push({ text: `🇨🇳 ${lv} ▶ Học`, url });
+    }
+    const zmid = ZH_LEVELS[0];
+    const zw = zh.Daily.word(zh.LESSONS, zmid, key);
+    if (zw) lines.push(`💡 <b>${esc(zw.w)}</b> <i>${esc(zw.py || "")}</i> — ${esc(zw.vi)}`, zw.ex ? `<i>“${esc(zw.ex)}”</i>${zw.exVi ? ` (${esc(zw.exVi)})` : ""}` : "");
+  }
   lines.push("", "🔥 Học 1 bài hoặc ôn 5 phút flashcard để giữ chuỗi hôm nay!");
   if (SITE) buttons.push({ text: "🃏 Ôn flashcard", url: link("review") });
   return { text: lines.filter((x) => x !== undefined).join("\n"), buttons };
@@ -97,7 +118,8 @@ async function send(chatId, { text, buttons }) {
 
 async function main() {
   const site = await loadSite();
-  const msg = mode === "evening" ? buildEvening(site) : buildMorning(site);
+  const zh = ZH_LEVELS.length && existsSync(path.join(ROOT, "zh/js/data.js")) ? await loadSite("zh/") : null;
+  const msg = mode === "evening" ? buildEvening(site) : buildMorning(site, zh);
   if (DRY) { console.log(msg.text); console.log("\n[buttons]", JSON.stringify(msg.buttons)); return; }
   const token = process.env.TELEGRAM_BOT_TOKEN, chats = (process.env.TELEGRAM_CHAT_ID || "").split(",").map((s) => s.trim()).filter(Boolean);
   if (!token || !chats.length) { console.log("Chưa cấu hình TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID — bỏ qua."); return; }

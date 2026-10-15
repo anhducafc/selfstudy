@@ -1,12 +1,13 @@
 /* GET /api/auth/google/callback — Google trả về code → đổi lấy thông tin người dùng → tạo phiên */
-import { redirect, getCookie, clearCookie, createSession, cleanName, now, OAUTH_COOKIE } from "../../../../server/lib.js";
+import { redirect, getCookie, clearCookie, createSession, cleanName, now, OAUTH_COOKIE, langBase } from "../../../../server/lib.js";
 
 export async function onRequestGet({ request, env }) {
   const url = new URL(request.url);
-  const fail = (code) => redirect(`/#/login/${code}`, [clearCookie(OAUTH_COOKIE)]);
+  const [state, verifier, lang] = (getCookie(request, OAUTH_COOKIE) || "").split(".");
+  const base = langBase(lang);
+  const fail = (code) => redirect(`${base}#/login/${code}`, [clearCookie(OAUTH_COOKIE)]);
   if (url.searchParams.get("error")) return fail("google_cancelled");
 
-  const [state, verifier] = (getCookie(request, OAUTH_COOKIE) || "").split(".");
   if (!state || state !== url.searchParams.get("state")) return fail("google_state");
 
   // 1) đổi code lấy access token (gọi trực tiếp từ server → kèm client secret)
@@ -57,5 +58,5 @@ export async function onRequestGet({ request, env }) {
   }
 
   const session = await createSession(env, user.id, request);
-  return redirect("/#/account/welcome", [clearCookie(OAUTH_COOKIE), session]);
+  return redirect(`${base}#/account/welcome`, [clearCookie(OAUTH_COOKIE), session]);
 }

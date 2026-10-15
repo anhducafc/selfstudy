@@ -12,13 +12,15 @@
      MAX_ENRICH          số bài tối đa mỗi lần chạy, mặc định 6
      ANTHROPIC_BASE_URL  mặc định https://api.anthropic.com (đổi để test)
      PR_BODY_FILE        file markdown để ghi phần xem trước cho Pull Request
+     COURSE              en (mặc định) | zh — tiếng Trung: soạn thêm pinyin + nghĩa câu ví dụ
    ========================================================================== */
 import { readFile, writeFile, appendFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const FILE = path.join(ROOT, "data/auto-lessons.json");
+const ZH = process.env.COURSE === "zh";
+const FILE = path.join(ROOT, ZH ? "zh/data/auto-lessons.json" : "data/auto-lessons.json");
 const KEY = process.env.ANTHROPIC_API_KEY;
 const MODEL = process.env.CLAUDE_MODEL || "claude-sonnet-5-5";
 const MAX = Number(process.env.MAX_ENRICH) || 6;
@@ -33,7 +35,16 @@ const LEVEL_GUIDE = {
   C1: "advanced, precise or idiomatic language; sentences of 10–18 words"
 };
 
-const TOOL = {
+const LEVEL_GUIDE_ZH = {
+  HSK1: "HSK 1 words only; example sentences of 4–8 characters",
+  HSK2: "HSK 1–2 words; sentences of 6–12 characters",
+  HSK3: "HSK 3 words, result complements, 了/过; sentences of 8–15 characters",
+  HSK4: "HSK 4 words and common connectors; sentences of 10–18 characters",
+  HSK5: "HSK 5 vocabulary, formal verbs and set phrases; sentences of 12–22 characters",
+  HSK6: "HSK 6 vocabulary, chengyu, colloquial/internet expressions; sentences of 12–25 characters"
+};
+
+const TOOL_EN = {
   name: "save_lesson",
   description: "Lưu bộ từ vựng và câu hỏi cho bài học tiếng Anh dành cho người Việt.",
   input_schema: {
@@ -71,7 +82,47 @@ const TOOL = {
   }
 };
 
-const SYSTEM = `Bạn là giáo viên tiếng Anh giàu kinh nghiệm, soạn tài liệu tự học cho người Việt Nam.
+const TOOL_ZH = {
+  name: "save_lesson",
+  description: "Lưu bộ từ vựng và câu hỏi cho bài học tiếng Trung (giản thể) dành cho người Việt.",
+  input_schema: {
+    type: "object",
+    properties: {
+      titleVi: { type: "string", description: "Tiêu đề bài dịch sang tiếng Việt, ngắn gọn, tự nhiên" },
+      goal: { type: "string", description: "1 câu tiếng Việt: người học sẽ luyện được gì qua video này" },
+      vocab: {
+        type: "array", minItems: 5, maxItems: 8,
+        items: {
+          type: "object",
+          properties: {
+            w: { type: "string", description: "Từ hoặc cụm từ tiếng Trung GIẢN THỂ (chữ Hán)" },
+            py: { type: "string", description: "Pinyin có dấu thanh của w, vd: nǐ hǎo" },
+            vi: { type: "string", description: "Nghĩa tiếng Việt ngắn gọn (2–6 chữ)" },
+            ex: { type: "string", description: "Câu ví dụ tiếng Trung giản thể tự viết, PHẢI chứa nguyên văn chuỗi w" },
+            exPy: { type: "string", description: "Pinyin có dấu thanh của cả câu ví dụ" },
+            exVi: { type: "string", description: "Nghĩa tiếng Việt của câu ví dụ" }
+          },
+          required: ["w", "py", "vi", "ex", "exPy", "exVi"]
+        }
+      },
+      questions: TOOL_EN.input_schema.properties.questions
+    },
+    required: ["titleVi", "goal", "vocab", "questions"]
+  }
+};
+const TOOL = ZH ? TOOL_ZH : TOOL_EN;
+
+const SYSTEM_ZH = `Bạn là giáo viên tiếng Trung giàu kinh nghiệm, soạn tài liệu tự học tiếng Trung giao tiếp cho người Việt Nam.
+Bạn chỉ được cung cấp tiêu đề, mô tả và tên chương trình của một video YouTube — bạn KHÔNG xem được video.
+Vì vậy:
+- Chọn từ vựng chắc chắn liên quan tới chủ đề của tiêu đề/mô tả, đúng trình độ HSK được yêu cầu, viết bằng chữ Hán GIẢN THỂ.
+- Không khẳng định chi tiết nội dung video mà mô tả không nói tới. Câu hỏi kiểm tra từ vựng/ngữ pháp liên quan chủ đề, không hỏi "trong video người nói đã nói gì".
+- Câu ví dụ do bạn tự viết, tự nhiên như người bản xứ nói, và phải chứa đúng nguyên văn chuỗi "w".
+- Pinyin có dấu thanh chuẩn (theo cách viết sách giáo khoa: biến điệu của 一/不 ghi theo cách đọc), tách theo từ.
+- Câu hỏi viết bằng tiếng Trung (điền chỗ trống dùng ___) hoặc tiếng Việt; đáp án sai hợp lý nhưng rõ ràng là sai; chỉ có MỘT đáp án đúng.
+Luôn trả lời bằng cách gọi công cụ save_lesson.`;
+
+const SYSTEM_EN = `Bạn là giáo viên tiếng Anh giàu kinh nghiệm, soạn tài liệu tự học cho người Việt Nam.
 Bạn chỉ được cung cấp tiêu đề, mô tả và tên chương trình của một video YouTube — bạn KHÔNG xem được video.
 Vì vậy:
 - Chọn từ vựng chắc chắn liên quan tới chủ đề của tiêu đề/mô tả, hữu ích ở trình độ CEFR được yêu cầu.
@@ -80,10 +131,11 @@ Vì vậy:
 - Nghĩa tiếng Việt chính xác, ngắn gọn, không dịch word-by-word.
 - Các đáp án sai phải hợp lý nhưng rõ ràng là sai; chỉ có MỘT đáp án đúng.
 Luôn trả lời bằng cách gọi công cụ save_lesson.`;
+const SYSTEM = ZH ? SYSTEM_ZH : SYSTEM_EN;
 
 async function callClaude(lesson) {
   const user = [
-    `Trình độ CEFR: ${lesson.level} (${LEVEL_GUIDE[lesson.level] || ""})`,
+    ZH ? `Trình độ: ${lesson.level} (${LEVEL_GUIDE_ZH[lesson.level] || ""})` : `Trình độ CEFR: ${lesson.level} (${LEVEL_GUIDE[lesson.level] || ""})`,
     `Kỹ năng chính: ${lesson.skill}`,
     `Kênh / chương trình: ${lesson.source.provider}${lesson.series ? ` — ${lesson.series}` : ""}`,
     `Tiêu đề video: ${lesson.title}`,
@@ -125,15 +177,18 @@ async function callClaude(lesson) {
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 /** Kiểm tra & làm sạch kết quả. Trả null nếu không đủ chất lượng. */
-export function validate(out) {
+export function validate(out, zh = ZH) {
   const problems = [];
   const str = (x) => (typeof x === "string" ? x.trim() : "");
   const seen = new Set();
-  const vocab = (Array.isArray(out.vocab) ? out.vocab : []).map((v) => ({ w: str(v.w), vi: str(v.vi), ex: str(v.ex) }))
+  const vocab = (Array.isArray(out.vocab) ? out.vocab : []).map((v) => (zh
+    ? { w: str(v.w), py: str(v.py), vi: str(v.vi), ex: str(v.ex), exPy: str(v.exPy), exVi: str(v.exVi) }
+    : { w: str(v.w), vi: str(v.vi), ex: str(v.ex) }))
     .filter((v) => {
-      if (!v.w || !v.vi || !v.ex) { problems.push(`thiếu trường: ${v.w || "?"}`); return false; }
+      if (!v.w || !v.vi || !v.ex || (zh && (!v.py || !v.exPy))) { problems.push(`thiếu trường: ${v.w || "?"}`); return false; }
       if (seen.has(v.w.toLowerCase())) return false;
-      if (!new RegExp(`(^|[^A-Za-z])${escapeRe(v.w)}([^A-Za-z]|$)`, "i").test(v.ex)) { problems.push(`câu ví dụ không chứa "${v.w}"`); return false; }
+      if (zh && !/\p{Script=Han}/u.test(v.w)) { problems.push(`"${v.w}" không phải chữ Hán`); return false; }
+      if (zh ? !v.ex.includes(v.w) : !new RegExp(`(^|[^A-Za-z])${escapeRe(v.w)}([^A-Za-z]|$)`, "i").test(v.ex)) { problems.push(`câu ví dụ không chứa "${v.w}"`); return false; }
       seen.add(v.w.toLowerCase());
       return true;
     });
@@ -184,16 +239,16 @@ async function main() {
   await writeFile(FILE, JSON.stringify(data, null, 2) + "\n");
 
   if (process.env.PR_BODY_FILE && report.length) {
-    const md = [`## ✨ Claude đã soạn ${report.filter((r) => !r.error).length}/${report.length} bài`, "",
+    const md = [`## ✨ ${ZH ? "🇨🇳 Tiếng Trung" : "🇬🇧 Tiếng Anh"} · Claude đã soạn ${report.filter((r) => !r.error).length}/${report.length} bài`, "",
       `Model: \`${MODEL}\` · token: ${tokensIn} vào / ${tokensOut} ra.`,
-      "> Claude soạn từ **tiêu đề + mô tả**, không xem video. Hãy lướt qua nghĩa tiếng Việt và đáp án rồi bấm **Merge**. Muốn sửa: mở tab *Files changed* → sửa trực tiếp `data/auto-lessons.json`.", ""];
+      "> Claude soạn từ **tiêu đề + mô tả**, không xem video. Hãy lướt qua nghĩa tiếng Việt và đáp án rồi bấm **Merge**. Muốn sửa: mở tab *Files changed* → sửa trực tiếp `" + path.relative(ROOT, FILE) + "`.", ""];
     for (const r of report) {
       const l = r.l;
       md.push(`<details${r.error ? "" : " open"}><summary><b>${l.level}</b> · ${l.title.replace(/</g, "&lt;")}${l.titleVi ? ` — <i>${l.titleVi}</i>` : ""}${r.error ? " ⚠️" : ""}</summary>`, "");
       if (r.error) { md.push(`⚠️ ${r.error}`, "", "</details>", ""); continue; }
       md.push(`[▶ Xem video](https://www.youtube.com/watch?v=${l.source.videoId}) · 🎯 ${l.goal}`, "",
         "| Từ | Nghĩa | Ví dụ |", "|---|---|---|",
-        ...l.vocab.map((v) => `| **${v.w}** | ${v.vi} | ${v.ex.replace(/\|/g, "/")} |`), "");
+        ...l.vocab.map((v) => `| **${v.w}**${v.py ? ` ${v.py}` : ""} | ${v.vi} | ${v.ex.replace(/\|/g, "/")}${v.exVi ? ` — ${v.exVi.replace(/\|/g, "/")}` : ""} |`), "");
       l.questions.forEach((q, i) => md.push(`${i + 1}. ${q.q} — ${q.options.map((o, k) => (k === q.answer ? `**✅ ${o}**` : o)).join(" · ")}`));
       if (r.warn && r.warn.length) md.push("", `<sub>Đã tự loại: ${r.warn.join("; ")}</sub>`);
       md.push("", "</details>", "");

@@ -7,6 +7,7 @@
 (function () {
   "use strict";
   const S = window.Store;
+  const LANG = window.LANG || { id: "en", logo: "E", progressUrl: "/api/progress", allStoreKeys: [] };
 
   /* ---------------- gộp 2 bản tiến trình (thuần, không phụ thuộc DOM) ---------------- */
   const maxNum = (a, b) => Math.max(Number(a) || 0, Number(b) || 0);
@@ -139,7 +140,7 @@
 
     async pull() {
       this.setStatus("saving");
-      const r = await api("/api/progress");
+      const r = await api(LANG.progressUrl);
       if (r.status === 401) return this.signedOut();
       if (!r.ok) return this.setStatus("error");
       this.version = r.data.version || 0;
@@ -171,7 +172,7 @@
       this.setStatus("saving");
       this.inflight = (async () => {
         try {
-          const r = await api("/api/progress", { method: "PUT", body: { data: S.snapshot(), baseVersion: this.version } });
+          const r = await api(LANG.progressUrl, { method: "PUT", body: { data: S.snapshot(), baseVersion: this.version } });
           if (r.ok) { this.version = r.data.version; this.done(); }
           else if (r.status === 409 && attempt < 3) {
             this.version = r.data.version || 0;
@@ -191,7 +192,7 @@
     flushOnExit() {
       if (!this.user || !this.dirty) return;
       const body = { data: S.snapshot(), baseVersion: this.version };
-      if (JSON.stringify(body).length < 60000) api("/api/progress", { method: "PUT", body, keepalive: true }).catch(() => {});
+      if (JSON.stringify(body).length < 60000) api(LANG.progressUrl, { method: "PUT", body, keepalive: true }).catch(() => {});
     },
 
     done() { this.lastSync = new Date(); this.setStatus("synced"); },
@@ -210,6 +211,7 @@
       this.user = null;
       this.applying = true;        // xoá tiến trình trên máy (an toàn với máy dùng chung)
       try { S.reset(); } finally { this.applying = false; }
+      clearOtherLangs();
       this.setStatus("off");
     },
 
@@ -229,6 +231,12 @@
       if (st) st.innerHTML = statusText();
     }
   };
+
+  /** Đăng xuất / xoá tài khoản → xoá tiến trình của các ngôn ngữ khác trên máy này */
+  function clearOtherLangs() {
+    for (const k of LANG.allStoreKeys || []) if (k !== LANG.storeKey) { try { localStorage.removeItem(k); } catch {} }
+  }
+  Sync.clearOtherLangs = clearOtherLangs;
 
   const STATUS = { synced: "Đã đồng bộ ✓", saving: "Đang lưu…", pending: "Chờ lưu…", offline: "Mất mạng — sẽ lưu lại khi có mạng", error: "Lỗi đồng bộ", off: "" };
   const esc = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
@@ -286,12 +294,12 @@
       app.innerHTML = `
         <section class="auth-wrap">
           <div class="auth-card card">
-            <div class="auth-head"><span class="logo">E</span>
+            <div class="auth-head"><span class="logo">${UI.esc(LANG.logo)}</span>
               <h1>${mode === "register" ? "Tạo tài khoản" : mode === "forgot" ? "Quên mật khẩu" : "Đăng nhập"}</h1>
               <p class="muted small">Lưu tiến trình, XP và flashcard lên tài khoản — học tiếp trên mọi thiết bị.</p></div>
             ${msg ? `<div class="auth-msg ${kind}" role="alert">${msg}</div>` : ""}
             ${mode !== "forgot" && Sync.google ? `
-              <a class="btn google-btn" href="/api/auth/google">${GOOGLE_ICON}<span>Tiếp tục với Google</span></a>
+              <a class="btn google-btn" href="/api/auth/google${LANG.id === "en" ? "" : `?lang=${LANG.id}`}">${GOOGLE_ICON}<span>Tiếp tục với Google</span></a>
               <div class="or"><span>hoặc dùng email</span></div>` : ""}
             ${mode === "forgot" ? `
               <form id="authForm" class="form" novalidate>
@@ -353,7 +361,7 @@
     if (!Sync.available) return notAvailable();
     app.innerHTML = `
       <section class="auth-wrap"><div class="auth-card card">
-        <div class="auth-head"><span class="logo">E</span><h1>Đặt mật khẩu mới</h1></div>
+        <div class="auth-head"><span class="logo">${UI.esc(LANG.logo)}</span><h1>Đặt mật khẩu mới</h1></div>
         <div id="msg"></div>
         <form id="resetForm" class="form" novalidate>
           <label>Mật khẩu mới<input name="password" type="password" minlength="8" maxlength="128" autocomplete="new-password" required></label>
@@ -457,7 +465,7 @@
       if ((typed || "").trim().toUpperCase() !== "XOA") return;
       const r = await api("/api/auth/account", { method: "DELETE", body: { confirm: "DELETE" } });
       if (!r.ok) return toast(errMsg(r.data.error), "err");
-      Sync.user = null; Sync.applying = true; S.reset(); Sync.applying = false; Sync.setStatus("off");
+      Sync.user = null; Sync.applying = true; S.reset(); Sync.applying = false; clearOtherLangs(); Sync.setStatus("off");
       toast("Đã xoá tài khoản");
       location.hash = "#/";
     });

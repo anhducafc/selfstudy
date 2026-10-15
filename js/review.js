@@ -6,6 +6,7 @@
   "use strict";
   const S = window.Store;
   const { $, $$, esc, shuffle, toast, speak, onLeave, routes, app } = window.UI;
+  const LANG = window.LANG;
 
   /* Đo thời gian học thật trên trang ôn/game (dừng khi tab ẩn), tối đa 20 phút / lần */
   function trackTime() {
@@ -28,14 +29,14 @@
   /* Kho từ cho game: từ trong flashcard + từ của các bài ở trình độ ≤ trình độ hiện tại */
   function wordPool() {
     const order = LEVELS.map((l) => l.id);
-    const cur = order.indexOf(S.get().profile.level || "C1");
+    const cur = S.get().profile.level ? order.indexOf(S.get().profile.level) : order.length - 1;
     const seenW = new Set(), seenVi = new Set(), out = [];
     const push = (v) => {
       const kw = v.w.toLowerCase(), kv = v.vi.toLowerCase();
       if (seenW.has(kw) || seenVi.has(kv)) return;
       seenW.add(kw); seenVi.add(kv); out.push(v);
     };
-    Object.values(S.get().cards).forEach((c) => push({ w: c.w, vi: c.vi, ex: c.ex }));
+    Object.values(S.get().cards).forEach((c) => push({ w: c.w, vi: c.vi, ex: c.ex, py: c.py, exPy: c.exPy, exVi: c.exVi }));
     S.allLessons().filter((l) => order.indexOf(l.level) <= Math.max(cur, 0))
       .forEach((l) => (l.vocab || []).forEach((v) => push(v)));
     return out;
@@ -54,7 +55,7 @@
     try { autoSay = localStorage.getItem("ep.autosay") !== "0"; } catch {}
 
     if (!stats.total) {
-      const lv = S.get().profile.level || "A1";
+      const lv = S.get().profile.level || LEVELS[0].id;
       const starter = LESSONS.filter((l) => l.level === lv && l.vocab && l.vocab.length);
       app.innerHTML = `
         <section class="narrow center">
@@ -95,7 +96,7 @@
         <section class="narrow">
           <div class="row between small muted"><span>Thẻ ${i + 1} / ${queue.length}${again.has(c.id) ? " · ôn lại" : ""}</span>
             <span class="row gap-s">
-              <label class="toggle"><input type="checkbox" id="rev" ${reverse ? "checked" : ""}> Việt → Anh</label>
+              <label class="toggle"><input type="checkbox" id="rev" ${reverse ? "checked" : ""}> Việt → ${LANG.id === "en" ? "Anh" : "Trung"}</label>
               <label class="toggle"><input type="checkbox" id="say" ${autoSay ? "checked" : ""}> Tự đọc</label>
             </span></div>
           <div class="progress"><span style="width:${(i / queue.length) * 100}%"></span></div>
@@ -103,8 +104,8 @@
             <span class="f-inner">
               <span class="f-face f-front"><span class="box-tag">Hộp ${c.box}</span><strong>${esc(front)}</strong><em class="muted small">Chạm hoặc nhấn Space để lật</em></span>
               <span class="f-face f-back">
-                <strong>${esc(c.w)}</strong><span class="f-vi">${esc(c.vi)}</span>
-                ${c.ex ? `<em>“${esc(c.ex)}”</em>` : ""}
+                <strong>${esc(c.w)}</strong>${c.py ? `<span class="py">${esc(c.py)}</span>` : ""}<span class="f-vi">${esc(c.vi)}</span>
+                ${c.ex ? `<em>“${esc(c.ex)}”</em>` : ""}${c.exVi ? `<span class="small muted">${esc(c.exVi)}</span>` : ""}
               </span>
             </span>
           </button>
@@ -178,7 +179,7 @@
   const GAMES = [
     { id: "match", icon: "🧩", name: "Ghép từ", desc: "Ghép 6 cặp từ – nghĩa nhanh nhất có thể. Ghép sai +3 giây.", best: (v) => `${v.toFixed(1)}s`, },
     { id: "speed", icon: "⚡", name: "Đoán nhanh 60s", desc: "Chọn đúng nghĩa càng nhiều càng tốt trong 60 giây.", best: (v) => `${v} điểm` },
-    { id: "dictation", icon: "✍️", name: "Chép chính tả", desc: "Nghe 5 câu (giọng Anh-Anh) rồi gõ lại. Luyện tai và chính tả.", best: (v) => `${v}%` }
+    { id: "dictation", icon: "✍️", name: "Chép chính tả", desc: `Nghe 5 câu (${LANG.voiceNote}) rồi gõ lại. Luyện tai và chính tả.`, best: (v) => `${v}%` }
   ];
 
   function viewGames(id) {
@@ -240,7 +241,7 @@
     app.innerHTML = gameShell(g, `
       <div class="row between"><h1>${g.icon} ${g.name}</h1><span class="timer" id="t">0.0s</span></div>
       <div id="gameBox"><div class="match-grid">${tiles.map((x, n) => `<button class="tile-btn ${x.side}" data-n="${n}">${esc(x.t)}</button>`).join("")}</div>
-      <p class="muted small center">Chạm một từ tiếng Anh rồi chạm nghĩa của nó. Đồng hồ chạy từ lần chạm đầu tiên.</p></div>`);
+      <p class="muted small center">Chạm một từ ${LANG.nameVi} rồi chạm nghĩa của nó. Đồng hồ chạy từ lần chạm đầu tiên.</p></div>`);
 
     const tick = () => { $("#t").textContent = `${((Date.now() - start) / 1000 + penalty).toFixed(1)}s`; };
     $$(".tile-btn").forEach((b) => b.addEventListener("click", () => {
@@ -287,7 +288,7 @@
       cur = order[idx++ % order.length];
       const wrong = shuffle(pool.filter((v) => v !== cur)).slice(0, 3).map((v) => v.vi);
       const opts = shuffle([cur.vi, ...wrong]);
-      $("#qw").textContent = cur.w;
+      $("#qw").innerHTML = esc(cur.w) + (cur.py ? `<span class="py block">${esc(cur.py)}</span>` : "");
       $("#opts").innerHTML = opts.map((o) => `<button class="opt" data-v="${esc(o)}">${esc(o)}</button>`).join("");
       $$("#opts .opt").forEach((b) => b.addEventListener("click", () => answer(b)));
       lock = false;
@@ -315,7 +316,11 @@
   }
 
   /* ---------- Chép chính tả ---------- */
-  const norm = (s) => s.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9'\s-]/g, " ").split(/\s+/).filter(Boolean);
+  const normWords = (s) => s.toLowerCase().replace(/[’']/g, "'").replace(/[^a-z0-9'\s-]/g, " ").split(/\s+/).filter(Boolean);
+  /* Trung/Nhật: so từng chữ (bỏ dấu câu); nếu người học gõ pinyin thì so từng âm tiết pinyin không dấu */
+  const normChars = (s) => [...String(s).replace(/[^\p{Script=Han}\p{Script=Hiragana}\p{Script=Katakana}\p{Script=Hangul}0-9a-zA-Z]/gu, "")].map((c) => c.toLowerCase());
+  const normPy = (s) => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter(Boolean);
+  const norm = (s) => (LANG.cjk ? normChars(s) : normWords(s));
   function lcsMarks(target, typed) {
     const n = target.length, m = typed.length;
     const dp = Array.from({ length: n + 1 }, () => new Array(m + 1).fill(0));
@@ -333,7 +338,7 @@
   function gameDictation(pool) {
     const g = GAMES[2];
     trackTime();
-    const sentences = shuffle(pool.filter((v) => v.ex && norm(v.ex).length >= 4)).slice(0, 5);
+    const sentences = shuffle(pool.filter((v) => v.ex && norm(v.ex).length >= (LANG.cjk ? 5 : 4) && norm(v.ex).length <= (LANG.cjk ? 22 : 99))).slice(0, 5);
     if (sentences.length < 3) { toast("Chưa đủ câu ví dụ — hoàn thành thêm vài bài nhé."); location.hash = "#/games"; return; }
     let i = 0;
     const scores = [];
@@ -346,8 +351,8 @@
       $("#gameBox").innerHTML = `
         <div class="card">
           <div class="row gap-s"><button class="btn primary" id="play">🔊 Nghe</button><button class="btn ghost" id="slow">🐢 Nghe chậm</button>
-            <span class="muted small">Gợi ý: có từ “${esc(s.w)}”</span></div>
-          <textarea id="typed" rows="2" placeholder="Gõ lại câu bạn nghe được…" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
+            <span class="muted small">Gợi ý: có từ “${esc(s.w)}”${s.py ? ` (${esc(s.py)})` : ""}</span></div>
+          <textarea id="typed" rows="2" placeholder="${LANG.cjk ? "Gõ lại câu bằng chữ Hán (bộ gõ pinyin)" + (s.exPy ? " hoặc gõ pinyin" : "") + "…" : "Gõ lại câu bạn nghe được…"}" autocomplete="off" autocapitalize="off" spellcheck="false"></textarea>
           <div class="row gap-s"><button class="btn primary" id="check">Kiểm tra</button></div>
           <p id="res" class="dict-res"></p>
         </div>`;
@@ -360,17 +365,19 @@
       typed.addEventListener("keydown", (e) => { if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); $("#check").click(); } });
       $("#check").addEventListener("click", () => {
         if ($("#check").dataset.done) { i++; return i < sentences.length ? draw() : finish(); }
-        const tw = norm(s.ex), uw = norm(typed.value);
+        const byPy = LANG.cjk && s.exPy && /[a-z]/i.test(typed.value) && !/\p{Script=Han}/u.test(typed.value);
+        const tw = byPy ? normPy(s.exPy) : norm(s.ex), uw = byPy ? normPy(typed.value) : norm(typed.value);
         const { ok, hits, extra } = lcsMarks(tw, uw);
         const pct = Math.max(0, Math.round(((hits - extra * 0.5) / tw.length) * 100));
         scores.push(pct);
-        const words = s.ex.split(/\s+/);
+        const shown = byPy ? s.exPy : s.ex;
+        const words = LANG.cjk && !byPy ? [...shown] : shown.split(/\s+/);
         let wi = 0;
         $("#res").innerHTML = `<strong>${pct}%</strong> · ` + words.map((w) => {
-          const parts = norm(w);
+          const parts = byPy ? normPy(w) : norm(w);
           const good = parts.length ? parts.every(() => ok[wi++]) : true;
           return `<span class="${good ? "w-ok" : "w-bad"}">${esc(w)}</span>`;
-        }).join(" ");
+        }).join(LANG.cjk && !byPy ? "" : " ") + (LANG.cjk ? `<br><span class="${byPy ? "w" : "py"}">${esc((byPy ? s.ex : s.exPy) || "")}</span>${s.exVi ? ` <span class="small muted">${esc(s.exVi)}</span>` : ""}` : "");
         $("#check").textContent = i + 1 < sentences.length ? "Câu tiếp →" : "Xem kết quả";
         $("#check").dataset.done = "1";
         typed.readOnly = true;

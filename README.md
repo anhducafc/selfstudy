@@ -199,6 +199,21 @@ Muốn thử đăng nhập Google trên máy thì tạo file `.dev.vars` chứa 
 
 ---
 
+## 🇨🇳 Trang tiếng Trung (`/zh/`) & đổi ngôn ngữ học
+
+Cùng một repo, cùng một lần deploy: tiếng Anh ở `/`, tiếng Trung ở `/zh/` (vd `https://selfstudy.anhducafc.com/zh/`). Trang chủ và Cài đặt có nút **Đang học: 🇬🇧 Tiếng Anh | 🇨🇳 Tiếng Trung**.
+
+- **Lộ trình HSK 1 → 6**, 35 bài soạn sẵn (224 từ có chữ Hán, pinyin, câu ví dụ, nghĩa câu), test xếp lớp 20 câu.
+- Nguồn: Everyday Chinese, Mandarin Corner, ShuoshuoChinese 说说中文 (video nhúng), CCTV Learn Chinese và Hua Zhong Wen (mở tab mới).
+- Quiz/flashcard/mini game giống tiếng Anh; chép chính tả gõ **chữ Hán hoặc pinyin**; câu điền từ chấp nhận cả pinyin không dấu.
+- **Một tài khoản, tiến trình riêng từng ngôn ngữ** (XP, chuỗi ngày, flashcard tách biệt). Server tự tạo bảng `progress_lang` lần đầu — không cần chạy thêm SQL (file `migrations/0002_progress_lang.sql` chỉ để tham khảo).
+- **Bài tự động**: workflow *Daily lessons* chạy thêm bước 🇨🇳 với `scripts/feeds-zh.json` (3 kênh + 5 playlist khoá HSK của Mandarin Corner) → `zh/data/auto-lessons.json`; Claude soạn thêm pinyin + nghĩa câu ví dụ.
+- **Telegram**: tin buổi sáng có thêm Bài của ngày tiếng Trung. Variable `TELEGRAM_ZH_LEVELS` (mặc định `HSK1,HSK2`; `none` = tắt).
+
+**Triển khai:** chỉ cần upload các file mới/đã sửa lên repo (nhớ thư mục `zh/`, `js/lang-base.js`, `scripts/feeds-zh.json`). Cloudflare tự build — không phải đổi cài đặt nào. Đăng nhập Google từ `/zh/` dùng lại redirect URI cũ và tự quay về trang tiếng Trung.
+
+**Thêm ngôn ngữ khác (vd tiếng Nhật `ja`):** copy thư mục `zh/` thành `ja/` → sửa `ja/js/lang.js` (storeKey, tts `ja-JP`, cjk…) và `ja/js/data.js`; thêm 1 dòng vào `LANGS` + `allStoreKeys` trong `js/lang-base.js`; thêm `"ja"` vào `LANG_IDS` trong `server/lib.js`; thêm `ja` vào `scripts/build-site.sh`, `_headers`, `COURSES` trong `scripts/fetch-feeds.mjs`.
+
 ## Chạy & thử trên máy
 
 ```bash

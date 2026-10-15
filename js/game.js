@@ -29,7 +29,7 @@
     { id: "speed-15", icon: "⚡", name: "Phản xạ nhanh", desc: "Đạt 15 điểm Đoán nhanh 60s", test: () => (S.get().game.best.speed || 0) >= 15 },
     { id: "dictation-90", icon: "✍️", name: "Tai thính", desc: "Chép chính tả đúng ≥ 90%", test: () => (S.get().game.best.dictation || 0) >= 90 },
     { id: "level-clear", icon: "🏆", name: "Phá đảo", desc: "Hoàn thành mọi bài soạn sẵn của một cấp", test: () => window.LEVELS.some((lv) => { const c = window.LESSONS.filter((l) => l.level === lv.id); return c.length && c.every((l) => S.progress(l.id).done); }) },
-    { id: "c1-first", icon: "🎓", name: "Chạm C1", desc: "Hoàn thành một bài C1", test: () => doneList().some((l) => l.level === "C1") },
+    { id: "c1-first", icon: "🎓", name: `Chạm ${window.LANG.topLevel}`, desc: `Hoàn thành một bài ${window.LANG.topLevel}`, test: () => doneList().some((l) => l.level === window.LANG.topLevel) },
     { id: "early-bird", icon: "🐦", name: "Chim sớm", desc: "Hoàn thành bài trước 7 giờ sáng", test: () => doneLessonsProg().some((p) => p.doneHour != null && p.doneHour < 7) },
     { id: "night-owl", icon: "🦉", name: "Cú đêm", desc: "Hoàn thành bài sau 22 giờ", test: () => doneLessonsProg().some((p) => p.doneHour != null && p.doneHour >= 22) },
     { id: "freeze-used", icon: "🧊", name: "Cứu chuỗi", desc: "Streak freeze tự cứu chuỗi của bạn", test: () => S.get().game.frozenDays.length >= 1 },

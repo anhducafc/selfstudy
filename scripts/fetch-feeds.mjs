@@ -3,7 +3,8 @@
    Phần 2 — Lấy video mới từ RSS YouTube, gắn trình độ theo luật, ghi vào
    data/auto-lessons.json. Không cần API key, không cần thư viện ngoài (Node ≥ 20).
 
-   Chạy:  node scripts/fetch-feeds.mjs
+   Chạy:  node scripts/fetch-feeds.mjs              # tiếng Anh
+          COURSE=zh node scripts/fetch-feeds.mjs     # tiếng Trung (scripts/feeds-zh.json → zh/data/)
    Biến môi trường (tuỳ chọn):
      FEED_FIXTURE_DIR  thư mục chứa <handle>.xml để test offline (bỏ qua mạng)
      PR_BODY_FILE      file markdown để ghi tóm tắt (dùng làm nội dung Pull Request)
@@ -15,8 +16,15 @@ import path from "node:path";
 import { fileURLToPath } from "node:url";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
-const CONFIG = path.join(ROOT, "scripts/feeds.json");
-const OUT = path.join(ROOT, "data/auto-lessons.json");
+/* Mỗi ngôn ngữ học: file cấu hình nguồn + nơi ghi bài tự động + file bài soạn sẵn (để không trùng video) */
+const COURSES = {
+  en: { config: "scripts/feeds.json", out: "data/auto-lessons.json", core: "js/data.js" },
+  zh: { config: "scripts/feeds-zh.json", out: "zh/data/auto-lessons.json", core: "zh/js/data.js" }
+};
+const COURSE = COURSES[process.env.COURSE || "en"];
+if (!COURSE) throw new Error(`COURSE không hợp lệ: ${process.env.COURSE} (chọn: ${Object.keys(COURSES).join(", ")})`);
+const CONFIG = path.join(ROOT, COURSE.config);
+const OUT = path.join(ROOT, COURSE.out);
 const FIXTURES = process.env.FEED_FIXTURE_DIR;
 const UA = "Mozilla/5.0 (compatible; EnglishPathBot/1.0; +https://github.com)";
 
@@ -191,9 +199,10 @@ async function main() {
   const lessons = data.lessons || [];
   const known = new Set(lessons.map((l) => l.source?.videoId));
 
-  // không trùng video đã có trong bài soạn sẵn (js/data.js)
-  const coreSrc = await readFile(path.join(ROOT, "js/data.js"), "utf8");
+  // không trùng video đã có trong bài soạn sẵn (js/data.js hoặc zh/js/data.js)
+  const coreSrc = await readFile(path.join(ROOT, COURSE.core), "utf8");
   for (const m of coreSrc.matchAll(/videoId:\s*"([\w-]{11})"/g)) known.add(m[1]);
+  for (const m of coreSrc.matchAll(/yt\([^,()]+,\s*"([\w-]{11})"\)/g)) known.add(m[1]);
 
   const exclude = cfg.excludeTitle ? new RegExp(cfg.excludeTitle, "i") : null;
   const added = [];
@@ -260,7 +269,7 @@ async function main() {
 
   if (process.env.PR_BODY_FILE) {
     const lines = [
-      `## 📺 ${added.length} video mới từ RSS`,
+      `## 📺 ${process.env.COURSE === "zh" ? "🇨🇳 Tiếng Trung" : "🇬🇧 Tiếng Anh"} · ${added.length} video mới`,
       "",
       ...(added.length ? ["| Trình độ | Kỹ năng | Bài | Nguồn |", "|---|---|---|---|",
         ...added.map((l) => `| ${l.level} | ${l.skill} | [${l.title.replace(/\|/g, "/")}](https://www.youtube.com/watch?v=${l.source.videoId}) | ${l.source.provider} |`)] : ["Không có video mới."]),
@@ -269,7 +278,7 @@ async function main() {
     ];
     await appendFile(process.env.PR_BODY_FILE, lines.join("\n") + "\n");
   }
-  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `added=${added.length}\n`);
+  if (process.env.GITHUB_OUTPUT) await appendFile(process.env.GITHUB_OUTPUT, `added_${process.env.COURSE || "en"}=${added.length}\n`);
   // Lỗi phía YouTube không làm workflow đỏ — chỉ hiện cảnh báo vàng trong tab Actions
   for (const e of errors) console.log(`::warning title=Không đọc được feed::${e}`);
 }

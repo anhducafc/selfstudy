@@ -9,3 +9,6 @@
 
 /data/*
   Cache-Control: no-cache
+
+/zh/data/*
+  Cache-Control: no-cache

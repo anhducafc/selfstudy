@@ -19,7 +19,7 @@
   --track: #ece7dd;
   --shadow: 0 1px 2px rgba(28, 36, 51, .06), 0 6px 20px rgba(28, 36, 51, .06);
 
-  --A1: #2f9e6b; --A2: #138a8f; --B1: #3366cc; --B2: #7b4fc9; --C1: #c25a1b;
+  --A1: #2f9e6b; --A2: #138a8f; --B1: #3366cc; --B2: #7b4fc9; --C1: #c25a1b; --C2: #b3264f;
 
   --radius: 14px;
   --font: "Be Vietnam Pro", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
@@ -32,7 +32,7 @@
     --line: #2a3442; --accent: #8fb3e8; --accent-ink: #0d1520; --accent-soft: #1f2d42;
     --ok: #4cc28b; --ok-soft: #173326; --bad: #f07a65; --bad-soft: #3a1f1a; --track: #2a3340;
     --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-    --A1: #4cc28b; --A2: #3cc0c4; --B1: #6f9cf0; --B2: #a685e8; --C1: #f0905a;
+    --A1: #4cc28b; --A2: #3cc0c4; --B1: #6f9cf0; --B2: #a685e8; --C1: #f0905a; --C2: #f0708f;
   }
 }
 :root[data-theme="dark"] {
@@ -40,7 +40,7 @@
   --line: #2a3442; --accent: #8fb3e8; --accent-ink: #0d1520; --accent-soft: #1f2d42;
   --ok: #4cc28b; --ok-soft: #173326; --bad: #f07a65; --bad-soft: #3a1f1a; --track: #2a3340;
   --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
-  --A1: #4cc28b; --A2: #3cc0c4; --B1: #6f9cf0; --B2: #a685e8; --C1: #f0905a;
+  --A1: #4cc28b; --A2: #3cc0c4; --B1: #6f9cf0; --B2: #a685e8; --C1: #f0905a; --C2: #f0708f;
 }
 
 * { box-sizing: border-box; }
@@ -214,7 +214,7 @@ main > section, main > .card, main > .grid2, main > nav { margin-bottom: 1.25rem
 .tbl th, .tbl td { padding: .5rem; border-bottom: 1px solid var(--line); text-align: left; }
 
 /* ---------------- roadmap ---------------- */
-.lv-tabs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: .5rem; margin-bottom: 1.2rem; }
+.lv-tabs { display: grid; grid-template-columns: repeat(var(--nlv, 5), minmax(0, 1fr)); gap: .5rem; margin-bottom: 1.2rem; }
 .lv-tab {
   position: relative; text-decoration: none; color: var(--ink); background: var(--surface);
   border: 1.5px solid var(--line); border-radius: 12px; padding: .6rem .7rem; display: flex; flex-direction: column; line-height: 1.25;
@@ -396,7 +396,7 @@ textarea { resize: vertical; line-height: 1.5; }
   .home-head { flex-direction: column; align-items: flex-start; }
   .goal-ring { --size: 112px; align-self: center; }
   .opts, .qz-opts, .vocab { grid-template-columns: 1fr; }
-  .lv-tabs { grid-template-columns: repeat(5, minmax(56px, 1fr)); overflow-x: auto; }
+  .lv-tabs { grid-template-columns: repeat(var(--nlv, 5), minmax(56px, 1fr)); overflow-x: auto; }
   .lv-tab span { display: none; }
   .lv-tab { align-items: center; padding: .5rem .3rem; }
   .lv-tab em { top: -8px; right: 50%; transform: translateX(50%); }
@@ -636,3 +636,33 @@ a.quick:hover { border-color: var(--accent); }
   .account-btn .login-txt { padding: 0 .6rem; font-size: .78rem; }
   .brand > span:last-child { display: none; }
 }
+
+/* ================= đa ngôn ngữ: nút đổi ngôn ngữ, pinyin, cấp HSK ================= */
+.lv-HSK1 { --c: var(--A1); } .lv-HSK2 { --c: var(--A2); } .lv-HSK3 { --c: var(--B1); }
+.lv-HSK4 { --c: var(--B2); } .lv-HSK5 { --c: var(--C1); } .lv-HSK6 { --c: var(--C2); }
+.lang-zh { --font: "Be Vietnam Pro", "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+           --display: "Fraunces", "Noto Serif SC", "Songti SC", Georgia, serif; }
+.lang-zh .lv-tab strong { font-size: 1.05rem; }
+.lang-zh .lv-bar { grid-template-columns: 3.6rem 1fr 3.5rem; }
+.lang-zh .result-badge { font-size: 1.7rem; }
+
+.lang-switch { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; margin: 0 0 1.1rem; }
+.lang-opt { display: inline-flex; align-items: center; gap: .5rem; padding: .35rem .8rem .35rem .55rem; border: 1px solid var(--line);
+  border-radius: 99px; background: var(--surface); color: inherit; text-decoration: none; line-height: 1.15; transition: border-color .15s, background .15s; }
+.lang-opt:hover { border-color: var(--accent); }
+.lang-opt .flag { font-size: 1.35rem; }
+.lang-opt strong { display: block; font-size: .9rem; }
+.lang-opt em { display: block; font-style: normal; font-size: .72rem; color: var(--muted); }
+.lang-opt.active { border-color: var(--accent); background: var(--accent-soft); box-shadow: inset 0 0 0 1px var(--accent); }
+.card .lang-switch { margin: 0 0 .4rem; }
+
+.py { color: var(--accent); font-size: .9em; font-weight: 500; letter-spacing: .01em; }
+.py.block, .vi.block { display: block; }
+.vocab .ex .py { font-size: .85rem; font-style: normal; }
+.vocab .ex .vi { font-style: normal; }
+.hide-py .vocab .py { visibility: hidden; }
+.q-py { margin: -.8rem 0 1rem; }
+.f-back .py { font-size: 1.05rem; }
+.speed .q-text .py, #qw .py { font-family: var(--font); font-size: 1rem; margin-top: .2rem; }
+.dict-res .py { display: inline-block; margin-top: .3rem; }
+.logo.logo-zh { background: #7a1f1f; font-family: "Noto Serif SC", "Songti SC", serif; }

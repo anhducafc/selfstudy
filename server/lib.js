@@ -194,3 +194,17 @@ export async function sendVerifyEmail(env, user, origin) {
   return sendEmail(env, user.email, "Xác nhận email · English Path",
     emailLayout("Xác nhận email của bạn", "Bấm nút bên dưới để xác nhận email và bảo vệ tài khoản English Path.", "Xác nhận email", url));
 }
+
+/* ---------------- tiến trình theo ngôn ngữ ----------------
+   Tiếng Anh dùng bảng progress (có từ đầu). Ngôn ngữ khác dùng progress_lang (user_id, lang).
+   Bảng được tự tạo ở request đầu tiên → không cần chạy thêm SQL trong D1 Console. */
+export const LANG_IDS = ["en", "zh"];
+export const langOf = (v) => (LANG_IDS.includes(v) ? v : "en");
+/** Đường dẫn trang của ngôn ngữ: en → "/", zh → "/zh/" */
+export const langBase = (lang) => (langOf(lang) === "en" ? "/" : `/${langOf(lang)}/`);
+let langTableReady = false;
+export async function ensureLangTable(env) {
+  if (langTableReady) return;
+  await env.DB.prepare("CREATE TABLE IF NOT EXISTS progress_lang (user_id TEXT NOT NULL REFERENCES users(id) ON DELETE CASCADE, lang TEXT NOT NULL, data TEXT NOT NULL, version INTEGER NOT NULL, updated_at INTEGER NOT NULL, PRIMARY KEY (user_id, lang))").run();
+  langTableReady = true;
+}
