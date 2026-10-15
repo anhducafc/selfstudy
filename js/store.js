@@ -370,7 +370,15 @@
       state = load();
       save();
     },
-    reset() { state = empty(); save(); }
+    reset() { state = empty(); save(); },
+    /** Thay toàn bộ dữ liệu (dùng khi đồng bộ với tài khoản) */
+    replaceAll(obj) {
+      try { localStorage.setItem(KEY, JSON.stringify(obj)); } catch {}
+      state = load();
+      if (!localStorage.getItem(KEY)) state = Object.assign(empty(), obj);   // trình duyệt chặn storage
+      save();
+    },
+    snapshot() { return JSON.parse(JSON.stringify(state)); }
   };
 
   window.Store = Store;

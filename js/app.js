@@ -76,7 +76,7 @@
     const parts = (location.hash || "#/").replace(/^#\/?/, "").split("/");
     const name = parts[0] || "";
     const view = routes[name] || viewNotFound;
-    const navName = { lesson: "roadmap", add: "roadmap", games: "review", test: "" }[name] ?? name;
+    const navName = { lesson: "roadmap", add: "roadmap", games: "review", test: "", account: "settings", login: "settings", reset: "settings" }[name] ?? name;
     $$("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === navName));
     app.innerHTML = "";
     app.className = "";
@@ -967,6 +967,9 @@
       <section class="narrow">
         <p class="eyebrow">Cài đặt</p>
         <h1>Hồ sơ & dữ liệu</h1>
+        ${window.Sync && Sync.available ? `<a class="card account-link" href="${Sync.user ? "#/account" : "#/login"}">
+          <span class="q-icon">☁️</span><span><strong>${Sync.user ? `Tài khoản: ${esc(Sync.user.email)}` : "Đăng nhập để lưu tiến trình"}</strong>
+          <span class="small muted">${Sync.user ? "Đồng bộ, đổi mật khẩu, đăng xuất" : "Học tiếp trên mọi thiết bị — Google hoặc email"}</span></span><span>→</span></a>` : ""}
         <form id="setForm" class="card form">
           <label>Tên hiển thị<input name="name" value="${esc(st.profile.name)}" placeholder="VD: Tommy"></label>
           <div class="grid3 tight">
@@ -1045,10 +1048,14 @@
 
   matchMedia("(prefers-color-scheme: dark)").addEventListener?.("change", applyTheme);
   applyTheme();
-  loadAutoLessons().finally(() => {
+  const syncInit = () => window.Sync ? Promise.race([window.Sync.init(), new Promise((r) => setTimeout(r, 3000))]) : null;
+  // chờ mọi script (review.js, sync.js…) nạp xong rồi mới khởi động
+  const boot = () => Promise.allSettled([loadAutoLessons(), syncInit()]).finally(() => {
     S.applyFreezes();
     Game.updateXpChip();
     Game.checkBadges();
     router();
   });
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", boot);
+  else setTimeout(boot);
 })();
