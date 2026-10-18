@@ -1,5 +1,5 @@
 {
-  "updated": "2026-10-17T00:31:10.763Z",
+  "updated": "2026-10-18T00:03:24.178Z",
   "lessons": [
     {
       "id": "yt-CelIpn03m1w",
@@ -21,6 +21,31 @@
         "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
         "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
         "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-aQ0jAP4hiAc",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Live lesson: Books and reading - language for stories",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "aQ0jAP4hiAc"
+      },
+      "minutes": 5,
+      "published": "2026-10-15T00:47:26+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo (and Neil) to practise writing a story in English...\n🎙️ New to streaming or looking to level up? Check out StreamYard and get $10 discount! 😍 https://streamyard.com/pal/d/5415637391245312",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
       ],
       "vocab": [],
       "questions": [],
@@ -96,6 +121,31 @@
         "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
         "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
         "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-6wtpTmGScZ8",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Read your way to better English - a British Council English podcast",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "6wtpTmGScZ8"
+      },
+      "minutes": 5,
+      "published": "2026-10-09T16:00:08+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Want to read more in English but not sure what to choose? Perhaps you’re worried it’ll be too difficult, or you’ve tried before and it just felt too hard.\nJoin Nishma, Neil and Neeraj to find out how to choose things to read at a level that’s right for you. They’ll also talk about how to worry less about unfamiliar words and, most important of all, how to really enjoy what you read. If you’re looking for recommendations, they’ve got a few of those too!\nWe’d love to hear what you’ve been reading! Have you read any good books recently, in English or in your own language? Tell us in the comments.",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
       ],
       "vocab": [],
       "questions": [],
@@ -202,6 +252,56 @@
       "status": "new"
     },
     {
+      "id": "yt-gLAsDe_J4IY",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Live lesson: Practice makes perfect",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "gLAsDe_J4IY"
+      },
+      "minutes": 5,
+      "published": "2026-09-30T00:29:26+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo for another great live lesson! This week we're looking at present perfect simple and continuous.",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-RHrUs8jMzCM",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "How to get people to do things - a British Council English podcast",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "RHrUs8jMzCM"
+      },
+      "minutes": 5,
+      "published": "2026-09-25T13:00:09+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "How do you ask someone to do something in English and make them more likely to say yes? Whether you’re asking a friend for a favour, a colleague for help or your children to tidy their room, the way you ask can make a difference.\nJoin Nishma, Neil and Neeraj for a conversation about asking people to do things. How direct should you be? Can you be so polite that people miss what you’re asking? And how much depends on who you’re talking to?\nThey share what works for them, what they still find difficult and how their experiences in different countries have changed the way they ask.\nDo you find it",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
       "id": "yt-VcA5diHiTHk",
       "level": "B1",
       "skill": "vocab",
@@ -227,6 +327,31 @@
       "status": "new"
     },
     {
+      "id": "yt-I8XaYkRW1tA",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Why do some people have a better sense of direction than others? - Oliver Baumann",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "I8XaYkRW1tA"
+      },
+      "minutes": 6,
+      "published": "2026-09-10T15:00:58+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Dig into the neuroscience behind our sense of direction and find out why some people are better at navigating than others.\n--\nWhether you identify as a wayfinding whiz or get lost returning from the grocery store, your brain has a built-in navigation system that facilitates spatial skills, from sensing which direction is north to map-reading and route-learning. So, why do we still struggle to find our way? And why do some of us find ourselves lost more often than others? Oliver Baumann digs into our sense of direction.\nLesson by Oliver Baumann, directed by Anton Bogaty.\nThis video was made pos",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
       "id": "yt-vN4fxGYFbRA",
       "level": "B1",
       "skill": "vocab",
@@ -246,6 +371,106 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-_gP3aXvNmv8",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Ever walk into a room and forget what you were doing? - Gabriel Radvansky",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "_gP3aXvNmv8"
+      },
+      "minutes": 6,
+      "published": "2026-09-08T15:00:17+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Dig into the phenomenon known as the doorway effect, where walking into a new space can make you forget what you were doing.\n--\nYou enter your living room, then pause. Uh-oh, what was it that you were doing? You feel your mission’s momentum wane, and its aim is suddenly lost. So, what just happened? Well, you’re not alone; this is a common memory lapse phenomenon scientists have termed the “doorway effect.” Gabriel Radvansky explores why walking into a new space can make you suddenly forget what you were doing.\nLesson by Gabriel Radvansky, directed by Biljana Labović.\nAnimation by Vanesa Souss",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-BSdEiOYvKpE",
+      "level": "B2",
+      "skill": "listening",
+      "title": "What are tariffs, and how do they work?",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "BSdEiOYvKpE"
+      },
+      "minutes": 6,
+      "published": "2026-09-03T15:00:10+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Explore how tariffs work and dig into how their enactment can set off an economic chain reaction that impacts global trade.\n--\nIn 1930, in hopes of supporting farms and manufacturing, President Hoover made a bold decision: he approved a sweeping 20% tax on all imported agricultural and industrial goods. But the plan completely backfired, leading exports to fall and global trade to decline. And it wouldn't be the last time a world leader was shocked by a tariff’s consequences. Trace the economic chain reaction of tariffs.\nDirected by Avi Ofer.\n----------------------------------------------\n----",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-JOs-q7rXqdk",
+      "level": "B2",
+      "skill": "listening",
+      "title": "4 ways to tell a great story",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "JOs-q7rXqdk"
+      },
+      "minutes": 6,
+      "published": "2026-09-01T15:00:06+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Episode 7: Discover the 4 components of what makes a great storyteller, and the important role that stories play in audience connection.\n--\nThis is episode 7 of the animated series, “Public Speaking 101.” Ideas change everything — and since language lets us share our ideas, learning how to use it well gives speakers the power to inspire people and even change how they think. This 11-episode course will teach you how to identify, develop, and share your best ideas, while mastering essential communication skills along the way.\nDirected by Tolga Yıldız, Kozmonot Animation Studio.\nThe TED-Ed Stude",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-QyRqlTV60zM",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Plato’s infamous Ship of State thought experiment - Michael Vazquez",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "QyRqlTV60zM"
+      },
+      "minutes": 6,
+      "published": "2026-08-25T15:01:09+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Dig into Plato’s infamous Ship of State thought experiment, which explores how democratic societies handle leadership and power.\n--\nImagine a ship struggling in an endless storm. Its captain, though strong and commanding, is a terrible navigator. Neither he nor his crew have been trained to sail, yet they tirelessly vie for control through bribery, flattery, and mutiny, and ignore those with real navigation knowledge. This dysfunctional vessel is Plato's Ship of State. Michael Vazquez explores the infamous thought experiment.\nLesson by Michael Vazquez, directed by Luis Torres, Mr. Flama.\nThis ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
