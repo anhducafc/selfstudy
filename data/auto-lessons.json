@@ -1,6 +1,56 @@
 {
-  "updated": "2026-10-19T00:13:02.000Z",
+  "updated": "2026-10-20T01:05:59.549Z",
   "lessons": [
+    {
+      "id": "yt-KHimUkNBDiQ",
+      "level": "A2",
+      "skill": "listening",
+      "title": "What are your favourite famous sites? 🎡 | Improve your listening with Real Easy English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "KHimUkNBDiQ"
+      },
+      "minutes": 7,
+      "published": "2026-10-19T09:00:34+00:00",
+      "series": "Real Easy English",
+      "feed": "@bbclearningenglish",
+      "desc": "Georgie and Phil have a real conversation in easy English about British landmarks – famous sights around the United Kingdom.\nLearn some vocabulary about sightseeing and find out Georgie and Phil's favourite UK landmarks.\nYOUR TURN: What landmarks are famous in your country? Do you visit them often?👇👇👇\nShare this with a friend who's learning English and help each other! ➡️ 📈\nYou can find ALL the Real Easy English episodes here 👉 https://bbc.in/4cHGL7L\n🤩🤩🤩 SUBSCRIBE to our YouTube channel for more English videos and podcasts 👉 http://tinyurl.com/ps3hplv\nWe like receiving and reading you",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-av3zdxYvCp8",
+      "level": "B2",
+      "skill": "listening",
+      "title": "3 things to never do with a credit card",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "av3zdxYvCp8"
+      },
+      "minutes": 6,
+      "published": "2026-10-15T15:00:51+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Learn how to spot the 3 most common traps of credit cards, and how they can lock you into a cycle of interest, fees, and debt.\n--\nWhile useful for secure purchasing, emergencies, and building credit scores, credit cards can make it difficult to avoid overspending. And this is no accident. Credit card systems are intentionally designed to encourage spending and lock you into a cycle of interest and fees. So, how can you avoid their most common traps? Explore 3 ways that credit card companies take advantage of their customers.\nDirected by Jeff Le Bars, JetPropulsion.space.\nThis video made possib",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-CelIpn03m1w",
       "level": "B1",
@@ -896,6 +946,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-sj-dX3fZmq0",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Answering interview questions - 02 - English at Work helps.",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "sj-dX3fZmq0"
+      },
+      "minutes": 10,
+      "published": "2016-07-13T06:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna's job interview continues. But with all the pressure and stress, she has frozen mid-sentence. This episode helps Anna and you find different ways to answer interview questions.\n🤩🤩🤩 SUBSCRIBE to our YouTube channel for more English videos and podcast English to help you improve your English 👉 http://tinyurl.com/ps3hplv\nJoin us on TikTok 👉 https://www.tiktok.com/@bbclearningenglish\nGet our app:\nAndroid 👉 https://bit.ly/2PeLcf6\niPhone 👉 https://apple.co/2wmG2GU\nWe like receiving and reading your comments - please use English when you comment 😊",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-KN2jyw6D1ak",
+      "level": "B1",
+      "skill": "listening",
+      "title": "How to prepare for an interview - 01 - English at Work has the answers",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "KN2jyw6D1ak"
+      },
+      "minutes": 10,
+      "published": "2016-07-06T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna's nervous! She's preparing for a job interview at Tip Top Trading. This episode of English at Work helps her - and you - prepare the English you need for a job interview.\nWhat about you - have you ever had a job interview in English? Tell us in the comments 👇👇👇\nPhrases from the programme:\nMore programmes:\n😊 English at work Episode 2: Answering interview questions 👉 https://youtu.be/sj-dX3fZmq0\n😊 How to make polite requests 👉 https://youtu.be/jD3JvzaqrAg\n😊 Formal and informal English 👉 https://youtu.be/hdKYl8Tg_FQ\n🤩🤩🤩 SUBSCRIBE to our YouTube channel for more English videos and",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-Aj-EnsvU5Q0",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Do you work in an English-speaking environment? English at Work is the series for you",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "Aj-EnsvU5Q0"
+      },
+      "minutes": 10,
+      "published": "2016-06-29T11:53:09Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "English at Work: http://www.bbc.co.uk/learningenglish/english/features/english-at-work\nAre you looking for work. Do you want a job? Would you want to work at Tip Top Trading? Watch our new animated series and learn some of the language and etiquette that you need, not just to get a job but to be the top dog, big boss, head honcho, big wig....\nAnimation: Rosie Miles (http://www.rosiesmiles.com/)",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
