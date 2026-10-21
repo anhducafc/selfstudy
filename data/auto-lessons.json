@@ -1,6 +1,81 @@
 {
-  "updated": "2026-10-20T01:05:59.549Z",
+  "updated": "2026-10-21T00:37:50.999Z",
   "lessons": [
+    {
+      "id": "yt-NPJ9KZqrl50",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Why does this animal never age? - Raymond Adkins",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "NPJ9KZqrl50"
+      },
+      "minutes": 6,
+      "published": "2026-10-20T15:01:00+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Explore the incredible regenerative abilities of hydras, and get to know their biology to find out if they're really immortal.\n--\nIn 1740, naturalist Abraham Trembley found something shocking in pondwater. He couldn't tell if it was a plant or an animal, though its way of moving and consuming things seemed animal-like. But when he cut parts off or even split it in two, it regenerated, which was decidedly plant-like. So, what was this miraculous creature? Raymond Adkins explores the near-immortal biology of the hydra.\nLesson by Raymond Adkins, directed by Sharon Colman.\n------------------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-C9-PA8WoMxk",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Language Clinic - get answers to all your questions",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "C9-PA8WoMxk"
+      },
+      "minutes": 5,
+      "published": "2026-10-20T12:15:57+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Neil live to get answers to all your questions about learning English and more!\n🎙️ New to streaming or looking to level up? Check out StreamYard and get $10 discount! 😍 https://streamyard.com/pal/d/5415637391245312",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-Z5sjzG4ZF_w",
+      "level": "A2",
+      "skill": "listening",
+      "title": "👄George's travel hot spots | Pronunciation Shadowing",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "Z5sjzG4ZF_w"
+      },
+      "minutes": 5,
+      "published": "2026-10-20T09:00:19+00:00",
+      "series": "Pronunciation",
+      "feed": "@bbclearningenglish",
+      "desc": "Native English speakers often use linking sounds to join words together when they speak naturally. Learn three of them with George - and shadow his travel guide too! Visit our website for downloads 👉 https://www.bbc.co.uk/learningenglish/downloads\nYOUR TURN: Do you know any more English linking sounds - and where is your favourite place to visit? Tell us in the comments! 👇👇👇\nNew to shadowing? Click here for a quick tutorial 👉 https://youtu.be/tjaLn7URdlA\nMore pronunciation videos:\n👄 Linking /w/: Tim's Pronunciation Workshop 👉 https://youtu.be/cu-VK3JlgAk\n👄 How to say 'through', 'though",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-KHimUkNBDiQ",
       "level": "A2",
@@ -946,6 +1021,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-QWBwCoecvkM",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Make polite requests - 05 - English at Work would like you to watch",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "QWBwCoecvkM"
+      },
+      "minutes": 10,
+      "published": "2016-08-03T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Can Anna use polite requests to help her in her new job at Tip-Top Trading? Anna is still getting used to how things work in her new job. She turns to her colleagues to ask for help, but upsets Denise by sounding too bossy.\nTRANSCRIPT\nNarrator: Welcome back to English at Work. We're still in Anna's first week in the busy offices of Tip Top Trading. How's it going Anna?\nAnna: Everything's still so new to me. I keep needing to ask people for help!\nNarrator: Well, that's only natural at the beginning. To ask people politely for help use the words would and could. You can also use the word please,",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-1AmS9h8g3E4",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Introduce yourself and make some friends - 04 - English at Work",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "1AmS9h8g3E4"
+      },
+      "minutes": 10,
+      "published": "2016-07-27T06:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna is determined to be friendly and introduces herself to her new colleagues. Unfortunately, a slight misunderstanding leads her to make an embarrassing mistake. More English at Work: http://bbc.in/29Nd9JK\nTRANSCRIPT\nNarrator: Last week, Anna got the job of sales executive at Tip Top Trading, thanks to her quick-thinking in an office crisis. Today it's her first day in the office. How are you feeling now, Anna?\nAnna: Excited, but a bit worried. I really want to make a good first impression.\nNarrator: Well, you're going to need some phrases to introduce yourself politely, such as:\nHello, I do",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-2zyca6fGo4A",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Making suggestions is easy - 03 - English at Work shows you how",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "2zyca6fGo4A"
+      },
+      "minutes": 10,
+      "published": "2016-07-20T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Denise explains why she's in such a state of panic and Paul is not pleased. Will Anna be able to make suggestions and help resolve the crisis?",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
