@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-21T00:37:50.999Z",
+  "updated": "2026-10-22T00:43:38.913Z",
   "lessons": [
+    {
+      "id": "yt-JYjXBX5kVCg",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "Why are so many young people around the world protesting? | BBC Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "JYjXBX5kVCg"
+      },
+      "minutes": 10,
+      "published": "2026-10-21T13:11:30Z",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Gen Zs, those are people born between the late 90s and early 2010s, are protesting different issues, such as the quality of their education, job opportunities and voter rights. Many of these movements led by young people are organising online, often with no clear leader. Dr Naya Prakash, a researcher at the University of Cambridge, says what most of the protests have in common, is a feeling that the government isn't investing enough in services and policies that impact young people's lives.\n(Photo by Vlasov Sulaj/NurPhoto via Getty Images)",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-NPJ9KZqrl50",
       "level": "B2",
@@ -1021,6 +1046,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-HN5akpqjm9Q",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Saying 'well done!' - 08 - English at Work tells you how to give praise",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "HN5akpqjm9Q"
+      },
+      "minutes": 10,
+      "published": "2016-08-24T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "The boss isn't happy with Tom! But Anna is told 'Well done!'. Find out what words he uses to give Anna the praise she deserves...\nTRANSCRIPT\nPaul: Good afternoon.\nAnna & Tom: Hi, good afternoon.\nPaul: Anna, Tom, room 301 please. Now.\nNarrator: Welcome back to Tip Top Trading, where things are a teeny bit tense today. Paul has called Tom and Anna into room 301, the place where difficult conversations happen. Perhaps Paul has found out about yesterday's unhappy clients.\nAnna: Oh dear.\nNarrator: You should be okay Anna. After the way you coped with Mr Lime, you should be praised.\nAnna: Really? Wh",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-qR34I4S9qUA",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Saying you're sorry - 07 - English at Work shows you how to apologise",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "qR34I4S9qUA"
+      },
+      "minutes": 10,
+      "published": "2016-08-17T13:29:48Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Mr Lime is not happy. He ordered grapefruit from Tip Top Trading, but he got pineapples. Time to say sorry! Anna has to apologise and sort everything out. How embarrassing!\nTRANSCRIPT\nNarrator: Ah hello! Welcome back to Tip Top Trading – the UK's leading wholesaler of imitation fruit. Today you're joining us in the middle of the action! Anna is with an important client Mr Lime, from Citrus Ventures. He's angry and she'll have to calm him down. She could cope brilliantly here or this could be a horrible mess!\nAnna: Well Mr Lime, how can I help you?\nMr Lime: On Monday I was meant to receive 8,00",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-NzYxS_Xy0oM",
+      "level": "B1",
+      "skill": "listening",
+      "title": "How to offer help - 06 - English at Work is here to help",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "NzYxS_Xy0oM"
+      },
+      "minutes": 10,
+      "published": "2016-08-10T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "It's chaos at Tip Top Trading. Tom is in a panic and needs help! He has arranged more meetings than he can cope with and is going to have to face some unhappy clients. Anna decides to step in and help.\nTRANSCRIPT\nAnna: ‘Look forward to hearing from you soon. Kind regards, Anna.’\nDenise: (on the phone) ... And Margery said: 'I don't think I've ever seen a vegetable quite that size before...'\nPaul: Where's that hole-punch?!\nNarrator: Ah, business as usual in the offices of Tip Top Trading.\nTom: Oh for goodness sake! What a disaster! I can't believe it!\nNarrator: But one member of the team seems ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
