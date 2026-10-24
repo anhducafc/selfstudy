@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-23T00:42:56.497Z",
+  "updated": "2026-10-24T00:44:35.876Z",
   "lessons": [
+    {
+      "id": "yt-bxy5MPIwPdc",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Who does Halloween belong to anyway? A British Council English podcast",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "bxy5MPIwPdc"
+      },
+      "minutes": 5,
+      "published": "2026-10-23T14:30:08Z",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Even if you’ve never celebrated Halloween, you’ll recognise the pumpkins, scary costumes and children going door to door for sweets. But how did these traditions travel around the world, and what’s changed along the way?\nJoin Nishma, Neil and Shereen as they compare their experiences of Halloween, from childhood in Scotland to celebrations in Egypt today. Some people love any excuse to dress up and have fun, but there’s a religious and cultural history too. So what is it about Halloween that gets people joining in, even when they haven’t grown up with those traditions? Maybe there’s something ",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-a_4eFB8pPwI",
       "level": "B2",
@@ -1096,6 +1121,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-UKz1Fsw_e8c",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Giving feedback – 14 – English at Work shows you how",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "UKz1Fsw_e8c"
+      },
+      "minutes": 10,
+      "published": "2016-10-05T06:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna gets feedback from Paul today. Following her successful Imperial Lemon presentation, Anna thinks she's going to get some good feedback from the boss.\nBut rather than being congratulated, she's in trouble because of her poor telephone manner.\nHowever, help is at hand, and from an unexpected person...\nTRANSCRIPT\nNarrator: Hello. We're back at Tip Top Trading. Anna is very busy dealing with Mr Lime's big order for Imperial Lemons.\n(phone rings)\nAnna: Yes?... Who?... I can't hear you. Mr what? What? Mr Who? I don't know, you tell me. Oh, you are Mr Hu... H-U: Hu. Er... No, Tom's busy. Call ba",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-t0U0rGl3prE",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Making a pitch – 13 – English at Work gets your pitch perfect",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "t0U0rGl3prE"
+      },
+      "minutes": 10,
+      "published": "2016-09-28T06:00:02Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Oh no! Anna's making a pitch to Mr Lime and his team at Citrus Ventures, but her presentation is not going to plan. Her computer has crashed and the presentation, along with her notes, has frozen.\nShe's on her own now and all she can do is talk... but what can she say? This is where she really needs some skills to help her pitch the Imperial Lemon. To pitch something means to do a sales presentation.\nTRANSCRIPT\nNarrator: Hello, welcome back to the offices of Citrus Ventures!\n(broken computer and murmur of people at meeting, as proceedings have been interrupted)\nAnna's presentation to Mr Lime a",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-1afHeCHquf0",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Opening a presentation – 12 – English at Work helps you start the right way",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "1afHeCHquf0"
+      },
+      "minutes": 10,
+      "published": "2016-09-21T06:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Presentation time! It’s a big day for Anna as she presents Tip Top Trading’s new Imperial Lemon to Mr Lime at Citrus Ventures. This is her chance to make a big impression on her boss Paul and show that she can really bring in the business. How will her presentation turn out?\nTRANSCRIPT\nNarrator: Hello, welcome to the offices of Citrus Ventures! It's a big day for Anna, she's about to present Tip Top Trading's new Imperial Lemon to Mr Lime and his colleagues. This must not go wrong.\nAnna: …revoltionary laser-curve.... revolUtionary laser-curve... revol-\nNarrator: How are you feeling today Anna?",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
