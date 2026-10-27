@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-26T00:25:43.819Z",
+  "updated": "2026-10-27T01:30:40.561Z",
   "lessons": [
+    {
+      "id": "yt-VFA53-P4yPo",
+      "level": "A2",
+      "skill": "listening",
+      "title": "Tips for feeling confident in job interviews 🤝 | Improve your listening with Real Easy English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "VFA53-P4yPo"
+      },
+      "minutes": 7,
+      "published": "2026-10-26T10:00:27Z",
+      "series": "Real Easy English",
+      "feed": "@bbclearningenglish",
+      "desc": "Becca and Neil have a real conversation in easy English about job interviews – the questions you need to answer when looking for a new place to work.\nLearn some vocabulary and tips that you can use to help prepare for job interviews, and find out Becca's least favourite question to answer.\nYOUR TURN: How do job interviews make you feel? Do you have any tips to feel more confident in a job interview?👇👇👇\nShare this with a friend who's learning English and help each other! ➡️ 📈\nYou can find ALL the Real Easy English episodes here 👉 https://bbc.in/4cHGL7L\n🤩🤩🤩 SUBSCRIBE to our YouTube chann",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-bxy5MPIwPdc",
       "level": "B1",
@@ -1121,6 +1146,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-zL4PI-pWfi8",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Health and safety – 23 – English at Work has the phrases for you",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "zL4PI-pWfi8"
+      },
+      "minutes": 10,
+      "published": "2016-12-07T07:00:02Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "After the incident in the warehouse, Paul thinks the team needs an update on their health and safety policy. Find out the phrases you need to talk about being safe at work.\nTRANSCRIPT\nNarrator: Welcome back. Things are quite tense at Tip Top Trading today. Paul, the boss, mistakenly thinks Anna's been smoking on company premises and she's trying to explain herself.\nAnna: But, but…\nPaul: Frankly, I'm disappointed with you Anna. You're a hard worker but it doesn't mean you can go against company policy.\nNarrator: Anna, remember the phrases we've learnt about a misunderstanding!\nAnna: Oh yes. Pau",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-rr-Ocmkfd7o",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Making polite requests – 22 – English at Work asks what you want politely",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "rr-Ocmkfd7o"
+      },
+      "minutes": 10,
+      "published": "2016-11-30T07:00:03Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna is off to meet Mr Ingle, the warehouse manager, to discuss stock management. But she finds him doing something dangerous and illegal! She needs to ask him to stop it politely. Find out how she makes this request.\nTRANSCRIPT\nNarrator: Hello, welcome back to Tip Top Trading where Anna is going downstairs to speak to warehouse manager, Mr Ingle. You’re looking a bit nervous…\nAnna: I am. Denise says if I speak to him in the wrong way, he might bite my head off!\nNarrator: Relax Anna. It’s just an expression to mean he might be a bit aggressive.\nAnna: Oh!\nNarrator: You’ll be fine, just use the ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-AG2kYShBZl0",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Asking for help – 21 – English at Work gets you the help you need",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "AG2kYShBZl0"
+      },
+      "minutes": 10,
+      "published": "2016-11-23T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna is taking the lead on the company's new stock management system. But she needs some help! She gets some advice from an unlikely member of the team. Find out what it is!\nTRANSCRIPT\nNarrator: Hello, welcome back to Tip Top Trading where everyone is gossiping about Paul’s announcement. Anna is to lead the company’s new stock management system for the new laser-curved fruit.\n(Denise on phone)\nDenise: Yes Anna…the new girl…she’s done really well although I don’t know what experience she’s got….anyway, about the hairdresser you mentioned, oh I loved his aftershave…\nTom: I can’t understand it. I",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
