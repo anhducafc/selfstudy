@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-27T01:30:40.561Z",
+  "updated": "2026-10-28T01:25:33.004Z",
   "lessons": [
+    {
+      "id": "yt-nXvKDYRvTno",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Scary stories to watch in the dark (if you dare…)",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "nXvKDYRvTno"
+      },
+      "minutes": 6,
+      "published": "2026-10-27T15:00:17Z",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "This Halloween, dig into a collection of 6 chilling tales of blood-thirsty creatures, a cursed talisman, vengeful ghosts, and more.\n--\nAt TED-Ed we pride ourselves on sparking curiosity and facilitating learning, but we all know that some lessons are only learned the hard way, and that curiosity killed any number of fools. Take a moment to learn from the greedy, the cruel, and the foolhardy with a collection of six of our favorite terrifying tales. Watch it after dark... if you dare.\nThis compilation includes stories from 6 TED-Ed Animations:\nThe curse of the monkey's paw\nLesson by Iseult Gill",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-VFA53-P4yPo",
       "level": "A2",
@@ -1146,6 +1171,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-X7nDkvYSbfs",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Complaining – 26 – English at Work tells you how to complain",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "X7nDkvYSbfs"
+      },
+      "minutes": 10,
+      "published": "2016-12-28T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Mr Socrates, the big boss from America, is in town and everything must be just right. Unfortunately the hotel room Anna booked for him isn't right so it's up to her to sort it out and that involves some complaining.\nTRANSCRIPT\nNarrator: Welcome back to Tip Top Trading where everyone seems a bit flustered.\nPaul: …and we really need the best biscuits there are.\nDenise: Yes, and I’ve made sure there’s tea and coffee…\nPaul: …and the carpets?\nDenise: Uh?\nPaul: …have they been cleaned.\nDenise: Don’t panic Paul, all taken care of.\nNarrator: You see, the big boss from America, Mr Socrates, is in town ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-05sSUfr4NcY",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Booking a hotel room – 25 – English at work reserves your room",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "05sSUfr4NcY"
+      },
+      "minutes": 10,
+      "published": "2016-12-21T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Tip Top Trading have a serious issue to deal with - the arrival of the big boss from America, Mr Socrates. He is a particularly fussy man but because of his importance he gets his own way, including the type of hotel room he stays in. This is something that Anna will find out when she has to book his room.\nTRANSCRIPT\nNarrator: Hello again. Things haven't been going well at Tip Top Trading. There was a fire in the warehouse, caused by my Mr Ingle's cigarette and now Mr Socrates – the big boss from America – has turned up unexpectedly.\nMr S: So honey, you are…?\nAnna: Anna. I'm Anna, I work here ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-N_wjnJiDB3I",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Language for emergencies – 24 – English at Work gets you out of danger",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "N_wjnJiDB3I"
+      },
+      "minutes": 10,
+      "published": "2016-12-14T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Emergency at Tip Top Trading! Everyone has evacuated the offices following a fire alarm and Anna has to take charge. Is this a real fire emergency or just a drill? Can anything get any worse - well possibly, especially when a man from America turns up unexpectedly.\nTRANSCRIPT\nDenise: Tom?\nTom: Here.\nDenise: Anna?\nAnna: Here Denise.\nDenise: And Paul?\nPaul: Yes, yes I'm here and there's no need to panic. That was just a fire drill – a practice.\nNarrator: Phew, Tip Top Trading is safe – for now. It was just a fire drill. What a busy day this is turning out to be. Hey Anna, remember next time it c",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
