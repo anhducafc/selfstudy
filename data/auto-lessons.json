@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-28T01:25:33.004Z",
+  "updated": "2026-10-29T01:48:40.699Z",
   "lessons": [
+    {
+      "id": "yt-8P1StZMmGJ8",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "Lula surprises many with fourth election win | BBC Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "8P1StZMmGJ8"
+      },
+      "minutes": 10,
+      "published": "2026-10-28T13:10:44+00:00",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Luis Inacio Lula da Silva, better known as Lula, a left-wing candidate in Brazil, has been elected as president for the fourth time after a second round of voting. His victory came as a surprise to many after he lost the first round of the election.\n🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/4yLxZPY and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\n(Photo by Isabella Finholdt/NurPhoto via Getty Images)\nWe like receiving and reading your comments - please use English when you comment 😊",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-nXvKDYRvTno",
       "level": "B2",
@@ -1171,6 +1196,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-7XXXo_7HlP8",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Making a cold call - 29 - Need to make a call? English at Work shows you how",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "7XXXo_7HlP8"
+      },
+      "minutes": 10,
+      "published": "2017-01-18T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "TRANSCRIPT\nNarrator: Bye bye Mr Socrates. He’s flying back to America leaving Tip Top Trading’s London team trying to work out how best to focus their business on the European market.\nPaul: Sorry to keep you waiting. I had to go to the airport with Mr Socrates to see him off. We had a good chat in the taxi and he said some very positive things.\nDenise: Oh yes. Like what?\nPaul: Err, well… well, how nice English beer is.\nTom: Yeah but what about the European marketing strategy – what are we going to do about that?\nPaul: Well, Anna is supposed to lead on that, I’m taking a more biscuitorial contr",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-zS2bmhmGCsI",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Keeping things professional – 28 – English at Work gives you the phrases",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "zS2bmhmGCsI"
+      },
+      "minutes": 10,
+      "published": "2017-01-11T07:00:02Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "TRANSCRIPT\nNarrator: Hello again. Tip Top Trading’s big boss, Mr Socrates has announced a new strategy to sell plastic fruit to Europe and hopefully keep the company afloat. But before the real work begins it’s time for him to enjoy some good English hospitality at the pub, courtesy of the team from the London office. Let’s join them now…\nTom: …Well welcome to the Rose and Crown, it is small, not like one of those bars you get in your country. Can I get you a pint Mr Socrates?\nMr Socrates: A what?\nTom: A pint. A pint of beer, it’s really nice here if you like it…\nMr Socrates: I don’t drink. Ju",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-L3QbkK0bB44",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Delivering bad news – 27 – English at Work gives you the bad news",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "L3QbkK0bB44"
+      },
+      "minutes": 10,
+      "published": "2017-01-04T07:00:03Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "TRANSCRIPT\nNarrator: Hello again. It’s the big day and Mr Socrates is about to arrive at the offices of Tip Top Trading to talk officially to the team. What is he going to say? And more importantly, will he get his freshly squeezed orange juice?\nTom: Quickly everybody… he’s coming out of the lift with Paul.\nDenise: Anna quickly, get a glass of orange juice ready.\nPaul: …and if we come through this door here we get to the office and… morning everyone. I’m sure we’ve all met Mr Socrates on the day of the… fire… but today everything is a bit calmer and well he’s here to say hello.\nMr S: Hi!\nDenis",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
