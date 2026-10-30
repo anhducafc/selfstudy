@@ -1,6 +1,56 @@
 {
-  "updated": "2026-10-29T01:48:40.699Z",
+  "updated": "2026-10-30T01:59:50.200Z",
   "lessons": [
+    {
+      "id": "yt-8RPK5KwYhgA",
+      "level": "B2",
+      "skill": "listening",
+      "title": "What if you didn’t brush your teeth for a year? - Justin Meritt",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "8RPK5KwYhgA"
+      },
+      "minutes": 6,
+      "published": "2026-10-29T15:00:29Z",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Trace the impact that not brushing or flossing can have on your teeth, gums, microbiome, and overall health over time.\n--\nAt any given time, your mouth is maintaining a delicate balance between hundreds of microbial species, which is why dentists agree that you should brush twice and floss once every day. But what if you just… didn’t? If you stopped doing any oral hygiene, how long would it take for your mouth to get messy? Justin Meritt investigates how not brushing can impact your health over time.\nLesson by Justin Meritt, directed by Lee Oz, Eliška Oz, Oz Animation.\n------------------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-npka43vhwNo",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Is aircon the answer to a heating world? 6 Minute English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "npka43vhwNo"
+      },
+      "minutes": 7,
+      "published": "2026-10-29T09:35:08Z",
+      "series": "6 Minute English",
+      "feed": "@bbclearningenglish",
+      "desc": "Find a free worksheet, transcript and quiz for this episode here 👉 https://bbc.in/4io95Qu\nDo you ever feel it is too hot to sleep? With climate change gradually increasing world temperatures, people across the world are becoming increasingly affected by hot weather. In many locations, air conditioning is used to help cool down homes and workplaces, but not everyone has access to this. And it isn't just about getting a good night's sleep – extremely hot weather can be a serious health risk. Georgie and Neil discuss this and teach you some new vocabulary.\n00:00 Talking about the recent hot summ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-8P1StZMmGJ8",
       "level": "B2",
@@ -17,6 +67,31 @@
       "series": "English from the News",
       "feed": "@bbclearningenglish",
       "desc": "Luis Inacio Lula da Silva, better known as Lula, a left-wing candidate in Brazil, has been elected as president for the fourth time after a second round of voting. His victory came as a surprise to many after he lost the first round of the election.\n🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/4yLxZPY and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\n(Photo by Isabella Finholdt/NurPhoto via Getty Images)\nWe like receiving and reading your comments - please use English when you comment 😊",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-cEPRk4Lldeg",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Is reading the best way to learn vocabulary? #podcast #booktok",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "cEPRk4Lldeg"
+      },
+      "minutes": 5,
+      "published": "2026-10-28T11:41:10Z",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Watch the full discussion on @BritishCouncilEnglish",
       "tasks": [
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
@@ -1196,6 +1271,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-o9KEaQCWqDg",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Negotiating a deal - 32 - English at Work helps you get the best deal",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "o9KEaQCWqDg"
+      },
+      "minutes": 10,
+      "published": "2017-02-08T07:30:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Things aren't going too well. Anna negotiated a deal with a client in France but now they claim they've been ripped off! This has got to get sorted - quickly. Can she renegotiate with them and save the deal?\nTRANSCRIPT\nNarrator\nWelcome back to Tip Top Trading where things aren't going too well. Anna negotiated a deal with a client in France but now they claim they've been ripped off! This has got to get sorted – quickly.\nAnna\nOh Denise, what exactly did they say?\nDenise\nSomething about them agreeing a price for 5,000 lemons and then being offered a better price by another company.\nAnna\nThat'll",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-efc3fFMCvvc",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Project management - 31 - Need to manage a project? English at Work gives you the language",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "efc3fFMCvvc"
+      },
+      "minutes": 10,
+      "published": "2017-02-01T07:30:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "It's time for Anna to develop Tip Top Trading's European marketing strategy but where should she begin? Her boss, Paul, doesn't have a clue so it's down to Anna to work out what to do. Listen in to find out what her plan is and how she sets out to manage the project of securing a deal with a French company.\nTRANSCRIPT\nNarrator\nOh dear. Do you remember that Tom and Anna are locked in the stationery cupboard? What are they going to do? And what will people say when they are discovered in there? I have a feeling we're about to find out…\nDenise\nGoodness, what's that? Anna is that you? And is that ",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt--HZrTUNJKCs",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Negotiating - 30 - English at Work negotiates the best deal",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "-HZrTUNJKCs"
+      },
+      "minutes": 10,
+      "published": "2017-01-25T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "TRANSCRIPT\nAnna: (On the phone) Yes, we have plenty in stock. They're £4 per unit… They are good quality ones…\nNarrator: The company in France that Anna called earlier has called her back. Let's hope they're making an order.\nAnna: …laser technology isn't cheap… hmm, I see… Well, thanks for calling back. Bye.\nPaul: Everything OK Anna?\nAnna: Not really. One of the companies I cold called has rung back…\nPaul: Good, good…\nAnna: …but they don't want to place an order. They say we're too expensive.\nPaul: So you let them go? Didn't you negotiate with them?\nAnna: Oh, was I meant to? I wasn't sure what",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
