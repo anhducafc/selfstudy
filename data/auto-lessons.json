@@ -1,6 +1,31 @@
 {
-  "updated": "2026-10-30T01:59:50.200Z",
+  "updated": "2026-10-31T01:38:10.242Z",
   "lessons": [
+    {
+      "id": "yt-AvxmoB8UZ8Q",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Whose Halloween is it anyway? #podcast",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "AvxmoB8UZ8Q"
+      },
+      "minutes": 5,
+      "published": "2026-10-30T12:00:28Z",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Watch our Halloween podcast on @BritishCouncilEnglish",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-8RPK5KwYhgA",
       "level": "B2",
@@ -1271,6 +1296,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-wAwFzn9bs6U",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Briefing the manager - 35 - English at Work helps you tell your boss important news",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "wAwFzn9bs6U"
+      },
+      "minutes": 10,
+      "published": "2017-03-01T07:30:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna and Tom are in a bit of a predicament. Following a successful business meeting they've returned to the airport to discover their flight has been cancelled. What are they going to do next? Anna needs to brief Paul about the delay.\nTRANSCRIPT\nNarrator\nWelcome back to English at Work, where Anna and Tom are in a bit of a predicament. Following a successful business meeting, they've returned to the airport to discover their flight has been cancelled. What are they going to do next?\nTom\nRight, they've rebooked us on to the next flight, which is at 7 o'clock tomorrow morning.\nAnna\nTomorrow morn",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-cfOef7MXNbc",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Clinching the deal - 34 - English at Work has the language for when you need to finish a deal",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "cfOef7MXNbc"
+      },
+      "minutes": 10,
+      "published": "2017-02-22T07:30:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna and Tom are on a very important business trip to try and sign a deal to sell their plastic fruit to a company in France. The company has received a better offer so Anna needs to clinch the deal and convince them that Tip Top Trading's lemons are best!\nTRANSCRIPT\nAnna\nTom, could you let go of my hand?\nTom\nSorry, it's just I get nervous flying.\nAnna\nWell, we've landed in Marseille now so you're safe… oh, I like your passport photo.\nTom\nOh do you?\nAnna\nI didn't know your middle name was Stanley.\nTom\nAfter my great-great-grandfather.\nAnna\nReally? Come on we need to get a taxi. Taxi! Taxi!\nNar",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-koVV_Fik9yE",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Booking a flight - 33 - English at Work gets you travelling!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "koVV_Fik9yE"
+      },
+      "minutes": 10,
+      "published": "2017-02-15T07:30:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Paul, the boss, is sending Anna and Tom on a business trip to France. He wants them to clinch the deal with a company which is interested in buying their Imperial Lemons. But has Tom got more than business on his mind? And will Anna get a window seat on the plane?\nTRANSCRIPT\nNarrator\nHello again. Well, this is very exciting! Paul, the boss, is sending Anna and Tom on a business trip to France. He wants them to clinch the deal with a company interested in buying their Imperial Lemons. But has Tom got more than business on his mind?\nTom\nReally? What… me and Anna… to France?\nPaul\nYes but make sur",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
