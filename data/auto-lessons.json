@@ -1,6 +1,31 @@
 {
-  "updated": "2026-11-02T01:32:12.639Z",
+  "updated": "2026-11-03T03:29:39.490Z",
   "lessons": [
+    {
+      "id": "yt-LMtpF7ZQqGA",
+      "level": "A2",
+      "skill": "listening",
+      "title": "Octopuses or dolphins? 🐙🐬 Which is your favourite? | Improve your listening with Real Easy English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "LMtpF7ZQqGA"
+      },
+      "minutes": 7,
+      "published": "2026-11-02T10:00:31Z",
+      "series": "Real Easy English",
+      "feed": "@bbclearningenglish",
+      "desc": "Becca and Neil have a real conversation in easy English about oceans – the water that covers our planet.\nLearn to talk about some of the threats to the ocean and find out Becca and Neil's favourite sea creatures!\nYOUR TURN: What's your favourite sea creature? Do you do anything to protect the oceans?👇👇👇\nShare this with a friend who's learning English and help each other! ➡️ 📈\nYou can find ALL the Real Easy English episodes here 👉 https://bbc.in/4cHGL7L\n🤩🤩🤩 SUBSCRIBE to our YouTube channel for more English videos and podcasts 👉 http://tinyurl.com/ps3hplv\nWe like receiving and reading y",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-AvxmoB8UZ8Q",
       "level": "B1",
@@ -1296,6 +1321,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-7CCaA8lfJkU",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Dealing with IT support - 44 - English at Work deals with your computer crisis!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "7CCaA8lfJkU"
+      },
+      "minutes": 10,
+      "published": "2017-05-03T07:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Disaster strikes the computers of Tip Top Trading! Something has happened and everyone's work has disappeared. Anna calls in the IT support, but can she explain to them what the problem is and can they actually help?\nTRANSCRIPT\nAnna\nIt's frozen. Nothing will work…\nTom\nYeah and all my football scores… I mean company accounts… have disappeared.\nPaul\nCan anyone get their computers to work? Or is just me?\nNarrator\nWelcome back to the offices of Tip Top Trading where, as you can hear, there appears to be a bit of computer trouble. Everyone's work seems to have disappeared. This is serious so who ca",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-V7AJM_zcvx0",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Doing customer research - 43 - English at Work has the phrases for you",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "V7AJM_zcvx0"
+      },
+      "minutes": 10,
+      "published": "2017-04-26T07:00:03Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "After Anna and Tom's dinner date, the idea for a new plastic vegetable is developing in Anna's mind. But before she can pitch the proposal to Paul she is going to need to do some thorough research!\nTRANSCRIPT\nNarrator\nHello again. Last time on English at Work, we heard Anna leaving Tom crying into his cold pizza. He may not have had the evening he was expecting, but for Anna it was a huge success. She came up with an idea for a new plastic vegetable and now she needs to pitch it to Paul, the boss.\nDenise\n… so I think I'll go for the blue, Marge, it matches my eyes… well almost…\nAnna\nMorning De",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-pIQ5JssZLew",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Business proposals - 42 - English at Work helps you make the perfect proposal",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "pIQ5JssZLew"
+      },
+      "minutes": 10,
+      "published": "2017-04-19T07:00:03Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna and Tom are at a pizza restaurant for their dinner date, but Anna has work on her mind. She needs to put together a proposal for her new business idea!\nTRANSCRIPT\nWaiter\nWould you like to see the menu?\nTom\nOh yes please.\nWaiter\nI was asking the lady actually.\nTom\nOh, right.\nNarrator\nHello again. Anna and Tom are finally on their dinner date at a pizza restaurant. Eating could be difficult for Tom because he's sprained his arm after that accident in the office. He might still have romance on his mind but Anna is thinking about something else. Are you feeling nervous Anna?\nAnna\nNervous? Why",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
