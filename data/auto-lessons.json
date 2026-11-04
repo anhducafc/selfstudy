@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-03T03:29:39.490Z",
+  "updated": "2026-11-04T02:22:15.582Z",
   "lessons": [
+    {
+      "id": "yt-8EtdC9Bjubk",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Can you solve the Billy Bonka riddle? - Edwin F. Meyer",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "8EtdC9Bjubk"
+      },
+      "minutes": 6,
+      "published": "2026-11-03T16:00:34+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "You accidentally end up in the top secret lab of an eccentric candy factory. Can you win Billy Bonka's game and get set free?\n--\nYou’re on a tour of the eccentric Billy Bonka’s mysterious candy factory, when a wrong turn searching for the restroom lands you in the top secret candy laboratory. Enraged at your trespassing, Bonka explains that the consequences are simple: you must play his game. You lose, and he’ll throw you into his Chew-o-meter 3000. Can you outsmart Billy Bonka’s challenge? Edwin F. Meyer shows how.\nLesson by Edwin F. Meyer, directed by Igor Ćorić, Artrake Studio.\n------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-i8B7LefZLJc",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Job Interview Tips 10 - You're Hired | Learn English | British Council",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "i8B7LefZLJc"
+      },
+      "minutes": 5,
+      "published": "2026-11-03T08:49:07Z",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Watch the full video on our website: http://learnenglish.britishcouncil.or...\nSarah starts her first day on the job and is shown around the office by Philip and Marcia.\nTranscript\nPhilip Hart: Sarah! Good to meet you again! And welcome on board!\nSarah Timms: Thanks Philip, I'm very pleased to be here.\nPhilip Hart: I hope you enjoyed your holiday -- where did you go?\nSarah Timms: I went to Thailand... it was lovely - great beaches and lovely food...\nPhilip Hart: Lucky you! It's time for hard work now, though!\nSarah Timms: I'm ready for it!\nMarcia Boardman: Let me show you to your office...\nSara",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-LMtpF7ZQqGA",
       "level": "A2",
@@ -1321,6 +1371,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-xnKr27RvXp8",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Clearing up confusion - 47 - English at Work keeps things clear!",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "xnKr27RvXp8"
+      },
+      "minutes": 10,
+      "published": "2017-05-24T07:00:02Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "With Paul still out of action following his biscuit-related accident Anna is taking charge at Tip Top Trading. What will she do when she and Tom discover a mysterious note in Paul's office – and how will she stop rumours flying round the office?\nTRANSCRIPT\nNarrator\nWelcome back to English at Work. Anna is acting up as boss because Paul had an accident with a biscuit! But her and Tom are in a panic after finding a note in Paul's diary that said 'Socrates, IPC, final'. Could it mean bad news for Tip Top Trading? Let’s find out.\nTom\nIt's very odd and it can't be good. But Socrates must mean Mr So",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-KbEj9GP0O9Y",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Being in charge - 46 - English at Work helps you be the boss",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "KbEj9GP0O9Y"
+      },
+      "minutes": 10,
+      "published": "2017-05-17T07:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Troubling times at Tip Top Trading! Paul went off to a biscuit-lover's convention and hasn't come back! What's happened, and more importantly who will step up to take charge while the boss is missing?\nTRANSCRIPT\nNarrator\nWelcome back to English at Work. Last time we heard Anna pitching her new plastic aubergine idea to Paul, in a lift. He was on his way to a biscuit- lovers' convention and didn't have much time. She gave the perfect elevator pitch but it's down to Paul to give her idea the go ahead – the problem is, he seems to have gone missing.\nTom\nDenise, isn't Paul supposed to be here toda",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-2dpVQ8aIRis",
+      "level": "B1",
+      "skill": "listening",
+      "title": "The 'elevator pitch' - 45 - English at Work helps you pitch your ideas",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "2dpVQ8aIRis"
+      },
+      "minutes": 10,
+      "published": "2017-05-10T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna's about to pitch her plastic vegetable idea to Paul, but will she have the chance to speak to him? The only opportunity may be very short – Anna will need to get her elevator pitch perfect if she's going to be successful!\nTRANSCRIPT\nNarrator\nHello and welcome to English at Work. The company's computer system has been fixed and Anna seems to have found a new friend in Dave, the IT support man. But her main concern now is pitching her new idea for a plastic aubergine, to Paul the boss.\nTom\nSo Anna, that guy didn't really know what he was doing did he?\nAnna\nYou mean Dave?\nTom\nDave – was that",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
