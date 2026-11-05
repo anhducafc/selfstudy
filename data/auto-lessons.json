@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-04T02:22:15.582Z",
+  "updated": "2026-11-05T02:31:02.943Z",
   "lessons": [
+    {
+      "id": "yt-uMxqpup-Ej8",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Live lesson: Question tags",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "uMxqpup-Ej8"
+      },
+      "minutes": 5,
+      "published": "2026-11-05T02:28:22Z",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo for another great live lesson at 1pm UK time.",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-6eBEGgGegOE",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "Hackers make freezers heat to 50C | BBC Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "6eBEGgGegOE"
+      },
+      "minutes": 10,
+      "published": "2026-11-04T14:08:45Z",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Just weeks after hundreds of grocery stores in France were hit by cyber-attacks, shops in Belgium, Sweden, Ireland, Luxembourg and Estonia have also been attacked.\nThe attacks, which increased temperatures in fridges and freezers across Europe, have forced stores to throw away lots of food. In some cases, fridges in stores got to 50C, and some supermarkets in France have experienced fires.\n🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/48C24a0 and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\n(Photo by Wiktor Dabkowski/Bloomberg vi",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-8EtdC9Bjubk",
       "level": "B2",
@@ -1371,6 +1421,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-HZl8A0qUTpU",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Making someone redundant - 50 - English at work has to give someone the sack",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "HZl8A0qUTpU"
+      },
+      "minutes": 10,
+      "published": "2017-06-14T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "At the offices of Tip Top Trading, the team is catching up on yesterday's good news from the conference. But today it's bad news that everyone is going to hear following Paul's chat with big boss, Mr Socrates. Someone is going to lose their job!\nTRANSCRIPT\nDenise\nMorning everyone. How did you get on at the conference?\nTom\nOh hi Denise. Yeah it was… it was OK.\nAnna\nWhat do you mean 'OK'?  It was great. We made some new contacts and we won an award – Best Plastic Innovation of the Year, for our Imperial Lemon.\nDenise\nOh that's wonderful. Wish I'd been there.\nTom\nMaybe next year eh?\nNarrator\nMayb",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-7P4_cPEzt0c",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Accepting an award - 49 - English at Work gets your speech word perfect",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "7P4_cPEzt0c"
+      },
+      "minutes": 10,
+      "published": "2017-06-07T07:00:00Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "It's the end of a busy day at the International Plastics Convention, and that means it's awards time! Tip Top Trading are up for the most prestigious prize – the Plastic Innovation of the Year award – but will they win?\nTRANSCRIPT\nNarrator\nWelcome back to English at Work. Paul, Anna and Tom are at an important International Plastics Conference. It’s been a busy day of networking but the big boss from America, Mr Socrates, has told Paul some bad news. Before he tells the team, there is an important award to be won – the Plastic Innovation of the Year award. Will Tip Top Trading win it?\nI hope y",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-Qk-69B86pEo",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Networking - 48 - English at Work gets you the contacts",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "Qk-69B86pEo"
+      },
+      "minutes": 10,
+      "published": "2017-05-31T07:00:02Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Anna and the rest of the Tip Top Trading team are at the International Plastics Convention and looking to promote their business. Will Anna be able to network and make some useful contacts at the conference?\nTRANSCRIPT\nNarrator\nWelcome back to English at Work. It's the big day of the International Plastics Conference and a good opportunity for the staff at Tip Top Trading to promote its business. But hold on, who's this? It's Mr Socrates, the big boss from America.\nMr Socrates\nHey, you guys, where have you been?\nPaul\nAh, Mr Socrates… nice to see you again. I'd heard you were in town.\nAnna/Tom\n",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
