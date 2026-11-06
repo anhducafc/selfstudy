@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-05T02:31:02.943Z",
+  "updated": "2026-11-06T02:29:08.619Z",
   "lessons": [
+    {
+      "id": "yt-bw5tzcoEG88",
+      "level": "B2",
+      "skill": "listening",
+      "title": "How to effectively use visuals in your presentation",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "bw5tzcoEG88"
+      },
+      "minutes": 6,
+      "published": "2026-11-05T16:00:41Z",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Episode 11: Explore the key components of strong visuals, how to effectively use them to bolster your presentation, and mistakes to avoid.\n--\nThis is episode 11 of the animated series, “Public Speaking 101.” Ideas change everything — and since language lets us share our ideas, learning how to use it well gives speakers the power to inspire people and even change how they think. This 11-episode course will teach you how to identify, develop, and share your best ideas, while mastering essential communication skills along the way.\nDirected by Tolga Yıldız, Kozmonot Animation Studio.\nThe TED-Ed St",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt--ukHyqiEH1U",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Could vaccines cure cancer? 6 Minute English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "-ukHyqiEH1U"
+      },
+      "minutes": 7,
+      "published": "2026-11-05T09:55:04Z",
+      "series": "6 Minute English",
+      "feed": "@bbclearningenglish",
+      "desc": "Find a free worksheet, transcript and quiz for this episode here 👉 https://bbc.in/4BHgdjN\nWhen was the last time you had a vaccination, and what was it for? Many of us get vaccinations when we are children or when we go travelling, but did you know that scientists have been developing vaccines that can be personalised to help your body keep itself clear of some specific cancer types? Georgie and Phil discuss this and teach you some new vocabulary.\n00:00 Talking about different types of vaccines\n00:40 Quiz question: According to the World Health Organisation, what is the most common cancer wor",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-uMxqpup-Ej8",
       "level": "B1",
@@ -1421,6 +1471,81 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-Qo6VHK5n_LU",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Taking telephone messages - 53 - English at Work helps you note it down",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "Qo6VHK5n_LU"
+      },
+      "minutes": 10,
+      "published": "2017-07-05T07:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "Denise has left at just the same time as things are getting busy at Tip Top Trading. The team are finding it difficult to cope with one less member of staff. How are they going to manage to deal with all the calls they're getting? Anna's going to have to rely on her telephone message note-taking skills!\nTRANSCRIPT\nTom\nHas anyone seen the stapler?\nAnna\nI can't find any pens.\nTom\nOh, here it is.\nPaul\nWill someone answer that phone?\nNarrator\nHello again and welcome back to English at Work. The offices of Tip Top Trading have become chaotic since Denise left and just at a time when things are gett",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-jekb00wsgHk",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Telling someone what to do - 52 - English at Work shows you the ropes",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "jekb00wsgHk"
+      },
+      "minutes": 10,
+      "published": "2017-06-28T07:00:04Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "It's Denise's last day working at Tip Top Trading. Anna is busy trying to get everyone to sign her leaving card, but Denise is quite worried about the future. Hopefully Anna can help her with some good careers advice!\nTRANSCRIPT\nNarrator\nHello again. It's a difficult day at the offices of Tip Top Trading. The office assistant Denise is losing her job, and today is her last day. Anna is busy with her work and trying to get everyone to sign Denise's leaving card.\nAnna\nPaul, have you signed Denise's leaving card yet?\nPaul\nNo, not yet. Have you got a pen? \"Sorry to see you go. Best foot forward. P",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-RMKoworTFrc",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Conveying your ideas - 51 - English at Work helps you present your thoughts",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "RMKoworTFrc"
+      },
+      "minutes": 10,
+      "published": "2017-06-21T07:00:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "After Denise's sacking, Anna and Tom are worried that they might be next in the firing line! But things are looking up – Paul asks Anna to explain her plastic aubergine idea to the development team. Will she be able to convey her ideas to them clearly?\nTRANSCRIPT\nNarrator\nHello again and welcome to English at Work. It's another day at Tip Top Trading and hopefully a happier one, following Denise's bad news about her job. I wonder if Tom and Anna are about to get the same bad news?\nPaul\nIt's really awful having to let a member of your staff go but that's the situation we're in, I'm afraid.\nTom\n",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
