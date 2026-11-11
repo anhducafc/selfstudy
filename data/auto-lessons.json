@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-10T04:09:08.661Z",
+  "updated": "2026-11-11T01:56:32.236Z",
   "lessons": [
+    {
+      "id": "yt-nBVuemyrMgE",
+      "level": "B2",
+      "skill": "listening",
+      "title": "When did humans start using salt? - Carolyn Beans",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "nBVuemyrMgE"
+      },
+      "minutes": 6,
+      "published": "2026-11-10T16:01:00+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Trace the influence of salt throughout human history, and explore how this essential seasoning shaped our civilizations.\n--\nAs early as the 1st millennium CE, humans began harvesting salt to trade. In ancient civilizations, salt wasn’t just a biological necessity, but an essential tool that allowed them to preserve fish, meats, produce, and dairy. And it was also prized for making food taste better. So, how did this simple mineral change human history? Carolyn Beans traces the influence of this essential seasoning.\nLesson by Carolyn Beans, directed by Ivana Volda.\n-----------------------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-T4QWlHbUCjA",
+      "level": "B1",
+      "skill": "grammar",
+      "title": "Live lesson: Phrasal verbs for food",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "T4QWlHbUCjA"
+      },
+      "minutes": 5,
+      "published": "2026-11-10T12:22:21+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo For another great live lesson. This week, we're  looking at phrasal verbs connected with food, so make sure you're not hungry before you join!",
+      "tasks": [
+        "Xem video, chú ý cấu trúc được giải thích",
+        "Viết 3 câu của riêng bạn dùng cấu trúc đó",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-z5H_dK2b7K0",
       "level": "A2",
@@ -1496,6 +1546,31 @@
         "Xem video, dừng lại ở mỗi từ/cụm từ mới",
         "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
         "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-_48gP7OPnjU",
+      "level": "B1",
+      "skill": "listening",
+      "title": "💗💗💗 The wedding day! - 66 - English at Work is getting hitched",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "YouTube",
+        "videoId": "_48gP7OPnjU"
+      },
+      "minutes": 10,
+      "published": "2017-10-04T07:30:01Z",
+      "series": "Playlist tự chọn",
+      "feed": "Playlist của Tommy",
+      "desc": "The day has finally come – Anna and Tom are getting married! All their friends, work colleagues and business acquaintances are there - but when the ceremony begins, will Anna know what to say?\nWatch more episodes of English at work on this playlist: https://www.youtube.com/playlist?list=PLcetZ6gSk969oGvAI0e4_PgVnlGbm64bp\nTRANSCRIPT\nNarrator\nHello and welcome to English at Work where the day has finally come – it's Anna and Tom's wedding. All their friends, work colleagues and business acquaintances are there… such as Mr Lime…\nMr Lime\nFantastic Anna, fantastic!\nTom\nYuk, Slimey Limey, I never li",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
       ],
       "vocab": [],
       "questions": [],
