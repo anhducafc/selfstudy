@@ -1,6 +1,31 @@
 {
-  "updated": "2026-11-11T01:56:32.236Z",
+  "updated": "2026-11-12T03:01:25.939Z",
   "lessons": [
+    {
+      "id": "yt-mdrSqiyNXO4",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "How experts say you can boost fibre in your diet 🍎🥕| BBC Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "mdrSqiyNXO4"
+      },
+      "minutes": 10,
+      "published": "2026-11-11T12:49:25Z",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Neil and Pippa explain this news story and teach you vocabulary from the headlines. 🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/3UNCCuZ and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\nThings we often throw away, such as the seeds of a pumpkin or squash, or the peel of a kiwi, contain more fibre than the parts most people eat, experts found.\nFibre is an important part of a healthy diet and many of us don’t eat enough. So, eating more parts of fruits and vegetables that often get wasted could be an easy way to stay healthier.\n(P",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-nBVuemyrMgE",
       "level": "B2",
