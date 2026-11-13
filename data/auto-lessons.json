@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-12T03:01:25.939Z",
+  "updated": "2026-11-13T02:39:35.560Z",
   "lessons": [
+    {
+      "id": "yt-aDblEBU41nA",
+      "level": "B2",
+      "skill": "listening",
+      "title": "Why is pepper such a popular spice? - Carolyn Beans",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "aDblEBU41nA"
+      },
+      "minutes": 6,
+      "published": "2026-11-12T16:01:11+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Trace the history of pepper, and explore how this seasoning shaped empires to become one of the world's most popular spices.\n--\nThousands of years ago, people on the Malabar Coast began growing Piper nigrum, the black pepper plant. Early migrants and traders helped move pepper from India to Indonesia and beyond, with Egypt, China, and Rome being some of the earliest adopters. And today, black pepper makes up 20% of the global spice trade. So, what makes the spice so popular? Carolyn Beans traces the seasoning's history.\nLesson by Carolyn Beans, directed by Thomas Volda.\n-----------------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-h-NZcQF7jgI",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Learning from different generations 6 Minute English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "h-NZcQF7jgI"
+      },
+      "minutes": 7,
+      "published": "2026-11-12T10:32:24Z",
+      "series": "6 Minute English",
+      "feed": "@bbclearningenglish",
+      "desc": "Find a free worksheet, transcript and quiz for this episode here 👉 https://bbc.in/4sVoXi1\nWhen you were younger, did you have a special bond with your grandparents? Many of us develop particularly close attachments with older family members, but did you know that this ability for the oldest and youngest of our society to get along in a friendly way is not limited to families? In fact, there are some projects which pair together nurseries and retirement homes, to help reduce feelings of loneliness and improve everybody's general health and happiness. Georgie and Phil discuss this and teach you",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-mdrSqiyNXO4",
       "level": "B2",
