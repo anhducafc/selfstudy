@@ -1,6 +1,31 @@
 {
-  "updated": "2026-11-13T02:39:35.560Z",
+  "updated": "2026-11-17T04:29:11.690Z",
   "lessons": [
+    {
+      "id": "yt-Z6pHAPhiQqM",
+      "level": "A2",
+      "skill": "listening",
+      "title": "🚜🌳 Do you like to relax in the countryside? | Improve your listening with Real Easy English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "Z6pHAPhiQqM"
+      },
+      "minutes": 7,
+      "published": "2026-11-16T10:00:01+00:00",
+      "series": "Real Easy English",
+      "feed": "@bbclearningenglish",
+      "desc": "YOUR TURN: Do you like the countryside? Is it better to live in the city or the countryside? Tell us in the comments👇👇👇\nShare this with a friend who's learning English and help each other! ➡️ 📈\nYou can find ALL the Real Easy English episodes here 👉 https://bbc.in/4cHGL7L\n00:00 Introduction and weekend in the countryside\n00:00:35 What is the countryside?\n00:01:22 What we like about the British countryside\n00:02:54 What's bad about living in the countryside?\n00:04:27 Favourite countryside places in the UK\n00:06:13 Vocabulary recap\n🤩🤩🤩 SUBSCRIBE to our YouTube channel for more English vid",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-aDblEBU41nA",
       "level": "B2",
