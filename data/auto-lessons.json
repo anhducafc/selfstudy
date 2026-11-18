@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-17T04:29:11.690Z",
+  "updated": "2026-11-18T03:43:12.891Z",
   "lessons": [
+    {
+      "id": "yt-cAd1ELoLpj4",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Live lesson: Language to talk about places to live",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "cAd1ELoLpj4"
+      },
+      "minutes": 5,
+      "published": "2026-11-18T01:37:45+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo For another great live lesson. This week, we're  talking about your dream homes and learning lots of vocabulary to describe it. Don't miss it!",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-dkocGur84i8",
+      "level": "B2",
+      "skill": "listening",
+      "title": "The three words that power every device you own - Lane Gunderman",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "dkocGur84i8"
+      },
+      "minutes": 6,
+      "published": "2026-11-17T16:00:59+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Learn more at https://brilliant.org/TedEd\n--\nIn the 1840s, George Boole created a branch of algebra that allowed mathematicians to input logical claims and mathematically determine if they were true or false. And perhaps even more impressive, Boolean algebra achieves this lofty goal with just three operations: AND, OR, and NOT. So, how do these operations work? Lane Gunderman explains the system that underpins almost all modern computers.\nLesson by Lane Gunderman, directed by Igor Ćorić, Artrake Studio.\nThis video made possible in collaboration with Brilliant\nLearn more about how TED-Ed partne",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-Z6pHAPhiQqM",
       "level": "A2",
