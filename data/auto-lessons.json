@@ -1,6 +1,31 @@
 {
-  "updated": "2026-11-18T03:43:12.891Z",
+  "updated": "2026-11-19T03:29:27.191Z",
   "lessons": [
+    {
+      "id": "yt-0sC1t5Enq78",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "South Korean student cheats using smart glasses and AI | Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "0sC1t5Enq78"
+      },
+      "minutes": 10,
+      "published": "2026-11-18T14:13:05+00:00",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Phil and Becca explain this news story and teach you vocabulary from the headlines. 🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/4Cb3TbH and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\nSouth Korean student Wan Han-Seok admitted this week that he had used smart glasses and AI to cheat in a university entrance exam. His smart glasses took pictures of the questions, which were then sent to an AI programme, which could send back the correct answer.\n(Photo via Getty Images)\n00:00 Today’s story: Exam top-scorer confesses to cheating ",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-cAd1ELoLpj4",
       "level": "B1",
