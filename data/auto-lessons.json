@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-19T03:29:27.191Z",
+  "updated": "2026-11-20T03:17:21.773Z",
   "lessons": [
+    {
+      "id": "yt-fqL9dt6QHWg",
+      "level": "B2",
+      "skill": "listening",
+      "title": "5 times scientists experimented on themselves - Shannon Odell",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "fqL9dt6QHWg"
+      },
+      "minutes": 6,
+      "published": "2026-11-19T15:59:54+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Dig into the bold self-experimentation of 5 scientists, and how their discoveries led to scientific breakthroughs in medicine.\n--\nThe history of science is filled with stories of self-experimentation. While some cases have resulted in horrific infections, accidental psychedelic trips, and even deaths, others have led to great leaps in human understanding. And a few stories stand apart, as their potentially dangerous acts led to Nobel Prizes. Shannon Odell details the bold experiments and breakthroughs of five scientists.\nLesson by Shannon Odell, directed by Caitlin McCarthy.\nThis video was mad",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-oHxs1dCUXlI",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Is our health being affected by microplastics? 6 Minute English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "oHxs1dCUXlI"
+      },
+      "minutes": 7,
+      "published": "2026-11-19T10:34:56+00:00",
+      "series": "6 Minute English",
+      "feed": "@bbclearningenglish",
+      "desc": "Find a free worksheet, transcript and quiz for this episode here 👉https://bbc.in/4tcviGi\n🤨How much plastic do you use on a daily basis? And how much of it is used to package or prepare food?\n👩🏻‍🔬 Recently, scientists are becoming increasingly concerned that microplastics, tiny bits of plastic invisible to the naked eye, are entering our bodies through these food sources... but it is unclear exactly what the long-term health effects will be.\n👩‍🏫 Becca and Phil discuss this and teach you some new vocabulary.\n00:00 Are microplastics harming us?\n00:38 The quiz: how much plastic do we really",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-0sC1t5Enq78",
       "level": "B2",
