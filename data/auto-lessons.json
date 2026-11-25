@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-24T06:04:12.103Z",
+  "updated": "2026-11-25T04:53:48.738Z",
   "lessons": [
+    {
+      "id": "yt--ie7aKOKAco",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Live lesson: Talking about money, bargains, shopping and more",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "-ie7aKOKAco"
+      },
+      "minutes": 5,
+      "published": "2026-11-25T02:26:12+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join Jo and Neil for a special live lesson to get ready for #BlackFriday.  They'll be looking at the language you need to talk about money, shopping, bargains and more. Don't miss it!",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-1IVlILdETAw",
+      "level": "B2",
+      "skill": "listening",
+      "title": "What happens if you accidentally eat moldy food? - Josephine Wee",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "TED-Ed",
+        "videoId": "1IVlILdETAw"
+      },
+      "minutes": 6,
+      "published": "2026-11-24T16:01:11+00:00",
+      "series": "TED-Ed",
+      "feed": "@TEDEd",
+      "desc": "Explore how mold spores form and grow, the difference between harmful and helpful molds, and which are dangerous to eat.\n--\nYou open your fridge to grab a snack and recoil at the scene before you. Strawberries coated in fuzz, green islands floating in your yogurt, and bread growing a patchy, white beard. But as your stomach growls, a question pops into your head: surely you could eat around these masses of mold, right? Josephine Wee explores how these common spores form and what happens if you eat moldy food.\nLesson by Josephine Wee, directed by Denys Spolitak.\n--------------------------------",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-60DxmhYEyHI",
       "level": "A2",
