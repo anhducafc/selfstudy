@@ -72,6 +72,21 @@
     const customIds = new Set();
     const custom = [...(R.custom || []), ...(L.custom || [])].filter((c) => c && c.id && !customIds.has(c.id) && customIds.add(c.id));
     const gl = L.game || {}, gr = R.game || {};
+    const pl = L.plan || {}, pr = R.plan || {};
+    const earliest = (a = {}, b = {}) => {           // { id: ISO } — giữ mốc sớm nhất của mỗi id
+      const o = { ...b };
+      for (const [k, d] of Object.entries(a)) o[k] = minDate(o[k], d);
+      return o;
+    };
+    const exams = {};
+    for (const id of union(Object.keys(pl.exams || {}), Object.keys(pr.exams || {}))) {
+      const a = (pl.exams || {})[id] || {}, b = (pr.exams || {})[id] || {};
+      const latest = (a.lastAt || "") >= (b.lastAt || "") ? a : b;
+      exams[id] = { ...b, ...a, attempts: maxNum(a.attempts, b.attempts), best: maxNum(a.best, b.best),
+        total: latest.total || a.total || b.total, last: latest.last, lastAt: latest.lastAt,
+        passedAt: [a.passedAt, b.passedAt].filter(Boolean).sort()[0] };
+      if (!exams[id].passedAt) delete exams[id].passedAt;
+    }
 
     return {
       ...R, ...L,
@@ -88,6 +103,13 @@
       xp: { total: Math.max(L.xp?.total || 0, R.xp?.total || 0, sumDays), byDay, secRemainder: L.xp?.secRemainder || 0 },
       badges,
       cards: mergeCards(L.cards, R.cards),
+      plan: {
+        start: pl.start || pr.start || null,
+        pauses: union(pl.pauses, pr.pauses).sort(),
+        sessions: earliest(pl.sessions, pr.sessions),
+        checks: earliest(pl.checks, pr.checks),
+        exams
+      },
       game: {
         ...gr, ...gl,
         freezes: maxNum(gl.freezes, gr.freezes),

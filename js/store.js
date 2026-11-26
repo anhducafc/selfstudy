@@ -14,7 +14,9 @@
     perMinute: 1,          // mỗi phút học
     goalReached: 20,       // đạt mục tiêu phút/ngày
     cardReview: 2,         // mỗi thẻ flashcard đã ôn
-    gameDailyCap: 60       // trần XP từ mini game mỗi ngày
+    gameDailyCap: 60,      // trần XP từ mini game mỗi ngày
+    planSession: 20,       // đánh dấu xong 1 buổi trong kế hoạch học
+    examPassed: 200        // lần đầu đạt bài thi cuối kỳ của một giai đoạn
   };
   /* Khoảng cách ôn (ngày) theo hộp Leitner 1..5 */
   const BOX_DAYS = [0, 1, 2, 4, 9, 21];
@@ -33,7 +35,9 @@
     game: {
       freezes: 0, frozenDays: [], freezeAwardedAt: [], lastFreezeCheck: null,
       goalBonusDays: [], gameXpByDay: {}, best: {}, plays: 0, cardReviews: 0, dailyDone: 0
-    }
+    },
+    // Kế hoạch học theo giai đoạn (chỉ dùng khi ngôn ngữ có window.STUDY_PLAN)
+    plan: { start: null, pauses: [], sessions: {}, exams: {}, checks: {} }
   });
 
   let state = load();
@@ -50,6 +54,7 @@
         settings: { ...base.settings, ...(s.settings || {}) },
         xp: { ...base.xp, ...(s.xp || {}) },
         game: { ...base.game, ...(s.game || {}) },
+        plan: { ...base.plan, ...(s.plan || {}) },
         lessons: s.lessons || {}, days: s.days || {}, custom: s.custom || [],
         badges: s.badges || {}, cards: s.cards || {}
       };
@@ -177,6 +182,43 @@
     },
 
     saveNotes(id, text) { lesson(id).notes = text; save(); },
+
+    /* ---------------- Kế hoạch học (giai đoạn, buổi học, thi cuối kỳ) ---------------- */
+    plan() { return state.plan; },
+    setPlanStart(key) { state.plan.start = key; save(); },
+    togglePause(weekKey) {
+      const p = state.plan.pauses;
+      const i = p.indexOf(weekKey);
+      if (i >= 0) p.splice(i, 1); else p.push(weekKey);
+      p.sort();
+      save();
+    },
+    /** Đánh dấu một buổi học trong kế hoạch (id ổn định: "<giai đoạn>-w<tuần>-<buổi>") */
+    setSession(id, done) {
+      const s = state.plan.sessions;
+      if (done) {
+        if (!s[id]) { s[id] = new Date().toISOString(); markActive(); gainXP(XP.planSession, "Xong một buổi học 📅"); }
+      } else delete s[id];
+      save();
+    },
+    setCheck(id, on) {
+      if (on) state.plan.checks[id] = state.plan.checks[id] || new Date().toISOString();
+      else delete state.plan.checks[id];
+      save();
+    },
+    /** Lưu kết quả thi cuối kỳ; lần đầu đạt được +XP */
+    saveExam(phaseId, score, total, passed) {
+      const e = state.plan.exams[phaseId] || (state.plan.exams[phaseId] = { attempts: 0, best: 0, total });
+      e.attempts = (e.attempts || 0) + 1;
+      e.total = total;
+      e.best = Math.max(e.best || 0, score);
+      e.last = score;
+      e.lastAt = new Date().toISOString();
+      markActive();
+      if (passed && !e.passedAt) { e.passedAt = e.lastAt; gainXP(XP.examPassed, "Đạt bài thi cuối kỳ 🎓"); }
+      save();
+      return e;
+    },
 
     addCustom(l) { state.custom.push(l); save(); },
     removeCustom(id) {

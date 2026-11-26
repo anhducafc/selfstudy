@@ -208,6 +208,7 @@ Cùng một repo, cùng một lần deploy: tiếng Anh ở `/`, tiếng Trung �
 - Quiz/flashcard/mini game giống tiếng Anh; chép chính tả gõ **chữ Hán hoặc pinyin**; câu điền từ chấp nhận cả pinyin không dấu.
 - **Một tài khoản, tiến trình riêng từng ngôn ngữ** (XP, chuỗi ngày, flashcard tách biệt). Server tự tạo bảng `progress_lang` lần đầu — không cần chạy thêm SQL (file `migrations/0002_progress_lang.sql` chỉ để tham khảo).
 - **Bài tự động**: workflow *Daily lessons* chạy thêm bước 🇨🇳 với `scripts/feeds-zh.json` (3 kênh + 5 playlist khoá HSK của Mandarin Corner) → `zh/data/auto-lessons.json`; Claude soạn thêm pinyin + nghĩa câu ví dụ.
+- **Kế hoạch học từ số 0** (`#/plan`, menu 📅 Kế hoạch): 4 giai đoạn — Pinyin & chữ Hán (4 tuần, cấp mới `PY` gồm 14 bài) → HSK 1–2 (12 tuần) → HSK 3–4 (24 tuần) → 12 chủ đề giao tiếp nâng cao (24 tuần). Lịch Thứ 2 – 4 – 6, 90 phút/buổi, tự xếp ngày từ ngày bắt đầu; đánh dấu từng buổi (+20 XP), nút “Nghỉ tuần này” lùi toàn bộ lịch 1 tuần. Cuối mỗi giai đoạn có **bài thi** (`#/exam/p1…p4`: câu nghe đọc bằng giọng máy, ngữ pháp, viết chữ Hán/pinyin + câu từ vựng rút ngẫu nhiên) và phần tự đánh giá nói/viết; đạt lần đầu +200 XP và tự nâng trình độ. Nội dung kế hoạch ở `zh/js/plan-data.js`, logic dùng chung ở `js/plan.js` (ngôn ngữ nào có `window.STUDY_PLAN` thì bật). Mốc từ vựng theo HSK 3.0.
 - **Telegram**: tin buổi sáng có thêm Bài của ngày tiếng Trung. Variable `TELEGRAM_ZH_LEVELS` (mặc định `HSK1,HSK2`; `none` = tắt).
 
 **Triển khai:** chỉ cần upload các file mới/đã sửa lên repo (nhớ thư mục `zh/`, `js/lang-base.js`, `scripts/feeds-zh.json`). Cloudflare tự build — không phải đổi cài đặt nào. Đăng nhập Google từ `/zh/` dùng lại redirect URI cũ và tự quay về trang tiếng Trung.
@@ -234,6 +235,8 @@ js/store.js                   localStorage: tiến độ, XP, flashcard, streak 
 js/game.js                    huy hiệu, pháo giấy, popup
 js/app.js                     router, trang chủ, lộ trình, bài học, dashboard
 js/review.js                  flashcard + 3 mini game
+js/plan.js                    kế hoạch học theo giai đoạn + thi cuối kỳ (bật khi có window.STUDY_PLAN)
+zh/js/plan-data.js            ⭐ nội dung kế hoạch 4 giai đoạn tiếng Trung
 data/auto-lessons.json        bài tự động (do workflow ghi)
 scripts/feeds.json            danh sách kênh + luật gắn trình độ
 scripts/fetch-feeds.mjs       Phần 2: RSS → bài mới

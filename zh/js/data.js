@@ -10,18 +10,20 @@
 (function () {
   const yt = (provider, videoId) => ({ type: "youtube", provider, videoId });
   const EC = "Everyday Chinese", MC = "Mandarin Corner", SS = "ShuoshuoChinese 说说中文";
+  const CFU = "ChineseFor.Us", GE = "GoEast Mandarin";
   const v = (w, py, vi, ex, exPy, exVi) => ({ w, py, vi, ex, exPy, exVi });
   const T_VIDEO = ["Xem lần 1 không phụ đề, đoán ý chính", "Xem lần 2 bật phụ đề (CC), dừng lại nhại theo từng câu", "Học từ vựng bên dưới, bấm 🔊 nghe rồi đọc theo", "Làm quiz"];
   const T_COURSE = ["Video dài — mỗi ngày xem 15–20 phút rồi bấm +phút để ghi thời gian", "Đọc to từng câu ví dụ theo giáo viên", "Ôn bộ từ tiêu biểu bên dưới bằng flashcard"];
   const T_GRAMMAR = ["Xem video, ghi lại công thức vào ô Ghi chú", "Tự đặt 3 câu với cấu trúc vừa học", "Làm quiz — câu sai thì xem lại đoạn giải thích"];
 
   window.LEVELS = [
-    { id: "HSK1", name: "入门 Rùmén", vi: "Nhập môn", desc: "Chào hỏi, giới thiệu bản thân, gia đình, số đếm, giờ giấc — khoảng 150 từ." },
-    { id: "HSK2", name: "初级 Chūjí", vi: "Sơ cấp", desc: "Mua sắm, xin WeChat, nói “có/được” tự nhiên; ngữ pháp 了, 过, 比 — khoảng 300 từ." },
-    { id: "HSK3", name: "进阶 Jìnjiē", vi: "Tiền trung cấp", desc: "Kể chuyện, hỏi han hằng ngày như người bản xứ; bổ ngữ kết quả, vị trí của 了 — khoảng 600 từ." },
-    { id: "HSK4", name: "中级 Zhōngjí", vi: "Trung cấp", desc: "Nói về văn hoá, cảm nhận; câu phức 即使…也, 不仅…而且, các cách nói “nếu” — khoảng 1.200 từ." },
-    { id: "HSK5", name: "中高级 Zhōnggāojí", vi: "Trung cao cấp", desc: "Nghe phỏng vấn, chuyện kể, phim; trình bày quan điểm mạch lạc — khoảng 2.500 từ." },
-    { id: "HSK6", name: "高级 Gāojí", vi: "Cao cấp", desc: "Phỏng vấn đường phố tốc độ tự nhiên, tiếng lóng mạng, thành ngữ — 5.000+ từ." }
+    { id: "PY", name: "拼音 Pīnyīn", vi: "Pinyin & chữ Hán", desc: "Bắt đầu từ số 0: 4 thanh điệu, thanh mẫu, vận mẫu, biến điệu; nét chữ, bút thuận, bộ thủ — nền móng trước HSK 1." },
+    { id: "HSK1", name: "入门 Rùmén", vi: "Nhập môn", desc: "Chào hỏi, giới thiệu bản thân, gia đình, số đếm, giờ giấc — 300 từ (HSK 3.0)." },
+    { id: "HSK2", name: "初级 Chūjí", vi: "Sơ cấp", desc: "Mua sắm, xin WeChat, nói “có/được” tự nhiên; ngữ pháp 了, 过, 比 — 500 từ (HSK 3.0)." },
+    { id: "HSK3", name: "进阶 Jìnjiē", vi: "Tiền trung cấp", desc: "Kể chuyện, hỏi han hằng ngày như người bản xứ; bổ ngữ kết quả, vị trí của 了 — 1.000 từ (HSK 3.0)." },
+    { id: "HSK4", name: "中级 Zhōngjí", vi: "Trung cấp", desc: "Nói về văn hoá, cảm nhận; câu phức 即使…也, 不仅…而且, các cách nói “nếu” — 2.000 từ (HSK 3.0)." },
+    { id: "HSK5", name: "中高级 Zhōnggāojí", vi: "Trung cao cấp", desc: "Nghe phỏng vấn, chuyện kể, phim; trình bày quan điểm mạch lạc — 3.600 từ (HSK 3.0)." },
+    { id: "HSK6", name: "高级 Gāojí", vi: "Cao cấp", desc: "Phỏng vấn đường phố tốc độ tự nhiên, tiếng lóng mạng, thành ngữ — 5.400 từ (HSK 3.0)." }
   ];
 
   window.SKILLS = {
@@ -31,6 +33,238 @@
   };
 
   window.LESSONS = [
+    /* ============================== PINYIN & CHỮ HÁN (Giai đoạn 1) ==============================
+       Video ID kiểm tra bằng oEmbed ngày 26/11/2026 (đúng tiêu đề & kênh). Từ vựng/câu ví dụ tự soạn. */
+    {
+      id: "py-overview", level: "PY", skill: "listening",
+      title: "Learn All Chinese Alphabet / Pinyin for Beginners", titleVi: "Tổng quan pinyin & 4 thanh điệu",
+      source: yt(EC, "Vx_o25zVRBo"), minutes: 15,
+      goal: "Hiểu một âm tiết = thanh mẫu + vận mẫu + thanh điệu; nghe và đọc được 4 thanh + thanh nhẹ.",
+      tasks: ["Xem video, dừng lại đọc theo từng âm", "Đọc to mā – má – mǎ – mà – ma 10 lần, vẽ đường nét thanh điệu bằng tay", "Học 6 từ bên dưới, bấm 🔊 nghe rồi đọc theo", "Làm quiz"],
+      vocab: [
+        v("妈", "mā", "mẹ (thanh 1: cao, bằng)", "妈妈骑马。", "Māma qí mǎ.", "Mẹ cưỡi ngựa."),
+        v("麻", "má", "tê (thanh 2: đi lên)", "我的脚麻了。", "Wǒ de jiǎo má le.", "Chân tôi tê rồi."),
+        v("马", "mǎ", "ngựa (thanh 3: xuống rồi lên)", "马很慢。", "Mǎ hěn màn.", "Con ngựa rất chậm."),
+        v("骂", "mà", "mắng (thanh 4: đi xuống)", "妈妈骂马。", "Māma mà mǎ.", "Mẹ mắng ngựa."),
+        v("吗", "ma", "(trợ từ hỏi, thanh nhẹ)", "你好吗？", "Nǐ hǎo ma?", "Bạn khoẻ không?"),
+        v("八", "bā", "tám", "我八点上班。", "Wǒ bā diǎn shàngbān.", "Tôi đi làm lúc 8 giờ.")
+      ],
+      questions: [
+        { q: "Thanh 3 (vd: mǎ) có đường nét thế nào?", options: ["Xuống thấp rồi lên", "Cao và bằng", "Đi lên", "Đi xuống mạnh"], answer: 0, explain: "Thanh 3 hạ thấp rồi hơi lên (khi nói nhanh thường chỉ hạ thấp)." },
+        { q: "Dấu thanh trong pinyin “mà” là thanh mấy?", options: ["Thanh 4", "Thanh 1", "Thanh 2", "Thanh 3"], answer: 0, explain: "Dấu huyền ngược ` = thanh 4, đọc dứt khoát từ cao xuống thấp." }
+      ]
+    },
+    {
+      id: "py-finals", level: "PY", skill: "listening",
+      title: "Pinyin Lesson 1. Simple Finals a o e i u ü", titleVi: "6 vận mẫu đơn: a o e i u ü",
+      source: yt(CFU, "zgTmdJXNfNY"), minutes: 10,
+      goal: "Phát âm chuẩn 6 vận mẫu đơn, đặc biệt e (không giống “e” tiếng Việt) và ü (môi tròn như “uy”).",
+      tasks: ["Xem video, nhìn khẩu hình và đọc theo", "Ghi âm 6 vận mẫu × 4 thanh, nghe lại so với video", "Luyện ü: giữ lưỡi như “i”, tròn môi như “u”", "Làm quiz"],
+      vocab: [
+        v("一", "yī", "một", "我有一个哥哥。", "Wǒ yǒu yí ge gēge.", "Tôi có một anh trai."),
+        v("五", "wǔ", "năm (số 5)", "他五岁。", "Tā wǔ suì.", "Em ấy 5 tuổi."),
+        v("鱼", "yú", "cá", "我喜欢吃鱼。", "Wǒ xǐhuan chī yú.", "Tôi thích ăn cá."),
+        v("饿", "è", "đói", "我饿了。", "Wǒ è le.", "Tôi đói rồi."),
+        v("我", "wǒ", "tôi", "我是越南人。", "Wǒ shì Yuènán rén.", "Tôi là người Việt Nam."),
+        v("阿姨", "āyí", "cô, dì", "阿姨好！", "Āyí hǎo!", "Cháu chào cô!")
+      ],
+      questions: [
+        { q: "Sau j, q, x, chữ ü được viết thế nào?", options: ["Bỏ hai chấm: ju, qu, xu", "Giữ hai chấm: jü", "Viết thành jv", "Viết thành jiu"], answer: 0, explain: "j, q, x không bao giờ đi với u thường, nên ü bỏ hai chấm nhưng vẫn đọc là ü." }
+      ]
+    },
+    {
+      id: "py-initials1", level: "PY", skill: "listening",
+      title: "Pinyin Lesson 2 - Initials b p m f", titleVi: "Thanh mẫu b p m f (và nhóm d t n l, g k h)",
+      source: yt(CFU, "P73V1Qh9K10"), minutes: 10,
+      goal: "Phân biệt âm bật hơi (p, t, k) và không bật hơi (b, d, g) — lỗi người Việt hay gặp nhất.",
+      tasks: ["Xem video b p m f", "Tự luyện nhóm d t n l, g k h: đặt tờ giấy trước miệng, âm bật hơi làm giấy rung", "Đọc cặp: bā–pā, dā–tā, gē–kē", "Làm quiz"],
+      vocab: [
+        v("爸爸", "bàba", "bố", "爸爸喝茶。", "Bàba hē chá.", "Bố uống trà."),
+        v("朋友", "péngyou", "bạn bè", "他是我的朋友。", "Tā shì wǒ de péngyou.", "Anh ấy là bạn tôi."),
+        v("米饭", "mǐfàn", "cơm", "我吃米饭。", "Wǒ chī mǐfàn.", "Tôi ăn cơm."),
+        v("飞机", "fēijī", "máy bay", "我坐飞机去北京。", "Wǒ zuò fēijī qù Běijīng.", "Tôi đi máy bay tới Bắc Kinh."),
+        v("喝", "hē", "uống", "你喝咖啡吗？", "Nǐ hē kāfēi ma?", "Bạn uống cà phê không?"),
+        v("可以", "kěyǐ", "có thể, được", "我可以进来吗？", "Wǒ kěyǐ jìnlai ma?", "Tôi vào được không?")
+      ],
+      questions: [
+        { q: "b và p khác nhau ở điểm nào?", options: ["p bật hơi mạnh, b không bật hơi", "b là thanh 1, p là thanh 2", "p là âm câm", "Không khác nhau"], answer: 0, explain: "Cặp b/p, d/t, g/k chỉ khác nhau ở luồng hơi: p, t, k bật hơi." }
+      ]
+    },
+    {
+      id: "py-jqx", level: "PY", skill: "listening",
+      title: "How to pronounce \"j q x\" in Chinese", titleVi: "Thanh mẫu j q x",
+      source: yt(GE, "pnSHv2EUD4E"), minutes: 8,
+      goal: "Đọc đúng j, q, x (mặt lưỡi áp vào ngạc cứng, môi dẹt) và không nhầm với zh, ch, sh.",
+      tasks: ["Xem video và đọc theo", "Đọc chuỗi: jī qī xī – jiā qiā xiā – jù qù xù", "Học 6 từ bên dưới", "Làm quiz"],
+      vocab: [
+        v("家", "jiā", "nhà", "我家很小。", "Wǒ jiā hěn xiǎo.", "Nhà tôi rất nhỏ."),
+        v("去", "qù", "đi", "我去学校。", "Wǒ qù xuéxiào.", "Tôi đến trường."),
+        v("谢谢", "xièxie", "cảm ơn", "谢谢你！", "Xièxie nǐ!", "Cảm ơn bạn!"),
+        v("喜欢", "xǐhuan", "thích", "我喜欢喝茶。", "Wǒ xǐhuan hē chá.", "Tôi thích uống trà."),
+        v("七", "qī", "bảy", "今天七号。", "Jīntiān qī hào.", "Hôm nay mùng 7."),
+        v("九", "jiǔ", "chín", "我九点睡觉。", "Wǒ jiǔ diǎn shuìjiào.", "Tôi đi ngủ lúc 9 giờ.")
+      ],
+      questions: [
+        { q: "去 viết là qù. Nguyên âm thật sự là gì?", options: ["ü (bị lược hai chấm)", "u như “u” tiếng Việt", "o", "i"], answer: 0, explain: "q + ü → qu, nhưng đọc tròn môi như “uy” ngắn." }
+      ]
+    },
+    {
+      id: "py-zhchshr", level: "PY", skill: "listening",
+      title: "How to pronounce \"Z C S Zh Ch Sh R\" in Chinese?", titleVi: "z c s và âm uốn lưỡi zh ch sh r",
+      source: yt(GE, "DDQbfDIG1mg"), minutes: 10,
+      goal: "Phân biệt âm đầu lưỡi thẳng (z c s) và uốn lưỡi (zh ch sh r).",
+      tasks: ["Xem video, chú ý vị trí đầu lưỡi", "Đọc câu luyện: 四是四，十是十 (sì shì sì, shí shì shí) 10 lần, nhanh dần", "Ghi âm và so với video", "Làm quiz"],
+      vocab: [
+        v("中国", "Zhōngguó", "Trung Quốc", "我想去中国。", "Wǒ xiǎng qù Zhōngguó.", "Tôi muốn đi Trung Quốc."),
+        v("吃", "chī", "ăn", "你吃饭了吗？", "Nǐ chī fàn le ma?", "Bạn ăn cơm chưa?"),
+        v("是", "shì", "là", "我是学生。", "Wǒ shì xuésheng.", "Tôi là học sinh."),
+        v("人", "rén", "người", "他是越南人。", "Tā shì Yuènán rén.", "Anh ấy là người Việt Nam."),
+        v("四", "sì", "bốn", "四是四，十是十。", "Sì shì sì, shí shì shí.", "Bốn là bốn, mười là mười."),
+        v("早", "zǎo", "sớm; chào buổi sáng", "早！你今天很早。", "Zǎo! Nǐ jīntiān hěn zǎo.", "Chào buổi sáng! Hôm nay bạn đến sớm thế.")
+      ],
+      questions: [
+        { q: "四 (sì) và 是 (shì) khác nhau thế nào?", options: ["s đầu lưỡi thẳng, sh uốn lưỡi", "Chỉ khác thanh điệu", "sì uốn lưỡi, shì không", "Khác ở vận mẫu"], answer: 0, explain: "Cả hai đều thanh 4; khác ở đầu lưỡi: s thẳng (sau răng), sh cong lên ngạc." }
+      ]
+    },
+    {
+      id: "py-compound", level: "PY", skill: "listening",
+      title: "Chinese finals \"ai, ang, an, ao, ou, ong\"", titleVi: "Vận mẫu kép & vận mẫu mũi: ai ao ou an ang ong",
+      source: yt("Global Chinese Learning Platform", "g3OTIhZVtGo"), minutes: 12,
+      goal: "Đọc đúng vận mẫu kép và phân biệt -n (an, en, in) với -ng (ang, eng, ing, ong).",
+      tasks: ["Xem video và đọc theo", "Tự luyện thêm: ei, ia, ie, iao, iu, ua, uo, ui, en, in, eng, ing (xem bảng pinyin)", "Đọc cặp: fàn–fàng, mén–méng, xīn–xīng", "Làm quiz"],
+      vocab: [
+        v("爱", "ài", "yêu", "我爱我的家。", "Wǒ ài wǒ de jiā.", "Tôi yêu gia đình mình."),
+        v("忙", "máng", "bận", "我今天很忙。", "Wǒ jīntiān hěn máng.", "Hôm nay tôi rất bận."),
+        v("看", "kàn", "xem, nhìn", "我看电视。", "Wǒ kàn diànshì.", "Tôi xem tivi."),
+        v("好", "hǎo", "tốt, hay", "这个很好。", "Zhège hěn hǎo.", "Cái này rất tốt."),
+        v("走", "zǒu", "đi (bộ), rời đi", "我们走吧。", "Wǒmen zǒu ba.", "Mình đi thôi."),
+        v("红", "hóng", "đỏ", "我喜欢红色。", "Wǒ xǐhuan hóngsè.", "Tôi thích màu đỏ.")
+      ],
+      questions: [
+        { q: "an và ang khác nhau thế nào?", options: ["-n đầu lưỡi chạm lợi trên; -ng dùng cuống lưỡi, vang mũi", "an thanh 1, ang thanh 2", "Không khác nhau", "ang không có âm mũi"], answer: 0, explain: "Giống tiếng Việt “an” và “ang”, nhưng người Trung giữ âm mũi rõ hơn." }
+      ]
+    },
+    {
+      id: "py-sandhi", level: "PY", skill: "listening",
+      title: "Essential Chinese Tone Change Rules", titleVi: "Biến điệu: 3+3, 不 và 一",
+      source: yt("Mandarin 4 All", "xH-4sfIBgxk"), minutes: 10,
+      goal: "Nắm 3 quy tắc biến điệu dùng hằng ngày: hai thanh 3 liền nhau, 不 trước thanh 4, 一 trước các thanh.",
+      tasks: ["Xem video, chép 3 quy tắc vào ô Ghi chú", "Đọc to: 你好, 很好, 不是, 不对, 一起, 一样, 一个", "Làm quiz — câu sai thì xem lại đoạn tương ứng"],
+      vocab: [
+        v("你好", "nǐ hǎo", "xin chào (đọc thực tế: ní hǎo)", "你好，我叫小明。", "Nǐ hǎo, wǒ jiào Xiǎomíng.", "Xin chào, tôi tên là Tiểu Minh."),
+        v("很好", "hěn hǎo", "rất tốt (đọc: hén hǎo)", "我很好，谢谢。", "Wǒ hěn hǎo, xièxie.", "Tôi khoẻ, cảm ơn."),
+        v("不是", "bú shì", "không phải (不 đọc bú trước thanh 4)", "我不是老师。", "Wǒ bú shì lǎoshī.", "Tôi không phải giáo viên."),
+        v("不好", "bù hǎo", "không tốt (不 giữ thanh 4)", "今天天气不好。", "Jīntiān tiānqì bù hǎo.", "Hôm nay thời tiết không đẹp."),
+        v("一起", "yìqǐ", "cùng nhau (一 đọc yì trước thanh 3)", "我们一起去吧。", "Wǒmen yìqǐ qù ba.", "Chúng mình cùng đi nhé."),
+        v("一样", "yíyàng", "giống nhau (一 đọc yí trước thanh 4)", "我们的手机一样。", "Wǒmen de shǒujī yíyàng.", "Điện thoại của chúng ta giống nhau.")
+      ],
+      questions: [
+        { q: "Hai thanh 3 đi liền nhau (你好 nǐ hǎo) thì đọc thế nào?", options: ["Chữ đầu đọc thành thanh 2: ní hǎo", "Chữ sau thành thanh 2", "Cả hai thành thanh 1", "Giữ nguyên hai thanh 3"], answer: 0, explain: "3 + 3 → 2 + 3. Pinyin vẫn viết nǐ hǎo." },
+        { q: "不 đứng trước thanh 4 (vd 不是) đọc là:", options: ["bú", "bù", "bū", "bǔ"], answer: 0, explain: "不 + thanh 4 → bú. Trước thanh 1, 2, 3 vẫn là bù." }
+      ]
+    },
+    {
+      id: "py-syllables", level: "PY", skill: "listening",
+      title: "All 400+ Pinyin Syllables in 20 minutes!", titleVi: "Luyện đọc toàn bộ hơn 400 âm tiết",
+      source: yt(CFU, "HPW2dWL0Miw"), minutes: 20,
+      goal: "Đọc trơn mọi âm tiết theo từng nhóm thanh mẫu — bài ôn tổng trước khi thi giai đoạn 1.",
+      tasks: ["Chia 2 lần: 10 phút đầu (b → h), 10 phút sau (j → w)", "Đọc to cùng video, đánh dấu những âm còn ngượng vào ô Ghi chú", "Ôn lại các âm đã đánh dấu bằng bảng pinyin"],
+      vocab: [
+        v("二", "èr", "hai", "今天二号。", "Jīntiān èr hào.", "Hôm nay mùng 2."),
+        v("三", "sān", "ba", "我家有三口人。", "Wǒ jiā yǒu sān kǒu rén.", "Nhà tôi có ba người."),
+        v("六", "liù", "sáu", "现在六点。", "Xiànzài liù diǎn.", "Bây giờ là 6 giờ."),
+        v("十", "shí", "mười", "我十点睡觉。", "Wǒ shí diǎn shuìjiào.", "Tôi đi ngủ lúc 10 giờ."),
+        v("零", "líng", "số không", "今天零下五度。", "Jīntiān língxià wǔ dù.", "Hôm nay âm 5 độ."),
+        v("几", "jǐ", "mấy", "你家有几口人？", "Nǐ jiā yǒu jǐ kǒu rén?", "Nhà bạn có mấy người?")
+      ]
+    },
+    {
+      id: "py-review", level: "PY", skill: "listening",
+      title: "All Chinese Pronunciation Demonstration (Pinyin Syllables)", titleVi: "Nghe mẫu toàn bộ âm tiết có thanh điệu",
+      source: yt(EC, "o4y058pUh1M"), minutes: 15,
+      goal: "Nghe – nhại toàn bộ âm tiết có thanh điệu; tự kiểm tra tai nghe trước bài thi.",
+      tasks: ["Tắt tiếng phụ đề, nghe 1 âm rồi tạm dừng đoán thanh điệu", "Bật lại để kiểm tra; ghi số câu đoán đúng vào ô Ghi chú", "Mục tiêu: đúng ≥ 8/10"]
+    },
+    {
+      id: "py-strokes", level: "PY", skill: "vocab",
+      title: "29 Basic Chinese Strokes & Stroke Order", titleVi: "Các nét cơ bản của chữ Hán",
+      source: yt("ChineseClass365 中文加油站", "nmrNwK-zHNI"), minutes: 15,
+      goal: "Biết tên và cách viết các nét cơ bản (ngang, sổ, phẩy, mác, chấm, hất, móc, gập).",
+      tasks: ["Xem video, viết theo từng nét vào vở ô vuông (田字格/米字格)", "Viết 6 chữ bên dưới, mỗi chữ 1 dòng", "Làm quiz"],
+      vocab: [
+        v("人", "rén", "người", "这里人很多。", "Zhèlǐ rén hěn duō.", "Ở đây đông người."),
+        v("大", "dà", "to, lớn", "这个苹果很大。", "Zhège píngguǒ hěn dà.", "Quả táo này rất to."),
+        v("小", "xiǎo", "nhỏ", "我的房间很小。", "Wǒ de fángjiān hěn xiǎo.", "Phòng tôi rất nhỏ."),
+        v("口", "kǒu", "miệng; (lượng từ người trong nhà)", "我家有四口人。", "Wǒ jiā yǒu sì kǒu rén.", "Nhà tôi có bốn người."),
+        v("山", "shān", "núi", "我们去爬山。", "Wǒmen qù pá shān.", "Chúng tôi đi leo núi."),
+        v("中", "zhōng", "giữa", "中文很有意思。", "Zhōngwén hěn yǒu yìsi.", "Tiếng Trung rất thú vị.")
+      ],
+      questions: [
+        { q: "Chữ 口 viết mấy nét?", options: ["3 nét", "2 nét", "4 nét", "5 nét"], answer: 0, explain: "口 = sổ, ngang gập, ngang đóng đáy." }
+      ]
+    },
+    {
+      id: "py-stroke-order", level: "PY", skill: "vocab",
+      title: "Chinese character stroke order rules", titleVi: "Quy tắc bút thuận (thứ tự viết nét)",
+      source: yt("Understanding Chinese Characters", "8MCnjfws0XQ"), minutes: 10,
+      goal: "Thuộc các quy tắc: ngang trước sổ sau, phẩy trước mác sau, trên trước dưới sau, trái trước phải sau, ngoài trước trong sau, vào nhà rồi đóng cửa, giữa trước hai bên sau.",
+      tasks: ["Xem video, chép các quy tắc vào ô Ghi chú", "Viết 6 chữ bên dưới, mỗi chữ 1 dòng, nói to tên nét khi viết", "Tra bút thuận chữ lạ bằng Pleco hoặc Hanzi Writer", "Làm quiz"],
+      vocab: [
+        v("日", "rì", "mặt trời; ngày", "今天是几月几日？", "Jīntiān shì jǐ yuè jǐ rì?", "Hôm nay là ngày mấy tháng mấy?"),
+        v("月", "yuè", "mặt trăng; tháng", "我十二月去北京。", "Wǒ shí'èr yuè qù Běijīng.", "Tháng 12 tôi đi Bắc Kinh."),
+        v("水", "shuǐ", "nước", "我想喝水。", "Wǒ xiǎng hē shuǐ.", "Tôi muốn uống nước."),
+        v("火", "huǒ", "lửa", "小心火！", "Xiǎoxīn huǒ!", "Cẩn thận lửa!"),
+        v("木", "mù", "gỗ, cây", "这张桌子是木头的。", "Zhè zhāng zhuōzi shì mùtou de.", "Cái bàn này bằng gỗ."),
+        v("本", "běn", "quyển (lượng từ sách)", "我有一本书。", "Wǒ yǒu yì běn shū.", "Tôi có một quyển sách.")
+      ],
+      questions: [
+        { q: "Chữ 十 viết theo thứ tự nào?", options: ["Ngang trước, sổ sau", "Sổ trước, ngang sau", "Hai nét cùng lúc", "Tuỳ ý"], answer: 0, explain: "Quy tắc “ngang trước sổ sau”." },
+        { q: "Nét cuối cùng của chữ 日 là:", options: ["Nét ngang đóng đáy", "Nét sổ bên trái", "Nét ngang ở giữa", "Nét ngang gập"], answer: 0, explain: "“Vào nhà trước, đóng cửa sau”: viết nét ngang giữa rồi mới đóng đáy." }
+      ]
+    },
+    {
+      id: "py-building", level: "PY", skill: "vocab",
+      title: "The Building Blocks of Chinese Character (Chinese Radicals 101)", titleVi: "Chữ Hán được ghép thế nào: bộ chỉ nghĩa + phần chỉ âm",
+      source: yt("Skritter", "F8PF7oyXwt0"), minutes: 8,
+      goal: "Hiểu phần lớn chữ Hán là chữ hình thanh: một bộ gợi nghĩa + một phần gợi cách đọc — nhớ chữ nhanh hơn nhiều.",
+      tasks: ["Xem video", "Tách 6 chữ bên dưới thành các bộ phận, ghi vào ô Ghi chú (vd 好 = 女 + 子)", "Làm quiz"],
+      vocab: [
+        v("好", "hǎo", "tốt (女 + 子)", "你们好！", "Nǐmen hǎo!", "Chào các bạn!"),
+        v("明", "míng", "sáng (日 + 月)", "明天见！", "Míngtiān jiàn!", "Mai gặp nhé!"),
+        v("休", "xiū", "nghỉ (người 亻 tựa gốc cây 木)", "我们休息一下。", "Wǒmen xiūxi yíxià.", "Chúng ta nghỉ một chút."),
+        v("妈", "mā", "mẹ (女 chỉ nghĩa + 马 chỉ âm)", "妈妈很忙。", "Māma hěn máng.", "Mẹ rất bận."),
+        v("河", "hé", "sông (氵 nước + 可 gợi âm)", "这条河很长。", "Zhè tiáo hé hěn cháng.", "Con sông này rất dài."),
+        v("们", "men", "(số nhiều; 亻 + 门 gợi âm)", "我们是朋友。", "Wǒmen shì péngyou.", "Chúng tôi là bạn.")
+      ],
+      questions: [
+        { q: "Trong chữ 妈 (mā), bộ 女 cho biết ___, phần 马 (mǎ) cho biết ___.", options: ["nghĩa (phụ nữ) — cách đọc", "cách đọc — nghĩa", "số nét — thanh điệu", "không mang thông tin gì"], answer: 0, explain: "Chữ hình thanh: bộ chỉ nghĩa + phần chỉ âm." }
+      ]
+    },
+    {
+      id: "py-radicals", level: "PY", skill: "vocab",
+      title: "Learn the Top 20 Chinese Radicals!", titleVi: "20 bộ thủ thông dụng nhất",
+      source: yt("Yao Mandarin", "3FizmFTaZPw"), minutes: 22,
+      goal: "Nhận ra 20 bộ thủ hay gặp (亻 氵 扌 口 木 艹 讠 心/忄 女 日…) để đoán nghĩa chữ mới.",
+      tasks: ["Xem video 2 lần (mỗi lần 10 bộ)", "Lập bảng bộ thủ – nghĩa – 2 chữ ví dụ trong vở", "Học 6 từ bên dưới, chỉ ra bộ thủ của từng chữ", "Làm quiz"],
+      vocab: [
+        v("他", "tā", "anh ấy (bộ 亻 người)", "他是我哥哥。", "Tā shì wǒ gēge.", "Anh ấy là anh trai tôi."),
+        v("汉字", "hànzì", "chữ Hán (汉 có bộ 氵 nước)", "汉字很有意思。", "Hànzì hěn yǒu yìsi.", "Chữ Hán rất thú vị."),
+        v("打", "dǎ", "đánh; gọi (bộ 扌 tay)", "我给你打电话。", "Wǒ gěi nǐ dǎ diànhuà.", "Tôi gọi điện cho bạn."),
+        v("说", "shuō", "nói (bộ 讠 lời nói)", "请再说一遍。", "Qǐng zài shuō yí biàn.", "Xin nói lại lần nữa."),
+        v("树", "shù", "cây (bộ 木)", "这棵树很高。", "Zhè kē shù hěn gāo.", "Cái cây này rất cao."),
+        v("叫", "jiào", "gọi, tên là (bộ 口 miệng)", "我叫小明。", "Wǒ jiào Xiǎomíng.", "Tôi tên là Tiểu Minh.")
+      ],
+      questions: [
+        { q: "Chữ nào có bộ 氵 (nước)?", options: ["河", "妈", "他", "树"], answer: 0, explain: "河 (sông) = 氵 + 可." }
+      ]
+    },
+    {
+      id: "py-chart", level: "PY", skill: "listening",
+      title: "Mandarin Chinese Pinyin Chart with Tones", titleVi: "Bảng pinyin có âm thanh (bấm từng ô để nghe)",
+      source: { type: "link", provider: EC, url: "https://www.everydaychinese.com/pinyin-chart-table/" }, minutes: 15,
+      goal: "Dùng bảng pinyin để tự luyện và tra lại bất kỳ âm nào còn đọc sai.",
+      tasks: ["Mở bảng, chọn một hàng thanh mẫu, bấm nghe từng ô và đọc theo", "Chọn ngẫu nhiên 20 ô, đọc trước rồi bấm nghe để kiểm tra", "Quay lại đây ghi thời gian đã luyện"]
+    },
     /* ============================== HSK 1 ============================== */
     {
       id: "zh1-greetings", level: "HSK1", skill: "listening",
@@ -659,7 +893,10 @@
     { name: "Mandarin Corner — từ vựng HSK 1→6 kèm câu ví dụ", url: "https://mandarincorner.org/hsk-vocabulary-videos-with-sentence-examples/", note: "Mỗi cấp một khoá video, có timestamps." },
     { name: "ShuoshuoChinese 说说中文 (YouTube)", url: "https://www.youtube.com/@ShuoshuoChinese", note: "Ngữ pháp, khẩu ngữ, thử thách nghe cho trung – cao cấp." },
     { name: "CCTV Learn Chinese", url: "https://cctv.cntv.cn/lm/learningchinese/01/", note: "Growing Up with Chinese, Travel in Chinese, Survival Chinese… miễn phí." },
-    { name: "Hua Zhong Wen 画中文", url: "https://huazhongwen.com/words", note: "Nhớ từ bằng tranh vẽ vui, có pinyin." }
+    { name: "Hua Zhong Wen 画中文", url: "https://huazhongwen.com/words", note: "Nhớ từ bằng tranh vẽ vui, có pinyin." },
+    { name: "Bảng pinyin có âm thanh (Everyday Chinese)", url: "https://www.everydaychinese.com/pinyin-chart-table/", note: "Bấm từng ô để nghe — dùng suốt giai đoạn 1." },
+    { name: "Hanzi Writer", url: "https://hanziwriter.org/", note: "Xem hoạt hình bút thuận từng chữ, luyện viết theo." },
+    { name: "Pleco (từ điển trên điện thoại)", url: "https://www.pleco.com/", note: "Tra chữ, pinyin, bút thuận; nhận chữ viết tay." }
   ];
 
   /* Bài test xếp trình độ: 4 câu mỗi cấp HSK 1 → HSK 5. Đạt ≥ 60% (3/4) mới xét tiếp cấp sau.

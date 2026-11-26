@@ -81,7 +81,7 @@
     const parts = (location.hash || "#/").replace(/^#\/?/, "").split("/");
     const name = parts[0] || "";
     const view = routes[name] || viewNotFound;
-    const navName = { lesson: "roadmap", add: "roadmap", games: "review", test: "", account: "settings", login: "settings", reset: "settings" }[name] ?? name;
+    const navName = { lesson: "roadmap", add: "roadmap", games: "review", test: "", exam: "plan", account: "settings", login: "settings", reset: "settings" }[name] ?? name;
     $$("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === navName));
     app.innerHTML = "";
     app.className = "";
@@ -110,7 +110,8 @@
           <h1>${LANG.hero.title}</h1>
           <p class="lead">${LANG.hero.lead}</p>
           <div class="row">
-            <a class="btn primary lg" href="#/test">Làm bài test xếp lớp (≈5 phút)</a>
+            ${window.Plan ? `<a class="btn primary lg" href="#/plan">📅 Học từ số 0 theo kế hoạch</a>` : ""}
+            <a class="btn ${window.Plan ? "ghost" : "primary"} lg" href="#/test">Làm bài test xếp lớp (≈5 phút)</a>
             <a class="btn ghost lg" href="#/roadmap">Tự chọn trình độ</a>
           </div>
         </section>
@@ -155,6 +156,8 @@
 
       ${risk ? `<div class="banner risk"><span>🔥 Chuỗi <strong>${streak} ngày</strong> đang chờ bạn${hour >= 18 ? " — còn vài giờ nữa thôi" : ""}! 5 phút flashcard cũng giữ được chuỗi.</span>
         <a class="btn primary sm" href="#/review">Ôn nhanh 5 phút</a></div>` : ""}
+
+      ${window.Plan ? Plan.homeCard() : ""}
 
       ${daily ? `
       <a class="next-card daily ${dailyDone ? "is-done" : ""}" href="#/lesson/${esc(daily.id)}">
