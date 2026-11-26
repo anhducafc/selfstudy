@@ -1,6 +1,56 @@
 {
-  "updated": "2026-11-25T04:53:48.738Z",
+  "updated": "2026-11-26T04:09:59.346Z",
   "lessons": [
+    {
+      "id": "yt-hYy_9G5aFPM",
+      "level": "B1",
+      "skill": "vocab",
+      "title": "Language Clinic: Live answers to all your questions",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "British Council",
+        "videoId": "hYy_9G5aFPM"
+      },
+      "minutes": 5,
+      "published": "2026-11-26T02:53:11+00:00",
+      "series": "British Council",
+      "feed": "@BritishCouncilEnglish",
+      "desc": "Join me  LIVE to get instant answers to all your questions about grammar, vocabulary, pronunciation, skills, exam preparation, cats, guitars, cooking ... anything you like! 😜 Get your questions ready, then come along and join in 🙂\nDon't miss our fantastic Black Friday offer on all online courses! Get up to 50% off here - only until December 2nd! https://learnenglish.pub/BlackFriday26\nNeil",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
+    {
+      "id": "yt-ssEOLoy8hcw",
+      "level": "B2",
+      "skill": "vocab",
+      "title": "COP31 talks end with no agreement | Learning English from the News",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "ssEOLoy8hcw"
+      },
+      "minutes": 10,
+      "published": "2026-11-25T13:11:11+00:00",
+      "series": "English from the News",
+      "feed": "@bbclearningenglish",
+      "desc": "Pippa and Becca explain this news story and teach you vocabulary from the headlines. 🔎 For a free worksheet, and all the vocabulary and definitions: https://bbc.in/3XqnowY  and for more episodes of Learning English from the News: https://bbc.in/4svEN2L\nThe COP31 talks held in Turkey were the latest in a yearly conference between UN nations to plan and agree commitments and action on climate change. This was the longest climate conference ever, but the talks collapsed on Sunday after countries were unable to reach an agreement.\nMany countries, including EU countries and Pacific island nations ",
+      "tasks": [
+        "Xem video, dừng lại ở mỗi từ/cụm từ mới",
+        "Ghi 3 cụm từ và tự đặt câu vào ô Ghi chú",
+        "Ôn lại bằng flashcard (nếu bài có từ vựng)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt--ie7aKOKAco",
       "level": "B1",
