@@ -1,6 +1,31 @@
 {
-  "updated": "2026-11-26T04:09:59.346Z",
+  "updated": "2026-11-27T04:15:40.000Z",
   "lessons": [
+    {
+      "id": "yt-Q0Cgk4kKDfQ",
+      "level": "B1",
+      "skill": "listening",
+      "title": "Is Gen Z getting less intelligent? 6 Minute English",
+      "titleVi": "",
+      "source": {
+        "type": "youtube",
+        "provider": "BBC Learning English",
+        "videoId": "Q0Cgk4kKDfQ"
+      },
+      "minutes": 7,
+      "published": "2026-11-26T10:13:51+00:00",
+      "series": "6 Minute English",
+      "feed": "@bbclearningenglish",
+      "desc": "Find a free worksheet, transcript and quiz for this episode here 👉 https://bbc.in/4jDJmoT\n📖 When was the last time you read a physical book? For older generations, school was full of textbooks and workbooks, but for younger generations these have been replaced with laptops and tablets.\n📱 But is this technology having a positive impact on test scores? Georgie and Phil discuss this and teach you some new vocabulary.\n👨‍🏫 Phil and Georgie discuss this and teach you some new vocabulary.\n00:00 How do you find tests and exams?\n00:45 The quiz: how many 15 year olds around the told take the Progra",
+      "tasks": [
+        "Xem lần 1 không phụ đề, tóm tắt ý chính bằng 1 câu",
+        "Xem lần 2 bật phụ đề CC, ghi 3 cụm từ mới",
+        "Làm quiz (nếu có)"
+      ],
+      "vocab": [],
+      "questions": [],
+      "status": "new"
+    },
     {
       "id": "yt-hYy_9G5aFPM",
       "level": "B1",
