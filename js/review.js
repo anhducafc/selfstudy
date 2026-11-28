@@ -117,7 +117,8 @@
           <div class="row center gap-s">
             <button class="btn ghost sm" id="sayW">🔊 Từ</button>
             ${c.ex ? `<button class="btn ghost sm" id="sayEx">🔊 Câu ví dụ</button>` : ""}
-            ${S.findLesson(c.lessonId) ? `<a class="btn ghost sm" href="#/lesson/${esc(c.lessonId)}">Mở bài</a>` : ""}
+            ${S.findLesson(c.lessonId) ? `<a class="btn ghost sm" href="#/lesson/${esc(c.lessonId)}">Mở bài</a>`
+              : window.Colloc && /^colloc-/.test(c.lessonId || "") && Colloc.byId(c.lessonId.slice(7)) ? `<a class="btn ghost sm" href="#/colloc/${esc(c.lessonId.slice(7))}">Mở chủ đề</a>` : ""}
           </div>
         </section>`;
       if (!flipped && autoSay && !reverse) speak(c.w);
@@ -205,7 +206,11 @@
       <section class="card review-cta">
         <div><h3>🃏 Flashcard</h3><p class="muted small">${S.cardStats().due} thẻ đến hạn hôm nay.</p></div>
         <a class="btn primary" href="#/review">Ôn flashcard</a>
-      </section>`;
+      </section>
+      ${window.Colloc ? `<section class="card review-cta">
+        <div><h3>🧩 Collocation mỗi ngày</h3><p class="muted small">Hôm nay: ${esc((Colloc.todayTopic() || {}).en || "")} · 8 cụm từ đi kèm theo trình độ.</p></div>
+        <a class="btn primary" href="#/colloc">Luyện collocation</a>
+      </section>` : ""}`;
   }
 
   function gameShell(g, inner) {

@@ -6,6 +6,8 @@
 
   const doneList = () => S.allLessons().filter((l) => S.progress(l.id).done);
   const doneLessonsProg = () => Object.values(S.get().lessons).filter((p) => p.done);
+  const collocTopics = () => (S.get().colloc || {}).topics || {};
+  const collocDone = () => Object.values(collocTopics()).filter((t) => t.done).length;
 
   /* Danh sách huy hiệu — thêm huy hiệu mới chỉ cần thêm 1 dòng */
   const BADGES = [
@@ -34,8 +36,13 @@
     { id: "night-owl", icon: "🦉", name: "Cú đêm", desc: "Hoàn thành bài sau 22 giờ", test: () => doneLessonsProg().some((p) => p.doneHour != null && p.doneHour >= 22) },
     { id: "freeze-used", icon: "🧊", name: "Cứu chuỗi", desc: "Streak freeze tự cứu chuỗi của bạn", test: () => S.get().game.frozenDays.length >= 1 },
     { id: "level-5", icon: "🚀", name: "Cấp 5", desc: "Đạt cấp người chơi 5", test: () => S.playerLevel().level >= 5 },
-    { id: "level-10", icon: "🪐", name: "Cấp 10", desc: "Đạt cấp người chơi 10", test: () => S.playerLevel().level >= 10 }
-  ];
+    { id: "level-10", icon: "🪐", name: "Cấp 10", desc: "Đạt cấp người chơi 10", test: () => S.playerLevel().level >= 10 },
+    // Collocation — chỉ hiện ở trang có window.COLLOCATIONS (tiếng Anh)
+    { id: "colloc-1", icon: "🧲", name: "Bắt cặp", desc: "Hoàn thành chủ đề collocation đầu tiên", need: "colloc", test: () => collocDone() >= 1 },
+    { id: "colloc-perfect", icon: "🎯", name: "Chuẩn bản xứ", desc: "Đạt 8/8 một chủ đề collocation", need: "colloc", test: () => Object.values(collocTopics()).some((t) => t.total && t.best >= t.total) },
+    { id: "colloc-days-7", icon: "🔗", name: "Bảy ngày cụm từ", desc: "Làm Collocation của ngày 7 ngày", need: "colloc", test: () => Object.keys((S.get().colloc || {}).days || {}).length >= 7 },
+    { id: "colloc-20", icon: "🧠", name: "Kho cụm từ", desc: "Hoàn thành 20 chủ đề collocation", need: "colloc", test: () => collocDone() >= 20 }
+  ].filter((b) => !b.need || (b.need === "colloc" && Array.isArray(window.COLLOCATIONS)));
 
   let checking = false;
   function checkBadges() {

@@ -81,7 +81,7 @@
     const parts = (location.hash || "#/").replace(/^#\/?/, "").split("/");
     const name = parts[0] || "";
     const view = routes[name] || viewNotFound;
-    const navName = { lesson: "roadmap", add: "roadmap", games: "review", test: "", exam: "plan", account: "settings", login: "settings", reset: "settings" }[name] ?? name;
+    const navName = { lesson: "roadmap", add: "roadmap", games: "review", colloc: "review", test: "", exam: "plan", account: "settings", login: "settings", reset: "settings" }[name] ?? name;
     $$("[data-nav]").forEach((a) => a.classList.toggle("active", a.dataset.nav === navName));
     app.innerHTML = "";
     app.className = "";
@@ -170,6 +170,8 @@
         <p class="muted">${esc(daily.titleVi || "")}</p>
         <span class="btn primary">${dailyDone ? "✓ Đã xong hôm nay — xem lại" : "Học ngay →"}</span>
       </a>` : ""}
+
+      ${window.Colloc ? Colloc.homeCard() : ""}
 
       <section class="quick-row">
         <a class="quick card" href="#/review">

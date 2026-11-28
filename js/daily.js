@@ -31,5 +31,16 @@
     return words[hash(`${dateKey}|${level}|word`) % words.length];
   }
 
-  root.Daily = { hash, lesson, word };
+  /** Collocation của ngày: xoay vòng các chủ đề của trình độ (thứ tự cố định theo hash),
+   *  mỗi ngày 1 chủ đề — đi hết vòng rồi mới lặp lại. topics = window.COLLOCATIONS */
+  function colloc(topics, level, dateKey) {
+    const p = (topics || []).filter((t) => t.level === level)
+      .sort((a, b) => hash(`${a.id}|colloc`) - hash(`${b.id}|colloc`) || (a.id < b.id ? -1 : 1));
+    if (!p.length) return null;
+    const [y, m, d] = String(dateKey).split("-").map(Number);
+    const dayNo = Math.floor(Date.UTC(y, m - 1, d) / 86400000);
+    return p[(dayNo + (hash(level) % p.length)) % p.length];
+  }
+
+  root.Daily = { hash, lesson, word, colloc };
 })(typeof window !== "undefined" ? window : globalThis);

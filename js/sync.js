@@ -58,6 +58,21 @@
     return o;
   }
 
+  /** Collocation: mỗi chủ đề giữ điểm cao nhất, số lần làm nhiều nhất, ngày xong sớm nhất */
+  function mergeColloc(a = {}, b = {}) {
+    const o = {};
+    for (const id of union(Object.keys(a), Object.keys(b))) {
+      const x = a[id] || {}, y = b[id] || {};
+      const t = { ...y, ...x, best: maxNum(x.best, y.best), attempts: maxNum(x.attempts, y.attempts),
+        total: x.total || y.total, last: [x.last, y.last].filter(Boolean).sort().pop() };
+      const done = minDate(x.done, y.done);
+      if (done) t.done = done; else delete t.done;
+      if (!t.last) delete t.last;
+      o[id] = t;
+    }
+    return o;
+  }
+
   /** local = máy này, remote = tài khoản. Không bao giờ làm mất tiến trình của bên nào. */
   function merge(local, remote) {
     if (!remote) return local;
@@ -109,6 +124,10 @@
         sessions: earliest(pl.sessions, pr.sessions),
         checks: earliest(pl.checks, pr.checks),
         exams
+      },
+      colloc: {
+        topics: mergeColloc((L.colloc || {}).topics, (R.colloc || {}).topics),
+        days: { ...((R.colloc || {}).days || {}), ...((L.colloc || {}).days || {}) }
       },
       game: {
         ...gr, ...gl,

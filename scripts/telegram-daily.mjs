@@ -35,7 +35,9 @@ async function loadSite(dir = "") {
   const ctx = { window: {}, console };
   ctx.globalThis = ctx;
   vm.createContext(ctx);
-  for (const f of [`${dir}js/data.js`, "js/daily.js"]) vm.runInContext(await readFile(path.join(ROOT, f), "utf8"), ctx, { filename: f });
+  const files = [`${dir}js/data.js`, "js/daily.js"];
+  if (!dir && existsSync(path.join(ROOT, "js/colloc-data.js"))) files.push("js/colloc-data.js");   // collocation: chỉ tiếng Anh
+  for (const f of files) vm.runInContext(await readFile(path.join(ROOT, f), "utf8"), ctx, { filename: f });
   const w = ctx.window;
   let auto = [];
   const autoFile = path.join(ROOT, `${dir}data/auto-lessons.json`);
@@ -43,7 +45,7 @@ async function loadSite(dir = "") {
     const core = new Set(w.LESSONS.filter((l) => l.source.type === "youtube").map((l) => l.source.videoId));
     auto = (JSON.parse(await readFile(autoFile, "utf8")).lessons || []).filter((l) => l && l.id && l.level && !core.has(l.source?.videoId));
   }
-  return { LESSONS: [...w.LESSONS, ...auto], LEVELS: w.LEVELS, SKILLS: w.SKILLS, Daily: w.Daily || ctx.Daily };
+  return { LESSONS: [...w.LESSONS, ...auto], LEVELS: w.LEVELS, SKILLS: w.SKILLS, Daily: w.Daily || ctx.Daily, COLLOC: w.COLLOCATIONS || null };
 }
 
 const todayKey = () => new Intl.DateTimeFormat("en-CA", { timeZone: TZ, year: "numeric", month: "2-digit", day: "2-digit" }).format(new Date());
@@ -67,6 +69,14 @@ function buildMorning(site, zh) {
   const mid = LEVELS[Math.floor(LEVELS.length / 2)];
   const w = mid && site.Daily.word(site.LESSONS, mid, key);
   if (w) lines.push("", `💡 <b>Từ của ngày</b> (${mid}): <b>${esc(w.w)}</b> — ${esc(w.vi)}`, w.ex ? `<i>“${esc(w.ex)}”</i>` : "");
+
+  // 🧩 Collocation của ngày: cùng thuật toán với trang #/colloc
+  const ct = mid && site.COLLOC && site.Daily.colloc && site.Daily.colloc(site.COLLOC, mid, key);
+  if (ct) {
+    lines.push("", `🧩 <b>Collocation của ngày</b> (${mid}): ${ct.icon} ${esc(ct.en)} — <i>${esc(ct.vi)}</i>`,
+      ...ct.items.slice(0, 3).map((i) => `• <b>${esc(i.text)}</b> — ${esc(i.vi)}`), "…và 5 cụm nữa trên web.");
+    if (SITE) buttons.push({ text: "🧩 Luyện collocation", url: link(`colloc/${encodeURIComponent(ct.id)}`) });
+  }
 
   // 🇨🇳 tiếng Trung: cùng thuật toán với trang /zh/
   if (zh && ZH_LEVELS.length) {

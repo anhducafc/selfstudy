@@ -8,6 +8,8 @@ Trang là web tĩnh (HTML/CSS/JS thuần, không cần build). Phần tự độ
 
 ## Tính năng
 
+- **🧩 Collocation mỗi ngày** (`#/colloc`): mỗi ngày mỗi trình độ 1 chủ đề (xoay vòng hết các chủ đề), 8 cụm từ đi kèm. Xem cụm + câu ví dụ + “không nói …” → luyện 8 câu (chọn từ đúng, đoán nghĩa, gõ từ vào câu, đúng/sai tự nhiên) → câu sai làm lại bằng dạng khác → 8 cụm tự vào flashcard. +30 XP lần đầu xong chủ đề, +20 XP Collocation của ngày, 4 huy hiệu mới; bot Telegram buổi sáng gửi kèm chủ đề hôm nay.
+
 **Học**
 - 🎯 **Bài test xếp lớp** 20 câu → A1…C1.
 - 🗺️ **Lộ trình** 28 bài soạn sẵn, cộng mục **📺 Video mới** tự cập nhật.
@@ -236,6 +238,8 @@ js/game.js                    huy hiệu, pháo giấy, popup
 js/app.js                     router, trang chủ, lộ trình, bài học, dashboard
 js/review.js                  flashcard + 3 mini game
 js/plan.js                    kế hoạch học theo giai đoạn + thi cuối kỳ (bật khi có window.STUDY_PLAN)
+js/colloc-data.js             collocation theo cấp A1–C1 & chủ đề (27 chủ đề × 8 cụm) — sửa/thêm ở đây
+js/colloc.js                  trang #/colloc: Collocation của ngày, học → luyện 4 dạng → flashcard
 zh/js/plan-data.js            ⭐ nội dung kế hoạch 4 giai đoạn tiếng Trung
 data/auto-lessons.json        bài tự động (do workflow ghi)
 scripts/feeds.json            danh sách kênh + luật gắn trình độ

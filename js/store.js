@@ -16,7 +16,10 @@
     cardReview: 2,         // mỗi thẻ flashcard đã ôn
     gameDailyCap: 60,      // trần XP từ mini game mỗi ngày
     planSession: 20,       // đánh dấu xong 1 buổi trong kế hoạch học
-    examPassed: 200        // lần đầu đạt bài thi cuối kỳ của một giai đoạn
+    examPassed: 200,       // lần đầu đạt bài thi cuối kỳ của một giai đoạn
+    collocTopic: 30,       // lần đầu hoàn thành một chủ đề collocation
+    collocDaily: 20,       // cộng thêm khi làm Collocation của ngày (mỗi ngày 1 lần)
+    collocCorrect: 3       // mỗi câu đúng VƯỢT điểm cao nhất cũ của chủ đề
   };
   /* Khoảng cách ôn (ngày) theo hộp Leitner 1..5 */
   const BOX_DAYS = [0, 1, 2, 4, 9, 21];
@@ -37,7 +40,9 @@
       goalBonusDays: [], gameXpByDay: {}, best: {}, plays: 0, cardReviews: 0, dailyDone: 0
     },
     // Kế hoạch học theo giai đoạn (chỉ dùng khi ngôn ngữ có window.STUDY_PLAN)
-    plan: { start: null, pauses: [], sessions: {}, exams: {}, checks: {} }
+    plan: { start: null, pauses: [], sessions: {}, exams: {}, checks: {} },
+    // Collocation (chỉ trang có window.COLLOCATIONS): topics id -> { best, total, attempts, done, last }; days ngày -> id chủ đề của ngày đã làm
+    colloc: { topics: {}, days: {} }
   });
 
   let state = load();
@@ -55,6 +60,7 @@
         xp: { ...base.xp, ...(s.xp || {}) },
         game: { ...base.game, ...(s.game || {}) },
         plan: { ...base.plan, ...(s.plan || {}) },
+        colloc: { topics: {}, days: {}, ...(s.colloc || {}) },
         lessons: s.lessons || {}, days: s.days || {}, custom: s.custom || [],
         badges: s.badges || {}, cards: s.cards || {}
       };
@@ -228,7 +234,39 @@
       save();
     },
 
+    /* ---------------- Collocation ---------------- */
+    collocState() { return state.colloc; },
+    /** Lưu kết quả một chủ đề collocation; trả về số XP được cộng */
+    saveColloc(topicId, score, total, isDaily) {
+      const k = dayKey();
+      const t = state.colloc.topics[topicId] || (state.colloc.topics[topicId] = { best: 0, total, attempts: 0 });
+      const oldBest = t.total === total ? (t.best || 0) : 0;
+      const xp0 = state.xp.total;
+      t.attempts = (t.attempts || 0) + 1;
+      t.total = total;
+      t.best = Math.max(oldBest, score);
+      t.last = k;
+      markActive();
+      if (score > oldBest) gainXP((score - oldBest) * XP.collocCorrect, "Collocation", true);
+      if (!t.done) { t.done = new Date().toISOString(); gainXP(XP.collocTopic, "Xong chủ đề collocation 🧩"); }
+      if (isDaily && !state.colloc.days[k]) { state.colloc.days[k] = topicId; gainXP(XP.collocDaily, "Collocation của ngày ⭐"); }
+      save();
+      return state.xp.total - xp0;
+    },
+
     /* ---------------- Flashcard (Leitner) ---------------- */
+    /** Thêm thẻ từ một danh sách {w, vi, ex} bất kỳ (vd collocation); sourceId đứng trước "::" trong id thẻ */
+    addWordCards(sourceId, list) {
+      let n = 0;
+      (list || []).forEach((v) => {
+        const cid = `${sourceId}::${v.w}`;
+        if (state.cards[cid]) return;
+        state.cards[cid] = { w: v.w, vi: v.vi, ex: v.ex || "", lessonId: sourceId, box: 1, due: dayKey(), reviews: 0, lapses: 0, added: dayKey() };
+        n++;
+      });
+      if (n) { save(); emit("ep:cards", { added: n }); }
+      return n;
+    },
     addCardsFor(id, quiet = false) {
       const l = this.findLesson(id);
       if (!l || !l.vocab) return 0;
